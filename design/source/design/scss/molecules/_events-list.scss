@@ -1,0 +1,81 @@
+.events-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+.events-list .events-list-item {
+    margin-bottom: 2.5rem;
+    border-left: 0.5rem solid;
+    border-color: #efefef;
+}
+
+@media (min-width: 768px) {
+    .events-list .events-list-item {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
+
+.events-list .events-list-item.active {
+    border-color: $blue;
+}
+
+.events-list .events-list-item .event-time {
+    margin-right: 1rem;
+    position: relative;
+    text-align: center;
+    padding-left: 1.4rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding-top: 1.9rem;
+}
+
+@media (min-width: 768px) {
+    .events-list .events-list-item .event-time:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #efefef;
+        width: 0.5rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .events-list .events-list-item .event-time {
+        padding-left: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .events-list .events-list-item.active .event-time:before {
+        background-color: $blue;
+    }
+}
+
+.events-list .events-list-item p {
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    .events-list .events-list-item {
+        position: relative;
+    }
+    .events-list .events-list-item:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -0.8rem;
+        bottom: 0;
+        background-color: #efefef;
+        width: 0.3rem;
+    }
+    .events-list .events-list-item.active:before {
+        background-color: $blue;
+    }
+}

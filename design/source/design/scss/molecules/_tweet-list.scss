@@ -1,0 +1,81 @@
+.tweet-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    h1,
+    .h1,
+    h2,
+    .h2,
+    h3,
+    .h3,
+    h4,
+    .h4,
+    h5,
+    .h5 {
+        font-family: $body-font;
+        letter-spacing: normal;
+        font-size: inherit;
+        small {
+            color: $tweet-action-color;
+            a {
+                color: inherit;
+                &:hover {
+                    text-decoration: none;
+                    color: $etf-blue;
+                }
+            }
+        }
+    }
+    .tweet-container {
+        border-bottom: solid 1px $card-heading-border-color;
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+        &:last-of-type {
+            border-bottom: 0;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+    }
+    .tweet {
+        display: flex;
+        .tweet-avatar {
+            padding-right: 1rem;
+            width: 6rem;
+            img {
+                width: 100%;
+            }
+            @include media-breakpoint-down('sm') {
+                width: 4rem;
+            }
+        }
+        .tweet-heading {
+            font-size: 1.2rem;
+            @include media-breakpoint-down('sm') {
+                font-size: 1rem;
+            }
+        }
+        .tweet-content {
+            width: calc(100% - 7rem);
+            @include media-breakpoint-down('sm') {
+                width: calc(100% - 5rem;
+                )
+            }
+        }
+        .tweet-media {
+            max-width: 100%;
+        }
+    }
+    .tweet-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+        color: $tweet-action-color;
+        a {
+            color: inherit;
+            &:hover {
+                text-decoration: none;
+                color: $etf-blue;
+            }
+        }
+    }
+}

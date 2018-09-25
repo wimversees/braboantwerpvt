@@ -1,0 +1,42 @@
+.calendar-table .row .fa {
+    color: #cacaca;
+    margin-right: 0.7rem;
+    float: left;
+    padding-top: 3px;
+}
+
+.calendar-table .row .fa+p {
+    margin-left: 2rem;
+}
+
+.calendar-table .row.active .fa {
+    color: #006da8;
+}
+
+@media (max-width: 767px) {
+    .calendar-table .row div:nth-child(2) {
+        padding: 0 1rem 1rem 1rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .calendar-table.document-table .row div:nth-child(2) {
+        padding: 0 1rem 0 1rem;
+    }
+    .calendar-table.document-table .row div:nth-child(3) {
+        padding: 1rem;
+    }
+}
+
+.calendar-table [class*="col-"] {
+    position: relative;
+}
+
+.calendar-table a {
+    font-weight: bold;
+}
+
+.calendar-table p.meta {
+    font-style: italic;
+    font-size: 0.8rem;
+}

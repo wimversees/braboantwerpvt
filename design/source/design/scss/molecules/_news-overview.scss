@@ -1,0 +1,29 @@
+.news-overview-item {
+    margin-bottom: 2.5rem;
+    .news-overview-heading {
+        .date {
+            font-weight: bold;
+        }
+        h3 {
+            a {
+                &:hover {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+    a {
+        color: $news-overview-color;
+        font-weight: bold;
+        &:hover,
+        &:active,
+        &:focus {
+            text-decoration: none;
+            color: $news-overview-color;
+            border-bottom: solid 1px;
+        }
+    }
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
