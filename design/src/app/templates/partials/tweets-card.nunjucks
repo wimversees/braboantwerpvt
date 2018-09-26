@@ -1,0 +1,58 @@
+<section class="card">
+    <h2 class="card-title">Tweets</h2>
+    <div class="card-block">
+        <ul class="tweet-list">
+            <li class="tweet-container">
+                <div class="tweet">
+                    <div class="tweet-avatar"><img src="http://placehold.it/75/000000"></div>
+                    <div class="tweet-content">
+                        <h4 class="tweet-heading">InVision <small><a href="http://twitter.com/invisionapp" target="_blank">@invisionApp</a></small></h4>
+                        <p class="tweet-text">“Design should be simple, delightful, and engaging.” bit.ly/299o6Xb by @margaretannk</p>
+                        <img class="tweet-media rounded" src="http://placehold.it/400" />
+                        <div class="tweet-actions">
+                            <a href="#"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-retweet" aria-hidden="true"></i> 12</a>
+                            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 83</a>
+                            <a href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <p class="tweet-time">3h</p>
+                </div>
+            </li>
+            <li class="tweet-container">
+                <div class="tweet">
+                    <div class="tweet-avatar"><img src="http://placehold.it/75/000000"></div>
+                    <div class="tweet-content">
+                        <h4 class="tweet-heading">InVision <small><a href="http://twitter.com/invisionapp" target="_blank">@invisionApp</a></small></h4>
+                        <p class="tweet-text">“Design should be simple, delightful, and engaging.” bit.ly/299o6Xb by @margaretannk</p>
+                        <img class="tweet-media rounded" src="http://placehold.it/400" />
+                        <div class="tweet-actions">
+                            <a href="#"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-retweet" aria-hidden="true"></i> 12</a>
+                            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 83</a>
+                            <a href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <p class="tweet-time">3h</p>
+                </div>
+            </li>
+            <li class="tweet-container">
+                <div class="tweet">
+                    <div class="tweet-avatar"><img src="http://placehold.it/75/000000"></div>
+                    <div class="tweet-content">
+                        <h4 class="tweet-heading">InVision <small><a href="http://twitter.com/invisionapp" target="_blank">@invisionApp</a></small></h4>
+                        <p class="tweet-text">“Design should be simple, delightful, and engaging.” bit.ly/299o6Xb by @margaretannk</p>
+                        <img class="tweet-media rounded" src="http://placehold.it/400" />
+                        <div class="tweet-actions">
+                            <a href="#"><i class="fa fa-reply" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-retweet" aria-hidden="true"></i> 12</a>
+                            <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> 83</a>
+                            <a href="#"><i class="fa fa-comment" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <p class="tweet-time">3h</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>

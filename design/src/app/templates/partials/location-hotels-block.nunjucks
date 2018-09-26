@@ -1,0 +1,40 @@
+<section class="card">
+    <h2 class="card-title">Location Hotels</h2>
+    <div class="card-block">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="place-block mb-2 mb-lg-0 mb-xl-0">
+                    <h3>Hotel Lorem</h3>
+                    <address>Testadres 33, 3000 leuven</address>
+                    Tel: <a href="tel:000000000" class="no-link">000/00 00 00</a>
+                    <br>
+                    <a href="mailto:test_email@test.be" class="no-link">test_email@test.be</a>
+                    <br>
+                    <a href="http://www.google.be" class="no-link">www.lorem.be</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="place-block mb-2 mb-lg-0 mb-xl-0">
+                    <h3>Hotel Lorem</h3>
+                    <address>Testadres 33, 3000 leuven</address>
+                    Tel: <a href="tel:000000000" class="no-link">000/00 00 00</a>
+                    <br>
+                    <a href="mailto:test_email@test.be" class="no-link">test_email@test.be</a>
+                    <br>
+                    <a href="http://www.google.be" class="no-link">www.lorem.be</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <div class="place-block mb-2 mb-lg-0 mb-xl-0">
+                    <h3>Hotel Lorem</h3>
+                    <address>Testadres 33, 3000 leuven</address>
+                    Tel: <a href="tel:000000000" class="no-link">000/00 00 00</a>
+                    <br>
+                    <a href="mailto:test_email@test.be" class="no-link">test_email@test.be</a>
+                    <br>
+                    <a href="http://www.google.be" class="no-link">www.lorem.be</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

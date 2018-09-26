@@ -1,0 +1,72 @@
+<section>
+    <div data-component="Lube.GoogleMaps" class="filtermap"></div>
+    <div data-component="Lube.ActionFilter">
+        <div class="action-filter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="action-filter-date">
+                            <div class="form-group">
+                                <label for="action-filter-date-min">From</label>
+                                <input id="action-filter-date-min" class="form-control action-filter-date action-filter-date-min" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="action-filter-date-max">Until</label>
+                                <input id="action-filter-date-max" class="form-control action-filter-date action-filter-date-max" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#" class="btn btn-primary pull-right btn-clear">
+                            Clear filters
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card pb-2 mt-2">
+                <h1 class="card-title">Our actions:</h1>
+            </div>
+            <article class="card" data-action='{"title": "Lorem ipsum 1", "position": {"lat": 51.155770, "lng": 4.460856}, "date": "2018-01-02T00:00:00.000Z"}'>
+                <h2 class="card-title">Lorem ipsum dolor sit amet</h2>
+                <h2 class="card-date">2 Jan</h2>
+                <div class="card-block">
+                    <p class="news-subtract">
+                        Eight European Trade Union Federations (ETUFs) call upon the Membersof the Environment, Public Health and Food Safety (ENVI)
+                        Committee tovote in favour of the adoption of ENVI’s dra! opinion on the EU-Canadatrade and investment
+                        agreement (CETA). In a joint letter the ETUFsexpress support for the shortcomings identified in the
+                        report withregards to environmental protection, public health and food safety.
+                    </p>
+                    <a href="#">Read more...</a>
+                </div>
+            </article>
+            <article class="card" data-action='{"title": "Lorem ipsum 2", "position": {"lat": 51.934806, "lng": 7.488054}, "date": "2018-01-19T00:00:00.000Z"}'>
+                <h2 class="card-title">Lorem ipsum dolor sit amet</h2>
+                <h2 class="card-date">19 Jan</h2>
+                <div class="card-block">
+                    <p class="news-subtract">
+                        Eight European Trade Union Federations (ETUFs) call upon the Membersof the Environment, Public Health and Food Safety (ENVI)
+                        Committee tovote in favour of the adoption of ENVI’s dra! opinion on the EU-Canadatrade and investment
+                        agreement (CETA). In a joint letter the ETUFsexpress support for the shortcomings identified in the
+                        report withregards to environmental protection, public health and food safety.
+                    </p>
+                    <a href="#">Read more...</a>
+                </div>
+            </article>
+            <article class="card" data-action='{"title": "Lorem ipsum 3", "position": {"lat": 39.817571, "lng": -7.612491}, "date": "2018-02-05T00:00:00.000Z"}'>
+                <h2 class="card-title">Lorem ipsum dolor sit amet</h2>
+                <h2 class="card-date">5 Feb</h2>
+                <div class="card-block">
+                    <p class="news-subtract">
+                        Eight European Trade Union Federations (ETUFs) call upon the Membersof the Environment, Public Health and Food Safety (ENVI)
+                        Committee tovote in favour of the adoption of ENVI’s dra! opinion on the EU-Canadatrade and investment
+                        agreement (CETA). In a joint letter the ETUFsexpress support for the shortcomings identified in the
+                        report withregards to environmental protection, public health and food safety.
+                    </p>
+                    <a href="#">Read more...</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

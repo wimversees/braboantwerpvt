@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Fair Transport</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="../design/css/etf-main.css">
+</head>
+
+<body>
+     <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+
+<header class="page-header">
+    <div class="container">
+        <div class="navbar">
+            <div class="logo brand-logo">
+    <a href="/">
+        <img src="../design/img/european-transport-workers-federation-fair-transport.svg" />
+    </a>
+    <a class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
+</div>
+ <!-- navigation.nunjucks -->
+<nav>
+    <ul id="nav" class="nav">
+        <li class="nav-item">
+            <a title="Home" href="/" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+            <a title="About" href="info.html" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+            <a title="News" href="news.html" class="nav-link">News</a>
+        </li>
+        <li class="nav-item">
+            <a title="Agenda" href="agenda.html" class="nav-link">Agenda</a>
+        </li>
+        <li class="nav-item">
+            <a title="Location" href="location.html" class="nav-link">Location</a>
+        </li>
+        <li class="nav-item">
+            <a title="Contact" href="contact" class="nav-link">Contact</a>
+        </li>
+    </ul>
+</nav>
+
+        </div>
+    </div>
+    <hr/>
+</header>
+
+<section>
+    <div data-component="Lube.GoogleMaps" class="filtermap"></div>
+    <div data-component="Lube.ActionFilter">
+        <div class="action-filter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="action-filter-date">
+                            <div class="form-group">
+                                <label for="action-filter-date-min">From</label>
+                                <input id="action-filter-date-min" class="form-control action-filter-date action-filter-date-min" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="action-filter-date-max">Until</label>
+                                <input id="action-filter-date-max" class="form-control action-filter-date action-filter-date-max" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="#" class="btn btn-primary pull-right btn-clear">
+                            Clear filters
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card pb-2 mt-2">
+                <h1 class="card-title">Our actions:</h1>
+            </div>
+            <article class="card" data-action='{"title": "Lorem ipsum 1", "position": {"lat": 51.155770, "lng": 4.460856}, "date": "2018-01-02T00:00:00.000Z"}'>
+                <h2 class="card-title">Lorem ipsum dolor sit amet</h2>
+                <h2 class="card-date">2 Jan</h2>
+                <div class="card-block">
+                    <p class="news-subtract">
+                        Eight European Trade Union Federations (ETUFs) call upon the Membersof the Environment, Public Health and Food Safety (ENVI)
+                        Committee tovote in favour of the adoption of ENVI’s dra! opinion on the EU-Canadatrade and investment
+                        agreement (CETA). In a joint letter the ETUFsexpress support for the shortcomings identified in the
+                        report withregards to environmental protection, public health and food safety.
+                    </p>
+                    <a href="#">Read more...</a>
+                </div>
+            </article>
+            <article class="card" data-action='{"title": "Lorem ipsum 2", "position": {"lat": 51.934806, "lng": 7.488054}, "date": "2018-01-19T00:00:00.000Z"}'>
+                <h2 class="card-title">Lorem ipsum dolor sit amet</h2>
+                <h2 class="card-date">19 Jan</h2>
+                <div class="card-block">
+                    <p class="news-subtract">
+                        Eight European Trade Union Federations (ETUFs) call upon the Membersof the Environment, Public Health and Food Safety (ENVI)
+                        Committee tovote in favour of the adoption of ENVI’s dra! opinion on the EU-Canadatrade and investment
+                        agreement (CETA). In a joint letter the ETUFsexpress support for the shortcomings identified in the
+                        report withregards to environmental protection, public health and food safety.
+                    </p>
+                    <a href="#">Read more...</a>
+                </div>
+            </article>
+            <article class="card" data-action='{"title": "Lorem ipsum 3", "position": {"lat": 39.817571, "lng": -7.612491}, "date": "2018-02-05T00:00:00.000Z"}'>
+                <h2 class="card-title">Lorem ipsum dolor sit amet</h2>
+                <h2 class="card-date">5 Feb</h2>
+                <div class="card-block">
+                    <p class="news-subtract">
+                        Eight European Trade Union Federations (ETUFs) call upon the Membersof the Environment, Public Health and Food Safety (ENVI)
+                        Committee tovote in favour of the adoption of ENVI’s dra! opinion on the EU-Canadatrade and investment
+                        agreement (CETA). In a joint letter the ETUFsexpress support for the shortcomings identified in the
+                        report withregards to environmental protection, public health and food safety.
+                    </p>
+                    <a href="#">Read more...</a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+ <footer class="page-footer">
+    <section class="footer-doormat">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-lg-5">
+                    <h3>Contact us</h3>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <address>
+                                2300 W Arbutus Dr
+                                <br/>Citrus Springs, FL
+                                <br/>34434, USA
+                            </address>
+                        </div>
+                        <div class="col-lg-5 text-right">
+                            <a href="tel:+235 793-891-7938">+235 793-891-7938</a>
+                            <br/>
+                            <a href="mailto:contact@etf.com">contact@etf.com</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h3>Follow us</h3>
+                    <ul class="social-media-list">
+                        <li class="social-media-list-item">
+                            <i class="fa fa-pinterest"></i>
+                        </li>
+                        <li class="social-media-list-item">
+                            <i class="fa fa-twitter"></i>
+                        </li>
+                        <li class="social-media-list-item">
+                            <i class="fa fa-facebook-official"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>About us</h3>
+                    <p>The European Transport Workers’ Federation (ETF) organises its 2013 Congress from 29 to 31 May 2013 in
+                        Berlin</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer-copy">
+        <div class="container">
+            <div class="footer-copy-holder clearfix">
+                <p>© 2018 Fair Transport</p>
+                <a href="#top" class="btn btn-up btn-primary">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+</footer>
+ 
+
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+    <script src="/design/js/lib.js"></script>
+    <script src="/design/js/applib.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!-- navigation.nunjucks -->
+<nav>
+    <ul id="nav" class="nav">
+        <li class="nav-item">
+            <a title="Home" href="/" class="nav-link active">Home</a>
+        </li>
+        <li class="nav-item">
+            <a title="About" href="info.html" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+            <a title="News" href="news.html" class="nav-link">News</a>
+        </li>
+        <li class="nav-item">
+            <a title="Agenda" href="agenda.html" class="nav-link">Agenda</a>
+        </li>
+        <li class="nav-item">
+            <a title="Location" href="location.html" class="nav-link">Location</a>
+        </li>
+        <li class="nav-item">
+            <a title="Contact" href="contact" class="nav-link">Contact</a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,27 @@
+<!-- index.nunjucks -->
+{% extends "layout.nunjucks" %}
+
+{% block content %}
+
+    {% include "partials/browse-happy.nunjucks" %}
+
+    <header class="page-header">
+        <div class="container">
+            <div class="navbar">
+                {% include "partials/sub-page-logo.nunjucks" %}
+                {% include "partials/navigation.nunjucks" %}
+            </div>
+        </div>
+        <hr/>
+    </header>
+
+    <div class="container">
+        {% include "partials/location-hotels-block.nunjucks" %}
+        {% include "partials/location-congress-block.nunjucks" %}
+    </div>
+
+    {% include "partials/location-congress-map.nunjucks" %}
+
+    {% include "partials/footer.nunjucks" %}
+
+{% endblock %}
