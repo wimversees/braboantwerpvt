@@ -6,7 +6,7 @@
     };
 
     ns.modules = function () {};
-
+ 
     ns.dataComponentInitializer = function (rootElement) {
         let dataComponents =
             rootElement === undefined ?

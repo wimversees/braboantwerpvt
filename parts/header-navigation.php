@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
     <div class="container">
         <a class="navbar-brand" href="<?php echo bloginfo('url'); ?>">
-            <img class="navbar-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/logo.svg"/>
+            <img class="navbar-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/dragons-logo.svg"/>
         </a>
         <button class="navbar-toggler brand-icon" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <svg width="30" height="30" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" ratio="1">

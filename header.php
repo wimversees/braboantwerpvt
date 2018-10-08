@@ -34,12 +34,8 @@
     
 	</head>
 	<body>
-		<header class="header<?php echo !is_front_page() ? " header-small" : ""; ?>">
+		<header>
 			
 			<?php include 'parts/header-navigation.php'; ?>
-
-			<?php include 'parts/header-image.php'; ?>
-
-			<?php include 'parts/header-partners.php'; ?>
 
 		</header>
