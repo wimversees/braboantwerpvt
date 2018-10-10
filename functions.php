@@ -25,11 +25,14 @@ add_filter('upload_mimes', 'cc_mime_types');
 */	
 // function to get title of the page
 function page_title(){
-	$default = get_bloginfo('name');
+	$default = get_bloginfo('name') . " - " . get_bloginfo('description');
 	if(is_home() || is_front_page()){
 		echo $default;
 	} else if(is_404()){
-		echo t('404_title') . " - " . $default;
+		echo t('404-title') . " - " . $default;
+	} else if(is_category()){
+		single_cat_title();
+		echo " - " . $default;
 	} else if(is_post_type_archive()){
 		post_type_archive_title();
 		echo " - " . $default;
