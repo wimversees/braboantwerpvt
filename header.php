@@ -31,6 +31,8 @@
 		<meta property="og:url" content="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>"/>
 		<meta property="og:site_name" content="<?php bloginfo('name'); ?>, proudly powered by www.wiver.be" />
 		<meta property="og:description" content="<?php echo get_og_description(); ?>" />
+
+		<meta name="wiver-version" content="<?php echo c('version'); ?>">
     
 	</head>
 	<body>
