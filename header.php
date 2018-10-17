@@ -10,21 +10,21 @@
 		<meta name="description" content="<?php page_description(); ?>">
 		<meta name="author" content="WIVER Webdesign & Display Advertising - www.wiver.be">
 		
-		<link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/favicon-16x16.png">
-        <link rel="manifest" href="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/site.webmanifest">
-        <link rel="mask-icon" href="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/safari-pinned-tab.svg" color="#000000">
-        <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/favicon.ico">
+		<link rel="apple-touch-icon" sizes="180x180" href="<?php getFrontEndFile('/design/img/icons/favicon/apple-touch-icon.png'); ?>">
+        <link rel="icon" type="image/png" sizes="32x32" href="<?php getFrontEndFile('/design/img/icons/favicon/favicon-32x32.png'); ?>">
+        <link rel="icon" type="image/png" sizes="16x16" href="<?php getFrontEndFile('/design/img/icons/favicon/favicon-16x16.png'); ?>">
+        <link rel="manifest" href="<?php getFrontEndFile('/design/img/icons/favicon/site.webmanifest'); ?>">
+        <link rel="mask-icon" href="<?php getFrontEndFile('/design/img/icons/favicon/safari-pinned-tab.svg'); ?>" color="#000000">
+        <link rel="shortcut icon" href="<?php getFrontEndFile('/design/img/icons/favicon/favicon.ico'); ?>">
         <meta name="msapplication-TileColor" content="#ffffff">
-        <meta name="msapplication-config" content="<?php echo get_stylesheet_directory_uri(); ?>/design/img/favicon/browserconfig.xml">
+        <meta name="msapplication-config" content="<?php getFrontEndFile('/design/img/icons/favicon/browserconfig.xml'); ?>">
 		<meta name="theme-color" content="#ffffff">
 		
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
-		<link href="<?php echo get_stylesheet_directory_uri(); ?>/design/css/main.css" rel="stylesheet">
+		<link href="<?php getFrontEndFile('/design/css/main.css'); ?>" rel="stylesheet">
 
-		<?php include 'parts/header-structured-data-info.php'; ?>
+		<?php includecached('parts/header/header-structured-data-info.php'); ?>
 
 		<meta property="og:title" content="<?php page_title(); ?>" />
 		<meta property="og:image" content="<?php echo get_og_image(); ?>" />

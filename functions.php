@@ -2,23 +2,23 @@
 
 // theme supports
 add_theme_support( 'menus' );
+add_theme_support( 'post-thumbnails' );
 
 // Register Custom Navigation Walker
 require_once('parts/wiver_navwalker.php');
 
-// add featured images
-add_image_size( 'news-thumb', 442, 250, true, array( 'left', 'top' ));
-function post_thumbnails() {
-    add_theme_support( 'post-thumbnails' );
-}
-add_action( 'after_setup_theme', 'post_thumbnails' );
+// Register custom image sizes
+// add_image_size('block-image', 255, 165, true);
 
-// add svg support
-function cc_mime_types($mimes) {
-	$mimes['svg'] = 'image/svg+xml';
-	return $mimes;
-  }
-add_filter('upload_mimes', 'cc_mime_types');
+// add featured image to custom post types
+// add_post_type_support( 'board-member', 'thumbnail' );
+
+// global action settings
+function global_settings() {  
+    // Add category metabox to page 
+	// register_taxonomy_for_object_type('category', 'page'); 
+}
+add_action( 'init', 'global_settings' );
 
 /*
 * SECTION PAGE HEAD
@@ -41,10 +41,36 @@ function page_title(){
 	}
 }
 
+function page_description(){
+	echo "";
+}
+
+/**
+ * This function returns a url to retreive a given front-end file, depending on the hash of the version of the system  
+ * and modification date of the file.
+ *
+ * @param [type] $path
+ * @param boolean $echo
+ * @return void
+ */
+function getFrontEndFile($path, $echo = true){
+	$modificationTime = filemtime(__DIR__ . $path);
+	$fullPath = get_stylesheet_directory_uri() . $path . "?v=" . hash(c('hashkey'), c('version') . $modificationTime);
+	if($echo) echo $fullPath;
+	else return $fullPath;
+}
+
 /* 
 * SECTION CONFIG AND TRANSLATION
 */
-// function to translate key
+// 
+/**
+ *  This function returns the translated version of a given key.
+ *
+ * @param [type] $key
+ * @param boolean $echo
+ * @return void
+ */
 function t($key, $echo = true){
 	parse_str($_SERVER['QUERY_STRING']);
 	if(strlen($qskey) > 0){		
@@ -100,9 +126,91 @@ function c($key){
 }
 
 /*
+* SECTION CUSTOM CACHING
+*/
+/**
+ * This function returns the output of the given path file. The function will return a cached file when it exists. 
+ * The cache key extention is used to create a diveration of the cache files.
+ *
+ * @param string $path needs to include __DIR__
+ * @param string $cacheKeyExtention
+ * @return void 
+ */
+function includecached($path, $cacheKeyExtention = ''){
+	$cacheEnabled = c('cache-enabled') == 'enabled';
+	// define cache key by used path
+	$fullpath = __DIR__ . '/' . $path;
+	$cacheKey = getCacheKeyByFileNameAndExtention($path, $cacheKeyExtention);
+	$file = getCacheFileName($cacheKey);
+
+	// use cached file
+	if(is_file($file) && $cacheEnabled){
+		include($file);
+	} 
+	// generate and use cached file
+	else {
+		ob_start(); // begin collecting output
+		include $fullpath;
+		$content = ob_get_clean(); // retrieve output, stop buffering
+		if($cacheEnabled){
+			file_put_contents($file, $content);
+		}
+		// print result
+		echo $content;
+	} 
+}
+
+function includecachedfunction($functionName, $parameters = []){
+	$cacheEnabled = c('cache-enabled') == 'enabled';
+	// define cache key by used path
+	$cacheKey = getCacheKeyByFileNameAndExtention($functionName, implode('----', $parameters));
+	$file = getCacheFileName($cacheKey);
+	
+	// use cached file
+	if(is_file($file) && $cacheEnabled){
+		include($file);
+	} 
+	// generate and use cached file
+	else {
+		ob_start(); // begin collecting output
+		call_user_func_array($functionName, $parameters);
+		$content = ob_get_clean(); // retrieve output, stop buffering
+		if($cacheEnabled){
+			file_put_contents($file, $content);
+		}
+		// print result
+		echo $content;
+	} 
+}
+
+function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHashedCache = false){
+	$baseFileName = str_replace('/', '--', str_replace('.php', '', $extention . '---' . $filename));
+	if($enableHashedCache){
+		return hash(c('hashkey'), $baseFileName) . '.php';
+	}
+	return urlencode($baseFileName) . '.php';
+}
+function getCacheFileName($cacheKey){
+	return __DIR__ . '/cache/' . $cacheKey;
+}
+
+/**
+ * add logic to publish/update of post to clear cache
+ */
+add_action( 'transition_post_status', 'actionsAfterPostPublish', 10, 3 );
+function actionsAfterPostPublish( $new_status, $old_status, $post )
+{
+    if ( 'publish' !== $new_status or 'publish' === $old_status )
+        return;
+    if ( 'post' !== $post->post_type )
+        return; // restrict the filter to a specific post type
+    // do something awesome
+}
+
+/*
 * SECTION CUSTOM LENGTH EXCERPT
 */
-function excerpt($limit, $echo = true) {
+function excerpt($limit) {
     $excerpt = explode(' ', get_the_excerpt(), $limit);
     if (count($excerpt)>=$limit) {
 		array_pop($excerpt);
@@ -111,11 +219,7 @@ function excerpt($limit, $echo = true) {
 		$excerpt = implode(" ",$excerpt);
     } 
     $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-    if($echo) {
-		echo $excerpt;
-	} else {
-		return $excerpt;
-	}
+    return $excerpt;
 }
 
 /*
@@ -145,4 +249,3 @@ function get_og_description(){
 	}
 	return c('default-og-description');
 }
-?>
