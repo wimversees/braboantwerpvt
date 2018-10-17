@@ -160,6 +160,14 @@ function includecached($path, $cacheKeyExtention = ''){
 	} 
 }
 
+/**
+ * This function returns the output the result of a given function. The function will return a cached file when it exists. 
+ * The given parameters will be used as the parameters of the given function, as well to define the deiveration of the cache file.
+ *
+ * @param [type] $functionName
+ * @param array $parameters
+ * @return void
+ */
 function includecachedfunction($functionName, $parameters = []){
 	$cacheEnabled = c('cache-enabled') == 'enabled';
 	// define cache key by used path
@@ -193,19 +201,52 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
 function getCacheFileName($cacheKey){
 	return __DIR__ . '/cache/' . $cacheKey;
 }
-
 /**
- * add logic to publish/update of post to clear cache
+ * This function clears the cache folder.
+ *
+ * @return void
  */
-add_action( 'transition_post_status', 'actionsAfterPostPublish', 10, 3 );
-function actionsAfterPostPublish( $new_status, $old_status, $post )
+function clearCustomCache(){
+	$files = glob(__DIR__ . '/cache/*'); // get all file names
+	foreach($files as $file){ // iterate files
+	if(is_file($file))
+		unlink($file); // delete file
+	}
+}
+/**
+ * This function contains the actions that need to be processed after publishing or updating a post.
+ *
+ * @param [type] $new_status
+ * @param [type] $old_status
+ * @param [type] $post
+ * @return void
+ */
+function actions_transition_post_status($new_status, $old_status, $post )
 {
-    if ( 'publish' !== $new_status or 'publish' === $old_status )
-        return;
-    if ( 'post' !== $post->post_type )
-        return; // restrict the filter to a specific post type
+	// clear cache
+    if ('publish' === $new_status or 'publish' === $old_status){
+		clearCustomCache();
+	}
+		
+    //if ( 'post' !== $post->post_type )
+    //    return; // restrict the filter to a specific post type
     // do something awesome
 }
+add_action( 'transition_post_status', 'actions_transition_post_status', 10, 3 );
+
+/**
+ * This function contains the actions that need to be processed after publishing or updating a post.
+ *
+ * @param [type] $new_status
+ * @param [type] $old_status
+ * @param [type] $post
+ * @return void
+ */
+function actions_post_updated($post_ID, $post_after, $post_before)
+{
+	clearCustomCache();
+}
+add_action( 'post_updated', 'actions_post_updated', 10, 3 );
 
 /*
 * SECTION CUSTOM LENGTH EXCERPT
