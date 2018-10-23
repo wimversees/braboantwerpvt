@@ -87,7 +87,7 @@ function t($key, $echo = true){
 	}
 	$dict = getDictionary();
 	$printString;
-	if($dict[$key] && $dict[$key] != ''){
+	if(array_key_exists($key, $dict)){
 		$printString = $dict[$key];
 	} else {
 		$printString = "---" . $key . "---";
@@ -104,7 +104,7 @@ function gpid($key){
 		include("data/postids.php");
 	}
 	$ids = getPostId();
-	if($ids[$key] && $ids[$key] != ''){
+	if(array_key_exists($key, $ids)){
 		return $ids[$key];
 	} else {
 		echo "---" . $key . "---";
@@ -117,7 +117,7 @@ function c($key){
 		include("data/config.php");
 	}
 	$ids = getConfig();
-	if($ids[$key] && $ids[$key] != ''){
+	if(array_key_exists($key, $ids)){
 		return $ids[$key];
 	} else {
 		echo "---" . $key . "---";
@@ -288,5 +288,5 @@ function get_og_description(){
 			return $content . "...";
 		}
 	}
-	return c('default-og-description');
+	return bloginfo('description');
 }
