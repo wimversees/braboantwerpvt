@@ -36,8 +36,6 @@
     
 	</head>
 	<body>
-		<header>
-			
+		<header>			
 			<?php include 'parts/header/header-navigation.php'; ?>
-
 		</header>
