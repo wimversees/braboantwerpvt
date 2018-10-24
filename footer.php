@@ -1,8 +1,8 @@
-        <footer>
+<footer>
             <div class="container">
                 <div class="row">
                     <div class="col-7 col-md-3">
-                        <img class="footer-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/dragons-logo.svg">
+                        <img class="footer-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/logo.svg">
                     </div>
                     <div class="col-6 col-md-3">
                         <?php  
@@ -30,11 +30,11 @@
                     </div>
                     <div class="col-12 col-md-3">
                         <div class="footer-company">
-                            <h3><?php echo c('dragons-name'); ?></h3>
-                            <p><?php echo c('dragons-street'); ?>
-                                <br><?php echo c('dragons-postalcode'); ?> <?php echo c('dragons-city'); ?></p>
+                            <h3><?php echo c('company-name'); ?></h3>
+                            <p><?php echo c('company-street'); ?>
+                                <br><?php echo c('company-postalcode'); ?> <?php echo c('company-city'); ?></p>
                             <p>
-                                <a href="tel:<?php echo c('dragons-telephone-full'); ?>"><?php echo c('dragons-telephone'); ?></a>
+                                <a href="tel:<?php echo c('company-telephone-full'); ?>"><?php echo c('company-telephone'); ?></a>
                             </p>
                         </div>
                         <div class="footer-social">
@@ -50,7 +50,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <p class="footer-copyright-text"><?php t('footer-copyright'); ?> <a href="<?php echo bloginfo('url'); ?>" title="<?php echo bloginfo('name'); ?>"><?php echo bloginfo('name'); ?></a>. <?php t('footer-all-rights-reserved'); ?></p>
+                            <p class="footer-copyright-text"><?php t('footer-copyright'); ?> <?php echo date('Y'); ?> <a href="<?php echo bloginfo('url'); ?>" title="<?php echo bloginfo('name'); ?>"><?php echo bloginfo('name'); ?></a>. <?php t('footer-all-rights-reserved'); ?> <a href="https://www.wiver.be" target="_blank" title="Wiver Webdesign & Display Advertising">WIVER</a></p>
                         </div>
                         <div class="col-12 col-md-6 ml-auto">
                             <ul class="footer-nav">

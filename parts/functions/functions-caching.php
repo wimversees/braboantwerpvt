@@ -15,7 +15,7 @@
 function includecached($path, $cacheKeyExtention = ''){
 	$cacheEnabled = c('cache-enabled') == 'enabled';
 	// define cache key by used path
-	$fullpath = __DIR__ . '/' . $path;
+	$fullpath = __DIR__ . '/../../' . $path;
 	$cacheKey = getCacheKeyByFileNameAndExtention($path, $cacheKeyExtention);
 	$file = getCacheFileName($cacheKey);
 
@@ -115,7 +115,7 @@ function clearCustomCache(){
  * @return void
  */
 function getFrontEndFile($path, $echo = true){
-	$modificationTime = filemtime(__DIR__ . $path);
+	$modificationTime = filemtime(__DIR__ . '/../../' . $path);
 	$fullPath = get_stylesheet_directory_uri() . $path . "?v=" . hash(c('hashkey'), c('version') . $modificationTime);
 	if($echo) echo $fullPath;
 	else return $fullPath;

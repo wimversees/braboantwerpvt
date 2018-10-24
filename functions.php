@@ -1,11 +1,11 @@
 <?php 
 
 // include custom function parts
-include('/parts/functions/functions-general.php');
-include('/parts/functions/functions-posts.php');
-include('/parts/functions/functions-post-actions.php');
-include('/parts/functions/functions-og-tags.php');
-include('/parts/functions/functions-caching.php');
+require_once('parts/functions/functions-general.php');
+require_once('parts/functions/functions-posts.php');
+require_once('parts/functions/functions-post-actions.php');
+require_once('parts/functions/functions-og-tags.php');
+require_once('parts/functions/functions-caching.php');
 
 // theme supports
 add_theme_support( 'menus' );

@@ -10,6 +10,11 @@ function getDictionary(){
 		'404_title'							=> 'Oops... Deze pagina werd niet gevonden!',
 		'404_text'							=> 'De gevraagde pagina is niet beschikbaar.',
 		'404_allpages'						=> 'Alle pagina\'s',
+
+		/* footer */
+		'footer-copyright'					=> 'Copyright',
+		'footer-all-rights-reserved'		=> 'Alle rechten voorbehouden.',
+
 	);
 }
 
