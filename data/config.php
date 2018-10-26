@@ -26,6 +26,7 @@ function getConfig(){
 		'facebook-link'							=> '',
 		'twitter-link'							=> '',
 		'instagram-link'						=> '',
+		'linkedin-link'							=> '',
 		'youtube-link'							=> '',
 		'flickr-link'							=> '',
 	);
