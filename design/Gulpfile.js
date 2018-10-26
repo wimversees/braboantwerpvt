@@ -18,7 +18,7 @@ const DIST_DIR = 'src/docs';
 const DIST_DIR_THEME = '';
 
 function runExpress(port, rootDir) {
-    var app = express();
+   /* var app = express();
 
     app.use(express.static(rootDir));
     app.set('views', path.join(rootDir, 'views'));
@@ -32,7 +32,7 @@ function runExpress(port, rootDir) {
         var host = server.address().address;
         var port = server.address().port;
         console.log('Server running at http://%s:%s', host, port);
-    });
+    });*/
 }
 
 gulp.task('copy-dependencies', function () {

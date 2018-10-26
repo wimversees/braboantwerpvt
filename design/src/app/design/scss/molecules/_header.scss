@@ -1,0 +1,27 @@
+header{
+    .navbar-brand-img{
+        height: 8rem;
+    }
+    .navbar-toggler{
+        border: none;
+        svg{
+            fill: $brand-color;
+        }
+    }
+    #menu-head-menu{
+        letter-spacing: 0.2rem;
+        text-transform: uppercase;
+         @include media-breakpoint-down('sm') {
+            text-align: center;
+        }
+        .nav-link{
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+    @include media-breakpoint-down('sm') {
+        .navbar-brand{
+            margin-right: 0;
+        }
+    }
+}

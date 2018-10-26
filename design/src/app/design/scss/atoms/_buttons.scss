@@ -1,45 +1,20 @@
-.btn-up {
-    padding: 0.5rem 0.6rem;
-    color: $white;
-}
-
-.btn-full {
-    width: 100%;
-    display: block;
-    padding: 1.5rem 1rem;
-}
-
-button {
-    cursor: pointer;
-}
-
-button.btn {
-    font-weight: bold;
-}
-
-button {
-    cursor: pointer;
-    &.btn {
-        font-weight: bold;
-    }
-}
-
 button,
-input[type=submit] {
-    cursor: pointer;
-}
-
-button.btn,
-input[type=submit].btn {
-    font-weight: bold;
+.btn,
+input[type=submit],
+input[type=reset] {
+    border: none;
+    border-radius: 0;
     margin-top: 1rem;
-}
-
-button:disabled,
-input[type=submit]:disabled {
-    background: #464a4c;
-}
-
-.btn-primary {
-    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    &.btn-primary{
+        background: $brand-color;
+        color: $white;
+        &:not(:disabled):not(.active):hover, &:not(:disabled):not(.active):active{
+            background: $brand-color-second;
+        }
+        &:disabled{
+            background: $brand-color-disabled;
+        }
+    }
 }

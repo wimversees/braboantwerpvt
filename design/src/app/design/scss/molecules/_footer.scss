@@ -1,0 +1,17 @@
+footer {
+    padding: 2rem 0;
+    .footer-copyright{
+        padding: 1rem 0;
+        ul{
+            list-style: none;
+            float: right;
+            li{
+                display: inline-block;
+            }
+        }
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+}
