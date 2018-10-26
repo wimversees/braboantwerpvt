@@ -6,6 +6,7 @@ require_once('parts/functions/functions-posts.php');
 require_once('parts/functions/functions-post-actions.php');
 require_once('parts/functions/functions-og-tags.php');
 require_once('parts/functions/functions-caching.php');
+require_once('parts/functions/functions-development.php');
 
 // theme supports
 add_theme_support( 'menus' );
