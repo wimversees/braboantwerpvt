@@ -87,11 +87,11 @@ gulp.task('stylesheets', function () {
                 cascade: false
             })
         )
-        // .pipe(
-        //     cleanCSS({
-        //         compatibility: 'ie8'
-        //     })
-        // )
+        .pipe(
+            cleanCSS({
+                compatibility: 'ie8'
+            })
+        )
         .pipe(
             sourcemaps.write({
                 sourceRoot: './design/scss/'
@@ -113,8 +113,8 @@ gulp.task('javascript', function () {
             path.join(DESIGN_DIR, 'js/lib/lodash/**/*.js')
         ])
         .pipe(concat('lib.js'))
-        //.pipe(babel())
-        //.pipe(uglify())
+        .pipe(babel())
+        .pipe(uglify())
         .pipe(gulp.dest(path.join(DIST_DIR, 'design/js/')))
         .pipe(gulp.dest(path.join(DIST_DIR_THEME, 'js/')));
 
@@ -128,7 +128,7 @@ gulp.task('javascript', function () {
         .pipe(sourcemaps.init())
         .pipe(concat('applib.js'))
         .pipe(babel())
-        //.pipe(uglify())
+        .pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.join(DIST_DIR, 'design/js/')))
         .pipe(gulp.dest(path.join(DIST_DIR_THEME, 'js/')));
