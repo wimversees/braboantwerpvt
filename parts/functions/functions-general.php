@@ -19,7 +19,7 @@ function t($key, $echo = true){
 	}
 	$currentLanguage = 'default';
 	if(!function_exists('getDictionary')){
-		include(__DIR__ . '/../../data/translations_' . $currentLanguage . '.php');
+		include(__DIR__ . '/../../data/translations/translations_' . $currentLanguage . '.php');
 	}
 	$dict = getDictionary();
 	$printString;

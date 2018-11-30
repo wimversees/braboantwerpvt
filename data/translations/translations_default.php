@@ -14,6 +14,7 @@ function getDictionary(){
 		/* footer */
 		'footer-copyright'					=> 'Copyright',
 		'footer-all-rights-reserved'		=> 'Alle rechten voorbehouden.',
+		'footer-follow-us'					=> 'Follow us',
 
 	);
 }

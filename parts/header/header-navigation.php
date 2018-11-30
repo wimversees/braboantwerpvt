@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-white">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="<?php echo bloginfo('url'); ?>">
             <img class="navbar-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/logo.svg"/>

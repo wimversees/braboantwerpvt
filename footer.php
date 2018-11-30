@@ -40,7 +40,7 @@
                         <div class="footer-social">
                             <h4><?php t('footer-follow-us'); ?>:</h4>
                             <ul class="footer-nav">
-                                <?php include 'parts/social-media-links.php'; ?>  
+                                <?php include 'parts/social/social-media-links.php'; ?>  
                             </ul>
                         </div>
                     </div>

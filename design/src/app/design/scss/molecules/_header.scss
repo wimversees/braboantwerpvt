@@ -1,15 +1,14 @@
 header{
+    .navbar{
+        padding: 1rem;
+    }
     .navbar-brand-img{
-        height: 8rem;
+        height: 3rem;
     }
     .navbar-toggler{
         border: none;
-        svg{
-            fill: $brand-color;
-        }
     }
     #menu-head-menu{
-        letter-spacing: 0.2rem;
         text-transform: uppercase;
          @include media-breakpoint-down('sm') {
             text-align: center;

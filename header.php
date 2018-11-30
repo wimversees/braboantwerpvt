@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php page_title(); ?></title>
 
+		<meta http-equiv="refresh" content="100">
+
 		<meta name="keywords" content="<?php page_title(); ?>">
 		<meta name="description" content="<?php page_description(); ?>">
 		<meta name="author" content="WIVER Webdesign & Display Advertising - www.wiver.be">
