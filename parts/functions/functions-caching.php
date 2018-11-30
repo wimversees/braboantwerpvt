@@ -116,7 +116,7 @@ function clearCustomCache(){
  */
 function getFrontEndFile($path, $echo = true){
 	$modificationTime = filemtime(__DIR__ . '/../../' . $path);
-	$fullPath = get_stylesheet_directory_uri() . $path . "?v=" . hash(c('hashkey'), c('version') . $modificationTime);
+	$fullPath = get_stylesheet_directory_uri() . $path . '?v=' . hash(c('hashkey'), c('version') . $modificationTime);
 	if($echo) echo $fullPath;
 	else return $fullPath;
 }

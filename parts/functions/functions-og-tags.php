@@ -28,9 +28,9 @@ function get_og_description(){
 		$postId = get_the_ID();
 		
 		$content_post = get_post($postId);
-		$content = str_replace("&nbsp;", " ", substr(wp_strip_all_tags($content_post->post_content, true), 0, 225));
+		$content = str_replace('&nbsp;', ' ', substr(wp_strip_all_tags($content_post->post_content, true), 0, 225));
 		if(strlen($content) > 0){
-			return $content . "...";
+			return $content . '...';
 		}
 	}
 	return bloginfo('description');

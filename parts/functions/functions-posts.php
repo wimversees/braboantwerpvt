@@ -6,19 +6,19 @@
  * @return void
  */
 function page_title(){
-	$default = get_bloginfo('name') . " - " . get_bloginfo('description');
+	$default = get_bloginfo('name') . ' - ' . get_bloginfo('description');
 	if(is_home() || is_front_page()){
 		echo $default;
 	} else if(is_404()){
-		echo t('404-title') . " - " . $default;
+		echo t('404-title') . ' - ' . $default;
 	} else if(is_category()){
 		single_cat_title();
-		echo " - " . $default;
+		echo ' - ' . $default;
 	} else if(is_post_type_archive()){
 		post_type_archive_title();
-		echo " - " . $default;
+		echo ' - ' . $default;
 	} else {
-		echo get_the_title() . " - " . $default;
+		echo get_the_title() . ' - ' . $default;
 	}
 }
 
@@ -41,9 +41,9 @@ function excerpt($limit) {
     $excerpt = explode(' ', get_the_excerpt(), $limit);
     if (count($excerpt)>=$limit) {
 		array_pop($excerpt);
-		$excerpt = implode(" ",$excerpt).'...';
+		$excerpt = implode(' ',$excerpt).'...';
     } else {
-		$excerpt = implode(" ",$excerpt);
+		$excerpt = implode(' ',$excerpt);
     } 
     $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
     return $excerpt;

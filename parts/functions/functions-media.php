@@ -24,7 +24,7 @@ function fix_svg_thumb_display() {
 			width: 100% !important; 
 			height: auto !important;
 		}
-	  	td.media-icon img[src$=".svg"], img[src$=".svg"].attachment-post-thumbnail { 
+	  	td.media-icon img[src$=\'.svg\'], img[src$=\'.svg\'].attachment-post-thumbnail { 
 			width: 100% !important; 
 			height: auto !important; 
 	  	}
