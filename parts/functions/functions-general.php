@@ -8,8 +8,9 @@
  * @return void
  */
 function t($key, $echo = true){
-	parse_str($_SERVER['QUERY_STRING']);
-	if(strlen($qskey) > 0){		
+	$querystrings = array();
+	parse_str($_SERVER['QUERY_STRING'], $querystrings);
+	if(array_key_exists('qskey', $querystrings)){		
 		if($echo){
 			echo $key;
 			return;
