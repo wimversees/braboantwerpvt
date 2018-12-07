@@ -3,13 +3,13 @@
 function getDictionary(){
 	return array(
 		/* sitemap */		
-		'sitemap_pages'						=> 'Pages',
-		'sitemap_news'						=> 'News',
+		'sitemap-pages'						=> 'Pages',
+		'sitemap-news'						=> 'News',
 				
 		/* default translations */
-		'404_title'							=> 'Oops... We cannot find this page!',
-		'404_text'							=> 'The requested page is not available.',
-		'404_allpages'						=> 'All pages',
+		'404-title'							=> 'Oops... We cannot find this page!',
+		'404-text'							=> 'The requested page is not available.',
+		'404-allpages'						=> 'All pages',
 
 		/* footer */
 		'footer-copyright'					=> 'Copyright',

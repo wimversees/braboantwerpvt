@@ -3,13 +3,13 @@
 function getDictionary(){
 	return array(
 		/* sitemap */		
-		'sitemap_pages'						=> 'Pagina\'s',
-		'sitemap_news'						=> 'Nieuws',
+		'sitemap-pages'						=> 'Pagina\'s',
+		'sitemap-news'						=> 'Nieuws',
 				
 		/* default translations */
-		'404_title'							=> 'Oops... Deze pagina werd niet gevonden!',
-		'404_text'							=> 'De gevraagde pagina is niet beschikbaar.',
-		'404_allpages'						=> 'Alle pagina\'s',
+		'404-title'							=> 'Oops... Deze pagina werd niet gevonden!',
+		'404-text'							=> 'De gevraagde pagina is niet beschikbaar.',
+		'404-allpages'						=> 'Alle pagina\'s',
 
 		/* footer */
 		'footer-copyright'					=> 'Copyright',

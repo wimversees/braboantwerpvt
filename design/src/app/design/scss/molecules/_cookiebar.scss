@@ -1,0 +1,29 @@
+#cookies{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
+    background: $body-color;
+    color: #FFF;
+    border-top: 2px solid #FFF;
+    position: fixed;
+    z-index:999999999;
+}
+#cookies p{
+   margin: 0;
+    color: #FFF;
+}
+#cookies p a {
+    color: #FFF;
+    text-decoration: underline;
+}
+#cookie-accept{
+    cursor: pointer;
+    background-color: $brand-color;
+    border: none;
+    margin-left: 3rem;
+    padding: 1rem;
+    color: #FFF;
+    display: inline-block;
+}
