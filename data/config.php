@@ -7,6 +7,9 @@ function getConfig(){
 		'version'								=> "0.0.1",
 		'hashkey'								=> "ripemd160",
 
+		// google analytics
+		'google-analytics-key'					=> '', // notation: UA-131124377-1
+		
 		// address configuration
 		'company-micro-data-type'				=> 'LocalBusiness',
 		'company-name'							=> '',
@@ -17,7 +20,7 @@ function getConfig(){
 		'company-telephone'						=> '',
 		'company-telephone-link'				=> '',
 		'company-latitude'						=> 0.0000, // notation: 51.284209
-		'company-longitude'						=> 0.0000, // notation: 51.284209
+		'company-longitude'						=> 0.0000, // notation: 4.284209
 		
 		// open graph settings
 		'default-og-image'						=> '/img/default-og-image.jpg',
