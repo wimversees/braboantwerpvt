@@ -34,7 +34,7 @@
                             <p><?php echo c('company-street'); ?>
                                 <br><?php echo c('company-postalcode'); ?> <?php echo c('company-city'); ?></p>
                             <p>
-                                <a href="tel:<?php echo c('company-telephone-full'); ?>"><?php echo c('company-telephone'); ?></a>
+                                <a href="tel:<?php echo c('company-telephone-link'); ?>"><?php echo c('company-telephone'); ?></a>
                             </p>
                         </div>
                         <div class="footer-social">
