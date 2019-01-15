@@ -90,7 +90,7 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
  * @return void
  */
 function getCacheFileName($cacheKey){
-	return __DIR__ . '/cache/' . $cacheKey;
+	return __DIR__ . '/../../cache/' . $cacheKey;
 }
 
 /**
@@ -99,7 +99,7 @@ function getCacheFileName($cacheKey){
  * @return void
  */
 function clearCustomCache(){
-	$files = glob(__DIR__ . '/cache/*'); // get all file names
+	$files = glob(__DIR__ . '/../../cache/*'); // get all file names
 	foreach($files as $file){ // iterate files
 	if(is_file($file))
 		unlink($file); // delete file
