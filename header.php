@@ -41,3 +41,5 @@
 		<header>			
 			<?php include 'parts/header/header-navigation.php'; ?>
 		</header>
+        
+		<?php includecached('parts/header/header-breadcrumb.php'); ?>
