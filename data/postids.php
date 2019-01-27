@@ -7,6 +7,7 @@ function getPostId(){
 		'page-privacy-policy'				=> 8,	
 		'page-cookie-policy'				=> 9,	
 		'page-contact'						=> 17,
+		'page-home'							=> 12,
 		
 		// custom pages
 		// 'page_news'							=> 22,	
