@@ -20,6 +20,10 @@
         <meta name="msapplication-config" content="<?php getFrontEndFile('/design/img/favicon/browserconfig.xml'); ?>">
 		<meta name="theme-color" content="#ffffff">
 		
+		<?php if(strlen(ICL_LANGUAGE_CODE) > 0){ ?>
+			<meta http-equiv="content-language" content="<?php echo strtolower(ICL_LANGUAGE_CODE); ?>">
+		<?php } ?>
+		
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 
 		<link href="<?php getFrontEndFile('/design/css/main.css'); ?>" rel="stylesheet">

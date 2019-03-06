@@ -7,7 +7,7 @@
  * @param boolean $echo
  * @return void
  */
-function t($key, $echo = true){
+function t($key, $echo = true){	
 	$querystrings = array();
 	parse_str($_SERVER['QUERY_STRING'], $querystrings);
 	if(array_key_exists('qskey', $querystrings)){		
@@ -18,7 +18,8 @@ function t($key, $echo = true){
 			return $key;
 		}
 	}
-	$currentLanguage = 'default';
+	$currentLanguage = ICL_LANGUAGE_CODE;
+	if(strlen($currentLanguage) == 0) $currentLanguage = 'default';
 	if(!function_exists('getDictionary')){
 		include(__DIR__ . '/../../data/translations/translations_' . $currentLanguage . '.php');
 	}
@@ -48,6 +49,8 @@ function gpid($key){
 	}
 	$ids = getPostId();
 	if(array_key_exists($key, $ids)){
+		if(function_exists('icl_object_id'))
+			return icl_object_id($ids[$key]);
 		return $ids[$key];
 	} else {
 		echo '---' . $key . '---';
