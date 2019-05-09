@@ -7,6 +7,7 @@ require_once('parts/functions/functions-post-actions.php');
 require_once('parts/functions/functions-og-tags.php');
 require_once('parts/functions/functions-caching.php');
 require_once('parts/functions/functions-media.php');
+// require_once('parts/functions/functions-gallery.php');
 require_once('parts/functions/functions-breadcrumb.php');
 require_once('parts/functions/functions-development.php');
 
