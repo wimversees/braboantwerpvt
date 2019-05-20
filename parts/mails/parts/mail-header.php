@@ -96,6 +96,6 @@ function mailHeader($preview){ ?>
                   <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                     <tr>
                       <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
-                      <p style="text-align: center;"><img src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/mail-header.svg" alt="<?php echo bloginfo('name'); ?>" style="margin-bottom: 30px; height: 80px;"/></p>
+                      <p style="text-align: center;"><a href="<?php echo bloginfo('url'); ?>" title="<?php echo bloginfo('name'); ?>" target="_blank"><img src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/mail-header.svg" alt="<?php echo bloginfo('name'); ?>" style="margin-bottom: 30px; height: 80px;"/></a></p>
 
 <?php }
