@@ -69,7 +69,9 @@
         
         <script src="<?php getFrontEndFile('/design/js/lib.js'); ?>" type="text/javascript"></script>
         <script src="<?php getFrontEndFile('/design/js/applib.js'); ?>" type="text/javascript"></script>
+
         <?php wp_footer(); ?>
+        
         <?php includecached('parts/footer/footer-cookiebar.php'); ?>
         <?php includecached('parts/footer/footer-google-analytics.php'); ?>
     </body>

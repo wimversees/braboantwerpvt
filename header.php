@@ -37,6 +37,8 @@
 		<meta property="og:description" content="<?php echo get_og_description(); ?>" />
 
 		<meta name="wiver-version" content="<?php echo c('version'); ?>">
+
+		<?php wp_head(); ?>
     
 	</head>
 	<body>
