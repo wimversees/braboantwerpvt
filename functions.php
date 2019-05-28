@@ -24,6 +24,14 @@ require_once('parts/wiver_navwalker.php');
 // add featured image to custom post types
 // add_post_type_support( 'custom-type', 'thumbnail' );
 
+// remove contact form 7 wpcf7 from admin menu for not admins
+if (!(current_user_can('administrator'))) {
+	function remove_wpcf7() {
+	    remove_menu_page( 'wpcf7' ); 
+	}
+	add_action('admin_menu', 'remove_wpcf7');
+}
+
 // global action settings
 function global_settings() {  
     // Add category metabox to page 
