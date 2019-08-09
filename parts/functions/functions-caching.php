@@ -76,7 +76,7 @@ function includecachedfunction($functionName, $parameters = []){
  * @return void
  */
 function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHashedCache = false){
-	$language = ICL_LANGUAGE_CODE && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : 'xx';
+	$language = defined('ICL_LANGUAGE_CODE') && ICL_LANGUAGE_CODE && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : 'xx';
 	$baseFileName = str_replace('/', '--', str_replace('.php', '', $extention . '---' . $filename . '_' . $language));
 	if($enableHashedCache){
 		return hash(c('hashkey'), $baseFileName) . '.php';

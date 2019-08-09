@@ -18,7 +18,7 @@ function t($key, $echo = true){
 			return $key;
 		}
 	}
-	$currentLanguage = ICL_LANGUAGE_CODE;
+	$currentLanguage = defined('ICL_LANGUAGE_CODE') ? ICL_LANGUAGE_CODE : "default";
 	if(strlen($currentLanguage) == 0) $currentLanguage = 'default';
 	if(!function_exists('getDictionary')){
 		include(__DIR__ . '/../../data/translations/translations_' . $currentLanguage . '.php');

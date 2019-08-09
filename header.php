@@ -20,7 +20,7 @@
         <meta name="msapplication-config" content="<?php getFrontEndFile('/design/img/favicon/browserconfig.xml'); ?>">
 		<meta name="theme-color" content="#ffffff">
 		
-		<?php if(strlen(ICL_LANGUAGE_CODE) > 0){ ?>
+		<?php if(defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0){ ?>
 			<meta http-equiv="content-language" content="<?php echo strtolower(ICL_LANGUAGE_CODE); ?>">
 		<?php } ?>
 		
