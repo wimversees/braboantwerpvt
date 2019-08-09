@@ -4,7 +4,7 @@ $base-font-path: '../fonts/';
 $anton-font-path: $base-font-path+'anton';
 $futura-font-path: $base-font-path+'futura';
 $knockout-font-path: $base-font-path+'knockout'; 
-$museo-font-path: $base-font-path+'museosans'; 
+$museo-font-path: $base-font-path+'museosans';  
 $base-img-path: '../img/';
 
 // Fonts
@@ -18,33 +18,33 @@ $heading-color: $brand-color;
 
 // Base colors
 $white: #fff;
-$black: #000; 
+$black: #000;  
 $red: #e30613;
 $orange: #f0ad4e;
 $yellow: #ffd500;
 $green: #5cb85c;
 $blue: #53B2E1;
-$teal: #5bc0de;
-$pink: #95137b;
-$purple: #009900 ;
-$silver: $body-color;
-
-// Main
-$background-color: #efefef;
+$teal: #5bc0de; 
+$pink: #95137b;  
+$purple: #009900 ; 
+$silver: $body-color; 
+ 
+// Main  
+$background-color: #efefef; 
 
 // Link
 $link-color: $brand-color;
 
-// Page header
-$page-header-background-color: $white;
+// Page header  
+$page-header-background-color: $white; 
 $page-header-bottom-border-height: 6rem;
-$page-header-mobile-menu-height: 6rem;
+$page-header-mobile-menu-height: 6rem; 
 
 // Navigation
 $navigation-color: $silver;
 $navigation-link-active-color: $link-color;
 
-// Table
+// Table 
 $table-head-background: #fbfbfb;
 $table-border-color: #f6f6f6;
 $border-thickness: 1px;
