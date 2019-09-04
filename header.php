@@ -9,6 +9,11 @@
 		<meta name="keywords" content="<?php page_title(); ?>">
 		<meta name="description" content="<?php page_description(); ?>">
 		<meta name="author" content="WIVER Webdesign & Display Advertising - www.wiver.be">
+
+		<?php if (strpos(basename( get_page_template() ), 'noindex.php') !== false) { ?>
+			<meta name="robots" content="noindex">
+			<meta name="googlebot" content="noindex">
+		<?php } ?>
 		
 		<link rel="apple-touch-icon" sizes="180x180" href="<?php getFrontEndFile('/design/img/favicon/apple-touch-icon.png'); ?>">
         <link rel="icon" type="image/png" sizes="32x32" href="<?php getFrontEndFile('/design/img/favicon/favicon-32x32.png'); ?>">
