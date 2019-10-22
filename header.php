@@ -30,6 +30,7 @@
 		<?php } ?>
 		
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+		<link rel="canonical" href="<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
 
 		<link href="<?php getFrontEndFile('/design/css/main.css'); ?>" rel="stylesheet">
 
