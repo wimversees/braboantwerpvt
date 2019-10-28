@@ -1,13 +1,4 @@
-﻿/**
- * @author       [Stef Coenen]
- * @date         [2016]
- * @namespace    [Lube.fn]
- * @type         [Functions]
- * @requires     [Lube]
- * @revision     [0.1]
- */
-
-// @param (ns): window.Lube
+﻿// @param (ns): window.Lube
 window.Lube = (function(ns) {
     // 1. ECMA-262/5
     'use strict';

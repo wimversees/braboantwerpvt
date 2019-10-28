@@ -1,13 +1,3 @@
-/**
- * [window.Lube]
- *
- * @author       [Stef Coenen]
- * @date         [2017]
- * @namespace    [Lube]
- * @requires     [jQuery]
- * @revision     [0.1]
- */
-
 window.Lube = (function(ns) {
     // 1. ECMA-262/5
     'use strict';
