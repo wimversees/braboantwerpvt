@@ -20,6 +20,9 @@ gulp.task('sass', function () {
                 cascade: false
             }
         ))
+        .pipe(uglifycss({
+            "uglyComments": true
+        }))
         .pipe(
             sourcemaps.write({
                 sourceRoot: './design/src/app/design/scss/'
@@ -30,6 +33,7 @@ gulp.task('sass', function () {
  
 gulp.task('css', function () {
     return gulp.src('./design/src/docs/design/css/main.css')
+        // uncomment for production
         /*.pipe(uglifycss({
             "uglyComments": true
         }))*/
