@@ -27,7 +27,7 @@ gulp.task('sass', function () {
 });
  
 gulp.task('css', function () {
-    return gulp.src('./design/src/docs/design/css/**/*.css')
+    return gulp.src('./design/src/docs/design/css/main.css')
         .pipe(uglifycss({
             "uglyComments": true
         }))
