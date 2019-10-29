@@ -19,7 +19,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="<?php getFrontEndFile('/design/img/favicon/favicon-32x32.png'); ?>">
         <link rel="icon" type="image/png" sizes="16x16" href="<?php getFrontEndFile('/design/img/favicon/favicon-16x16.png'); ?>">
         <link rel="manifest" href="<?php getFrontEndFile('/design/img/favicon/site.webmanifest'); ?>">
-        <link rel="mask-icon" href="<?php getFrontEndFile('/design/img/favicon/safari-pinned-tab.svg'); ?>" color="#000000">
+        <link rel="mask-icon" href="<?php getFrontEndFile('/design/img/favicon/safari-pinned-tab.svg'); ?>" color="#ffffff">
         <link rel="shortcut icon" href="<?php getFrontEndFile('/design/img/favicon/favicon.ico'); ?>">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-config" content="<?php getFrontEndFile('/design/img/favicon/browserconfig.xml'); ?>">
