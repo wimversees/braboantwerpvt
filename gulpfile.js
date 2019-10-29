@@ -20,9 +20,6 @@ gulp.task('sass', function () {
                 cascade: false
             }
         ))
-        .pipe(uglifycss({
-            "uglyComments": true
-        }))
         .pipe(
             sourcemaps.write({
                 sourceRoot: './design/src/app/design/scss/'
