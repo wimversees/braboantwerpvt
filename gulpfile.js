@@ -18,16 +18,11 @@ gulp.task('sass', function () {
                 cascade: false
             }
         ))
-        .pipe(cleancss({
-                keepBreaks: false,
-                
-            }
-        ))
         .pipe(gulp.dest('./design/src/docs/design/css'));
 });
  
 gulp.task('css', function () {
-    return gulp.src('./design/src/docs/design/css/main.css')
+    return gulp.src('./design/src/docs/design/css/scss/main.css')
         .pipe(uglifycss({
             "uglyComments": true
         }))
