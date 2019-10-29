@@ -30,15 +30,24 @@ gulp.task('css', function () {
 });
 
 gulp.task('javascript-lib', function(){
-    return gulp.src('./design/src/app/design/js/lib/**/*.js')
+    return gulp.src([
+        './design/src/app/design/js/lib/jquery/*.js',
+        './design/src/app/design/js/lib/popper/*.js',
+        './design/src/app/design/js/lib/bootstrap/**/*.js'
+        ])
         .pipe(concat('lib.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest('./design/src/docs/design/js/'))
         .pipe(gulp.dest('./design/js/'));
 });
 
 gulp.task('javascript-applib', function(){
-    return gulp.src('./design/src/app/design/js/app/**/*.js')
+    return gulp.src([
+            './design/src/app/design/js/app/components/*.js',
+            './design/src/app/design/js/app/functions/*.js',
+            './design/src/app/design/js/app/modules/*.js',
+            './design/src/app/design/js/app/lube.strapon.js',
+        ])
         .pipe(concat('applib.js'))
         .pipe(babel({
             presets: ['@babel/env']
