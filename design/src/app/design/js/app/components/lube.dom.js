@@ -67,12 +67,12 @@ window.Lube = (function(ns) {
                 let target = clickTarget.dataset.target;
                 if (!target || !target.length) {
                     target = clickTarget.dataset.toggle;
-                    if (!target || !target.length) {
+                    if (!target || !target.length || target == "dropdown") {
                         return;
                     }
                 }
 
-                target = document.querySelectorAll(clickTarget);
+                target = document.querySelectorAll(target);
                 let singleTarget = target[0];
 
                 clickTarget.addEventListener(events.click, e => {
