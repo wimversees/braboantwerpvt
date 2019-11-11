@@ -72,7 +72,7 @@ window.Lube = (function(ns) {
                     }
                 }
 
-                target = document.querySelectorAll(target);
+                target = document.querySelectorAll(clickTarget);
                 let singleTarget = target[0];
 
                 clickTarget.addEventListener(events.click, e => {
