@@ -1,3 +1,12 @@
+<?php 
+  $socialmedias = [];
+  if(strlen(c('facebook-link')) > 0) $socialmedias[] = c('facebook-link');
+  if(strlen(c('twitter-link')) > 0) $socialmedias[] = c('twitter-link');
+  if(strlen(c('instagram-link')) > 0) $socialmedias[] = c('instagram-link');
+  if(strlen(c('youtube-link')) > 0) $socialmedias[] = c('youtube-link');
+  if(strlen(c('flickr-link')) > 0) $socialmedias[] = c('flickr-link');
+?>
+
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -18,13 +27,16 @@
     "@type": "GeoCoordinates",
     "latitude": <?php echo c('company-latitude') ?>,
     "longitude": <?php echo c('company-longitude') ?>
-  },
+  } 
+  <?php if(count($socialmedias) > 0){ ?>
+    ,
   "sameAs": [
-    <?php if(strlen(c('facebook-link')) > 0) { ?>"<?php echo c('facebook-link') ?>",<?php } ?>
-    <?php if(strlen(c('twitter-link')) > 0) { ?>"<?php echo c('twitter-link') ?>",<?php } ?>
-    <?php if(strlen(c('instagram-link')) > 0) { ?>"<?php echo c('instagram-link') ?>",<?php } ?>
-    <?php if(strlen(c('youtube-link')) > 0) { ?>"<?php echo c('youtube-link') ?>",<?php } ?>
-    <?php if(strlen(c('flickr-link')) > 0) { ?>"<?php echo c('flickr-link') ?>",<?php } ?>
+    <?php for($i = 0; $i < count($socialmedias); $i++) { ?>
+      "<?php echo $socialmedias[$i] ?>"
+      <?php if($i < count($socialmedias) - 1) { echo ","; } ?>
+    <?php } ?>
+    
   ]
+ <?php } ?>
 }
 </script>
