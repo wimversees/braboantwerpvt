@@ -176,7 +176,10 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
       if ( !$this->dropdown ) {
-        $output .= $indent . '<li' /*. $id*/ . $class_names . ' itemprop="name">' . $n . $indent . $t;
+        if (strpos($class_names, 'dropdown') !== false)
+          $output .= $indent . '<li' /*. $id*/ . $class_names . '>' . $n . $indent . $t;
+        else
+          $output .= $indent . '<li' /*. $id*/ . $class_names . ' itemprop="name">' . $n . $indent . $t;
       }
 
       $atts           = array();
@@ -247,7 +250,16 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       }
 
       $item_output = $args->before;
-      $item_output .= '<a class="' . implode( ' ', $item_classes ) . '" ' . $attributes . '>';
+      if(in_array("dropdown-toggle", $item_classes)){
+        $item_output .= '<meta itemprop="name" content="' . $title . '">';
+        $item_output .= '<a class="' . implode( ' ', $item_classes ) . '" ' . $attributes . '>';
+      } else if (in_array("dropdown-item", $item_classes)) {
+        $item_output .= '<meta itemprop="name" content="' . $title . '">';
+        $item_output .= '<a class="' . implode( ' ', $item_classes ) . '" ' . $attributes . '>';
+      } else {
+        $item_output .= '<a class="' . implode( ' ', $item_classes ) . '" ' . $attributes . '>';
+      }
+
       $item_output .= $args->link_before . $title . $args->link_after;
       $item_output .= '</a>';
       $item_output .= $args->after;
