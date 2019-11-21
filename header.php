@@ -8,7 +8,8 @@
 
 		<meta name="keywords" content="<?php page_title(); ?>">
 		<meta name="description" content="<?php page_description(); ?>">
-		<meta name="author" content="WIVER Webdesign & Display Advertising - www.wiver.be">
+		<meta name="author" content="WIVER - www.wiver.be">
+		<meta name="copyright" content="WIVER - www.wiver.be" />
 
 		<?php if (strpos(basename( get_page_template() ), 'noindex.php') !== false) { ?>
 			<meta name="robots" content="noindex">
