@@ -28,7 +28,9 @@ function page_title(){
  * @return void
  */
 function page_description(){
-	echo excerpt(20);
+	$excerpt = excerpt(20);
+	if(strlen($excerpt) == 0) $excerpt = bloginfo('description');
+	echo $excerpt;
 }
 
 /**
