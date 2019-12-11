@@ -10,6 +10,7 @@ require_once('parts/functions/functions-media.php');
 // require_once('parts/functions/functions-gallery.php');
 require_once('parts/functions/functions-breadcrumb.php');
 require_once('parts/functions/functions-development.php');
+require_once('parts/functions/functions-sitemap.php');
 
 // theme supports
 add_theme_support( 'menus' );

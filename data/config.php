@@ -24,6 +24,9 @@ function getConfig(){
 		
 		// open graph settings
 		'default-og-image'						=> '/img/default-og-image.jpg',
+		
+		// sitemap settings
+		'sitemap-post-types'					=> array('page', 'post'),
 
 		// social media settings
 		'facebook-link'							=> '',
