@@ -97,6 +97,8 @@ window.Lube = (function(ns) {
                     ns.fn.toggleClass(target, classes.show);
                     singleTarget.style.height = currentHeight + 'px';
 
+                    let closing = currentHeight > futureHeight;
+
                     setTimeout(() => {
                         // Enable transition
                         ns.fn.addClass(singleTarget, 'animate-on-height');
@@ -109,6 +111,7 @@ window.Lube = (function(ns) {
                             ns.fn.removeClass(target, 'show-out');
                             ns.fn.removeClass(target, 'show-in');
                         }, 400);
+                        if(closing) ns.fn.removeClass(target, 'show');
                     }),
                     50;
                 });
