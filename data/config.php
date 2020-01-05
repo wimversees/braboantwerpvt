@@ -23,7 +23,7 @@ function getConfig(){
 		'company-longitude'						=> 0.0000, // notation: 4.284209
 		
 		// open graph settings
-		'default-og-image'						=> '/img/default-og-image.jpg',
+		'default-og-image'						=> '/design/img/default-og-image.jpg',
 		
 		// sitemap settings
 		'sitemap-post-types'					=> array('page', 'post'),
