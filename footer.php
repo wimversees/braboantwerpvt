@@ -49,10 +49,10 @@
             <div class="footer-copyright">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-md-6">
+                        <div class="col-12 col-lg-7">
                             <p class="footer-copyright-text"><?php t('footer-copyright'); ?> <?php echo date('Y'); ?> <a href="<?php echo bloginfo('url'); ?>" title="<?php echo bloginfo('name'); ?>"><?php echo bloginfo('name'); ?></a>. <?php t('footer-all-rights-reserved'); ?> <a href="https://www.wiver.be" target="_blank" title="Wiver Webdesign & Display Advertising">WIVER</a></p>
                         </div>
-                        <div class="col-12 col-md-6 ml-auto">
+                        <div class="col-12 col-lg-5 ml-auto">
                             <ul class="footer-nav">
                                 <li class="nav-item">
                                     <a href="<?php echo get_permalink(gpid('page-privacy-policy')); ?>" title="<?php echo get_the_title(gpid('page-privacy-policy')); ?>" class="nav-link"><?php echo get_the_title(gpid('page-privacy-policy')); ?></a>
