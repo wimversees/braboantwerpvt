@@ -23,6 +23,7 @@
     "postalCode": "<?php echo c('company-postalcode') ?>",
     "addressCountry": "BE"
   },
+  "pricerange": "€€",
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": <?php echo c('company-latitude') ?>,
