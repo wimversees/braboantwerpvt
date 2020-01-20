@@ -1,7 +1,7 @@
 <?php
 add_action( 'publish_post', 'create_sitemap' );
 add_action( 'publish_page', 'create_sitemap' );
-add_action( 'save_post',    'create_sitemap' );
+//add_action( 'save_post',    'create_sitemap' ); // commented for memory leak
 
 function create_sitemap() {
     global $post;
