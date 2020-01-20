@@ -21,7 +21,7 @@
     "streetAddress": "<?php echo c('company-street') ?>",
     "addressLocality": "<?php echo c('company-city') ?>",
     "postalCode": "<?php echo c('company-postalcode') ?>",
-    "addressCountry": "BE"
+    "addressCountry": "<?php echo c('company-country') ?>",
   },
   "pricerange": "€€",
   "geo": {
