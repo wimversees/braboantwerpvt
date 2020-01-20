@@ -16,7 +16,7 @@ function getConfig(){
 		'company-street'						=> '',
 		'company-city'							=> '',
 		'company-postalcode'					=> '',
-		'company-country'						=> '', // notation: 'BE'
+		'company-country'						=> 'BE', // notation: 'BE'
 		'company-telephone'						=> '',
 		'company-telephone-link'				=> '',
 		'company-latitude'						=> 0.0000, // notation: 51.284209
