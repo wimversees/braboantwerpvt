@@ -1,10 +1,10 @@
 <footer>
-            <div class="container">
+            <div class="container pt-3">
                 <div class="row">
-                    <div class="col-7 col-md-3">
+                    <div class="col-12 col-md-3 d-flex justify-content-center pb-2">
                         <img class="footer-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/logo.svg" alt="<?php echo bloginfo('name'); ?>"/>
                     </div>
-                    <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-3 d-flex justify-content-center">
                         <?php  
                             wp_nav_menu( array(
                                 'menu' => 'footer-left',
@@ -16,7 +16,7 @@
                             );
                         ?>
                     </div>
-                    <div class="col-6 col-md-3">
+                    <div class="col-6 col-md-3 d-flex justify-content-center pb-2">
                         <?php  
                             wp_nav_menu( array(
                                 'menu' => 'footer-right',
@@ -28,7 +28,7 @@
                             );
                         ?>
                     </div>
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-md-3 d-flex justify-content-center pb-2">
                         <div class="footer-company">
                             <h3><?php echo c('company-name'); ?></h3>
                             <p><?php echo c('company-street'); ?>
@@ -46,14 +46,17 @@
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
+            <div class="footer-copyright bg-dark pt-1">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-lg-7">
+                        <div class="col-12 col-md-7">
                             <p class="footer-copyright-text"><?php t('footer-copyright'); ?> <?php echo date('Y'); ?> <a href="<?php echo bloginfo('url'); ?>" title="<?php echo bloginfo('name'); ?>"><?php echo bloginfo('name'); ?></a>. <?php t('footer-all-rights-reserved'); ?> <a href="https://www.wiver.be" target="_blank" title="Wiver Webdesign & Display Advertising">WIVER</a></p>
                         </div>
-                        <div class="col-12 col-lg-5 ml-auto">
+                        <div class="col-12 col-md-5 ml-auto justify-content-center">
                             <ul class="footer-nav">
+                                <li class="nav-item">
+                                    <a href="<?php echo get_permalink(gpid('page-sitemap')); ?>" title="<?php echo get_the_title(gpid('page-sitemap')); ?>" class="nav-link"><?php echo get_the_title(gpid('page-sitemap')); ?></a>
+                                </li>
                                 <li class="nav-item">
                                     <a href="<?php echo get_permalink(gpid('page-privacy-policy')); ?>" title="<?php echo get_the_title(gpid('page-privacy-policy')); ?>" class="nav-link"><?php echo get_the_title(gpid('page-privacy-policy')); ?></a>
                                 </li>
