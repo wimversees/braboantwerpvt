@@ -35,6 +35,10 @@
 
 		<link href="<?php getFrontEndFile('/design/css/main.css'); ?>" rel="stylesheet">
 
+		<?php /* custom fonts */ ?>
+		<link rel="dns-prefetch" href="//fonts.googleapis.com">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+
 		<?php includecached('parts/header/header-structured-data-info.php'); ?>
 
 		<meta property="og:title" content="<?php page_title(); ?>" />

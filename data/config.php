@@ -29,12 +29,12 @@ function getConfig(){
 		'sitemap-post-types'					=> array('page', 'post'),
 
 		// social media settings
-		'facebook-link'							=> '',
-		'twitter-link'							=> '',
-		'instagram-link'						=> '',
-		'linkedin-link'							=> '',
-		'youtube-link'							=> '',
-		'flickr-link'							=> '',
+		'facebook-link'							=> 'w',
+		'twitter-link'							=> 'w',
+		'instagram-link'						=> 'w',
+		'linkedin-link'							=> 'w',
+		'youtube-link'							=> 'w',
+		'flickr-link'							=> 'w',
 	);
 }
 
