@@ -96,7 +96,7 @@ gulp.task('javascript-applib', function(){
         .pipe(gulp.dest('./design/js/'));
 });
 
-gulp.task('run', gulp.series(['sass', 'css', 'javascript-lib', 'javascript-applib']));
+gulp.task('run', gulp.series(['sass', 'css', 'css-dev', 'javascript-lib', 'javascript-lib-dev', 'javascript-applib', 'javascript-applib-dev']));
 
 gulp.task('watch', function(){
     // css watchers
