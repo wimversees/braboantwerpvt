@@ -28,6 +28,12 @@ function getConfig(){
 		// sitemap settings
 		'sitemap-post-types'					=> array('page', 'post'),
 
+		// wp_head, wp_footer settings
+		'enable-wp-head-foot-slugs'				=> array('page-contact.php'),
+
+		// cookie settings
+		'cookie-name'							=> 'comply_cookie',
+		
 		// social media settings
 		'facebook-link'							=> 'w',
 		'twitter-link'							=> 'w',

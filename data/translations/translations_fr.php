@@ -16,6 +16,12 @@ function getDictionary(){
 		'footer-all-rights-reserved'		=> 'Tous droits réservés.',
 		'footer-follow-us'					=> 'Suivez nous',
 
+		/* cookie bar */
+		'cookie-ok'							=> 'OK',
+		'cookie-ok-title'					=> 'Je comprends',
+		'cookie-message'					=> 'En utilisant notre site web, vous acceptez nos %s et %s.',
+		'cookie-more-info'					=> 'Plus d\'informations.',
+
 	);
 }
 

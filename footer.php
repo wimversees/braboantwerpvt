@@ -73,9 +73,15 @@
         <script src="<?php getFrontEndFile('/design/js/lib.js'); ?>" type="text/javascript"></script>
         <script src="<?php getFrontEndFile('/design/js/applib.js'); ?>" type="text/javascript"></script>
 
-        <?php wp_footer(); ?>
+		<?php 
+			global $template;
+			if (in_array($template, c('enable-wp-head-foot-slugs'))) 
+				wp_footer();
+		?>
         
-        <?php includecached('parts/footer/footer-cookiebar.php'); ?>
+        <?php if(!isset($_COOKIE[c('cookie-name')])) { 
+            includecached('parts/footer/footer-cookiebar.php'); 
+        }  ?>
         <?php includecached('parts/footer/footer-google-analytics.php'); ?>
     </body>
 </html>

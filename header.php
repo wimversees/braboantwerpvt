@@ -49,7 +49,11 @@
 
 		<meta name="wiver-version" content="<?php echo c('version'); ?>">
 
-		<?php wp_head(); ?>
+		<?php 
+			global $template;
+			if (in_array($template, c('enable-wp-head-foot-slugs'))) 
+				wp_head();
+		?>
     
 	</head>
 	<body>
