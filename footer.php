@@ -70,8 +70,8 @@
             </div>
         </footer>
         
-        <script src="<?php getFrontEndFile('/design/js/lib.js'); ?>" type="text/javascript"></script>
-        <script src="<?php getFrontEndFile('/design/js/applib.js'); ?>" type="text/javascript"></script>
+        <script src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/lib.js' : '/design/js/lib-dev.js'); ?>" type="text/javascript"></script>
+        <script src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/applib.js' : '/design/js/applib-dev.js'); ?>" type="text/javascript"></script>
 
 		<?php 
 			global $template;

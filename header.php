@@ -33,7 +33,7 @@
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 		<link rel="canonical" href="<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
 
-		<link href="<?php getFrontEndFile('/design/css/main.css'); ?>" rel="stylesheet">
+		<link href="<?php getFrontEndFile(IsProEnvironment() ? '/design/css/main.css' : '/design/css/main-dev.css'); ?>" rel="stylesheet">
 
 		<?php /* custom fonts */ ?>
 		<link rel="dns-prefetch" href="//fonts.googleapis.com">

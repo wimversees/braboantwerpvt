@@ -36,3 +36,10 @@ function randomHexColorPart() {
 function randomHexColor() {
     return randomHexColorPart() . randomHexColorPart() . randomHexColorPart();
 }
+
+/**
+ * This function checks if the environments is PRO, based on localhost base url.
+ */
+function IsProEnvironment() {
+    return !(strpos('localhost:81', strtolower($_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'])) !== false);	
+}
