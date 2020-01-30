@@ -16,6 +16,14 @@ function getDictionary(){
 		'footer-all-rights-reserved'		=> 'All rights reserved.',
 		'footer-follow-us'					=> 'Follow us',
 
+		/* socials */
+		'social-follow-on-twitter'			=> 'Follow %s on Twitter',
+		'social-follow-on-instagram'		=> 'Follow %s on Instagram',
+		'social-follow-on-linkedin'			=> 'Follow %s on LinkedIn',
+		'social-follow-on-youtube'			=> 'Follow %s on YouTube',
+		'social-follow-on-facebook'			=> 'Follow %s on Facebook',
+		'social-follow-on-flickr'			=> 'Follow %s on Flickr',
+
 		/* cookie bar */
 		'cookie-ok'							=> 'OK',
 		'cookie-ok-title'					=> 'I understand',
