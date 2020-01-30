@@ -111,6 +111,7 @@ window.Lube = function (ns) {
     },
     asyncImageLoading: function asyncImageLoading() {
       document.querySelectorAll('img[data-src]').forEach(ns.fn.loadImageAsync);
+      document.querySelectorAll('[data-bgsrc]').forEach(ns.fn.loadBackgroundImageAsync);
     },
     initAnimations: function initAnimations() {
       var onLoad = function onLoad() {
@@ -139,6 +140,21 @@ window.Lube = function (ns) {
 
       img.onload = function () {
         img.removeAttribute('data-src');
+      };
+    },
+    loadBackgroundImageAsync: function loadBackgroundImageAsync(el) {
+      var currentStyle = el.getAttribute('style');
+
+      if (currentStyle && currentStyle.length > 0) {
+        el.setAttribute('style', currentStyle + ';background-image:url("' + el.getAttribute('data-bgsrc') + '");');
+      } else {
+        el.setAttribute('style', 'background-image:url("' + el.getAttribute('data-bgsrc') + '");');
+      }
+
+      el.setAttribute('data-async-loaded', '');
+
+      el.onload = function () {
+        el.removeAttribute('data-bgsrc');
       };
     },
     hide: function hide(element) {
