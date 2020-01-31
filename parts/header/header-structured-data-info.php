@@ -22,22 +22,12 @@
     "addressLocality": "<?php echo c('company-city') ?>",
     "postalCode": "<?php echo c('company-postalcode') ?>",
     "addressCountry": "<?php echo c('company-country') ?>",
-  },
-  "pricerange": "€€",
+  },"pricerange": "€€",
   "geo": {
     "@type": "GeoCoordinates",
     "latitude": <?php echo c('company-latitude') ?>,
     "longitude": <?php echo c('company-longitude') ?>
   } 
-  <?php if(count($socialmedias) > 0){ ?>
-    ,
-  "sameAs": [
-    <?php for($i = 0; $i < count($socialmedias); $i++) { ?>
-      "<?php echo $socialmedias[$i] ?>"
-      <?php if($i < count($socialmedias) - 1) { echo ","; } ?>
-    <?php } ?>
-    
-  ]
- <?php } ?>
+  <?php if(count($socialmedias) > 0){ ?>,"sameAs":[<?php for($i = 0; $i < count($socialmedias); $i++) { ?>"<?php echo $socialmedias[$i] ?>"<?php if($i < count($socialmedias) - 1) { echo ","; } ?><?php } ?>]<?php } ?>
 }
 </script>
