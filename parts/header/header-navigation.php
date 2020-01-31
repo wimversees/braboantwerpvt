@@ -24,7 +24,7 @@
 				);
 			?>
 
-            <ul class="navbar-nav d-none d-lg-flex">
+            <ul class="navbar-social navbar-nav d-none d-lg-flex">
                 <?php include __DIR__ . '/../social/social-media-links.php'; ?>                
             </ul>
         </div>

@@ -12,7 +12,18 @@ window.Lube = (function(ns) {
                 img.removeAttribute('data-src');
             };
         },
-
+        loadBackgroundImageAsync: function(el){
+            let currentStyle = el.getAttribute('style');
+            if(currentStyle && currentStyle.length > 0){
+                el.setAttribute('style', currentStyle + ';background-image:url("' + el.getAttribute('data-bgsrc') + '");');
+            } else {
+                el.setAttribute('style', 'background-image:url("' + el.getAttribute('data-bgsrc') + '");');
+            }
+            el.setAttribute('data-async-loaded', '');
+            el.onload = () => {
+                el.removeAttribute('data-bgsrc');
+            };
+        },
         hide: function(element) {
             if (element.constructor == Array || element.constructor == NodeList) {
                 for (let i = 0; i < element.length; i++) {

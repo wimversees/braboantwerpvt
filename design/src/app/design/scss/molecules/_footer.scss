@@ -39,6 +39,9 @@ footer {
             li{
                 display: inline-block;
                 float: left;
+                a{
+                    font-size: 0;
+                }
                 svg{
                     width: 2rem;
                     height: 2rem;
