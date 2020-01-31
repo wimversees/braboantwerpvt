@@ -12,7 +12,7 @@
   "@context": "http://schema.org",
   "@type": "<?php echo c('company-micro-data-type') ?>",
   "name": "<?php echo c('company-name') ?>",
-  "image": "<?php echo get_stylesheet_directory_uri(); ?>/design/img/logo.svg",
+  "image": "<?php getFrontEndFile('/design/img/logo.svg'); ?>",
   "@id": "",
   "url": "<?php echo bloginfo('url') ?>",
   "telephone": "<?php echo c('company-telephone') ?>",

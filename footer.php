@@ -2,7 +2,7 @@
             <div class="container pt-3">
                 <div class="row">
                     <div class="col-12 col-md-3 d-flex justify-content-center pb-2">
-                        <img class="footer-brand-img" src="<?php echo get_stylesheet_directory_uri(); ?>/design/img/logo.svg" alt="<?php echo bloginfo('name'); ?>"/>
+                        <img class="footer-brand-img" src="<?php getFrontEndFile('/design/img/logo.svg'); ?>" alt="<?php echo bloginfo('name'); ?>"/>
                     </div>
                     <div class="col-6 col-md-3 d-flex justify-content-center">
                         <?php  
