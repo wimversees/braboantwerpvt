@@ -82,6 +82,6 @@
         <?php if(!isset($_COOKIE[c('cookie-name')])) { 
             includecached('parts/footer/footer-cookiebar.php'); 
         }  ?>
-        <?php includecached('parts/footer/footer-google-analytics.php'); ?>
+        <?php if(IsProEnvironment()) includecached('parts/footer/footer-google-analytics.php'); ?>
     </body>
 </html>
