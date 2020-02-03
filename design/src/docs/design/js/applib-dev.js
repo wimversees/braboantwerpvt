@@ -112,6 +112,7 @@ window.Lube = function (ns) {
     asyncImageLoading: function asyncImageLoading() {
       document.querySelectorAll('img[data-src]').forEach(ns.fn.loadImageAsync);
       document.querySelectorAll('[data-bgsrc]').forEach(ns.fn.loadBackgroundImageAsync);
+      document.querySelectorAll('iframe[data-src]').forEach(ns.fn.loadImageAsync);
     },
     initAnimations: function initAnimations() {
       var onLoad = function onLoad() {
@@ -134,12 +135,12 @@ window.Lube = function (ns) {
   'use strict'; // 3. FUNCTIONS OBJECT
 
   ns.fn = {
-    loadImageAsync: function loadImageAsync(img) {
-      img.setAttribute('src', img.getAttribute('data-src'));
-      img.setAttribute('data-async-loaded', '');
+    loadImageAsync: function loadImageAsync(el) {
+      el.setAttribute('src', el.getAttribute('data-src'));
+      el.setAttribute('data-async-loaded', '');
 
-      img.onload = function () {
-        img.removeAttribute('data-src');
+      el.onload = function () {
+        el.removeAttribute('data-src');
       };
     },
     loadBackgroundImageAsync: function loadBackgroundImageAsync(el) {

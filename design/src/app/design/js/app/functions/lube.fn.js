@@ -5,11 +5,11 @@ window.Lube = (function(ns) {
 
     // 3. FUNCTIONS OBJECT
     ns.fn = {
-        loadImageAsync: function(img) {
-            img.setAttribute('src', img.getAttribute('data-src'));
-            img.setAttribute('data-async-loaded', '');
-            img.onload = () => {
-                img.removeAttribute('data-src');
+        loadImageAsync: function(el) {
+            el.setAttribute('src', el.getAttribute('data-src'));
+            el.setAttribute('data-async-loaded', '');
+            el.onload = () => {
+                el.removeAttribute('data-src');
             };
         },
         loadBackgroundImageAsync: function(el){

@@ -120,6 +120,7 @@ window.Lube = (function(ns) {
         asyncImageLoading: function() {
             document.querySelectorAll('img[data-src]').forEach(ns.fn.loadImageAsync);
             document.querySelectorAll('[data-bgsrc]').forEach(ns.fn.loadBackgroundImageAsync);
+            document.querySelectorAll('iframe[data-src]').forEach(ns.fn.loadImageAsync);
         },
         initAnimations: function() {
             var onLoad = () => {
