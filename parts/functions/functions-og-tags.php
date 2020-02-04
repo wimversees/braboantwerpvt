@@ -25,13 +25,9 @@ function get_og_image(){
  */
 function get_og_description(){
 	if(!is_home() || !is_front_page()){
-		$postId = get_the_ID();
-		
-		$content_post = get_post($postId);
-		$content = str_replace('&nbsp;', ' ', substr(wp_strip_all_tags($content_post->post_content, true), 0, 225));
-		if(strlen($content) > 0){
-			return $content . '...';
-		}
+		$excerpt = excerpt(20);
+		if(strlen($excerpt) == 0) $excerpt = bloginfo('description');
+		return $excerpt;
 	}
 	return bloginfo('description');
 }
