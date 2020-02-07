@@ -17,18 +17,22 @@
   },
   "homepage": "https://github.com/wimversees/wiver-base-theme#readme",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-babel": "^8.0.0",
     "gulp-cleancss": "^0.2.2",
     "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
     "gulp-sass": "^4.0.2",
-    "gulp-uglify": "^3.0.2"
-  },
-  "dependencies": {
     "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
     "gulp-uglifycss": "^1.1.0"
-  }
+  },
+  "browserslist": [
+    "defaults",
+    "IE 11",
+    "IE_Mob 11"
+  ]
 }

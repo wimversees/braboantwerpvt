@@ -35,15 +35,15 @@ window.Lube = (function(ns) {
             }
         },
         bindScrollTopEvent: function() {
-            document.querySelectorAll('a[href="#top"]').forEach(link =>
-                link.addEventListener('click', () => {
+            /*document.querySelectorAll('a[href="#top"]').forEach(link =>
+               link.addEventListener('click', () => {
                     window.scrollTo(0, 0);
                     return false;
                 })
-            );
+            );*/
         },
         bindDataHref: function() {
-            document.querySelectorAll('[data-href]').forEach(link => {
+            Array.prototype.slice.call(document.querySelectorAll('[data-href]')).forEach(link => {
                 link.addEventListener('click', e => {
                     if (!e.currentTarget.matches('a')) {
                         window.location = link.dataset.href;
@@ -63,7 +63,7 @@ window.Lube = (function(ns) {
                 events = settings.events,
                 classes = settings.classes;
 
-            document.querySelectorAll('[data-toggle]').forEach(clickTarget => {
+                Array.prototype.slice.call(document.querySelectorAll('[data-toggle]')).forEach(clickTarget => {
                 let target = clickTarget.dataset.target;
                 if (!target || !target.length) {
                     target = clickTarget.dataset.toggle;
@@ -118,9 +118,9 @@ window.Lube = (function(ns) {
             });
         },
         asyncImageLoading: function() {
-            document.querySelectorAll('img[data-src]').forEach(ns.fn.loadImageAsync);
-            document.querySelectorAll('[data-bgsrc]').forEach(ns.fn.loadBackgroundImageAsync);
-            document.querySelectorAll('iframe[data-src]').forEach(ns.fn.loadImageAsync);
+            Array.prototype.slice.call(document.querySelectorAll('img[data-src]')).forEach(ns.fn.loadImageAsync);
+            Array.prototype.slice.call(document.querySelectorAll('[data-bgsrc]')).forEach(ns.fn.loadBackgroundImageAsync);
+            Array.prototype.slice.call(document.querySelectorAll('iframe[data-src]')).forEach(ns.fn.loadImageAsync);
         },
         initAnimations: function() {
             var onLoad = () => {

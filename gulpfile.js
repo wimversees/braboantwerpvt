@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const uglifycss = require('gulp-uglifycss');
 const autoprefixer = require('gulp-autoprefixer');
-const cleancss = require('gulp-cleancss');
 const uglify = require('gulp-uglify'); // JS Minification
 const concat = require('gulp-concat'); // JS Concatenation
 const babel = require('gulp-babel'); // ES6 Transpilation
@@ -73,9 +72,7 @@ gulp.task('javascript-applib-dev', function(){
             './design/src/app/design/js/app/lube.strapon.js',
         ])
         .pipe(concat('applib-dev.js'))
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        .pipe(babel())
         .pipe(gulp.dest('./design/src/docs/design/js/'))
         .pipe(gulp.dest('./design/js/'));
 });
@@ -88,9 +85,7 @@ gulp.task('javascript-applib', function(){
             './design/src/app/design/js/app/lube.strapon.js',
         ])
         .pipe(concat('applib.js'))
-        .pipe(babel({
-            presets: ['@babel/env']
-        }))
+        .pipe(babel())
         .pipe(uglify())
         .pipe(gulp.dest('./design/src/docs/design/js/'))
         .pipe(gulp.dest('./design/js/'));

@@ -33,15 +33,15 @@ window.Lube = function (ns) {
       }
     },
     bindScrollTopEvent: function bindScrollTopEvent() {
-      document.querySelectorAll('a[href="#top"]').forEach(function (link) {
-        return link.addEventListener('click', function () {
-          window.scrollTo(0, 0);
-          return false;
-        });
-      });
+      /*document.querySelectorAll('a[href="#top"]').forEach(link =>
+         link.addEventListener('click', () => {
+              window.scrollTo(0, 0);
+              return false;
+          })
+      );*/
     },
     bindDataHref: function bindDataHref() {
-      document.querySelectorAll('[data-href]').forEach(function (link) {
+      Array.prototype.slice.call(document.querySelectorAll('[data-href]')).forEach(function (link) {
         link.addEventListener('click', function (e) {
           if (!e.currentTarget.matches('a')) {
             window.location = link.dataset.href;
@@ -60,7 +60,7 @@ window.Lube = function (ns) {
       var settings = cfg,
           events = settings.events,
           classes = settings.classes;
-      document.querySelectorAll('[data-toggle]').forEach(function (clickTarget) {
+      Array.prototype.slice.call(document.querySelectorAll('[data-toggle]')).forEach(function (clickTarget) {
         var target = clickTarget.dataset.target;
 
         if (!target || !target.length) {
@@ -110,9 +110,9 @@ window.Lube = function (ns) {
       });
     },
     asyncImageLoading: function asyncImageLoading() {
-      document.querySelectorAll('img[data-src]').forEach(ns.fn.loadImageAsync);
-      document.querySelectorAll('[data-bgsrc]').forEach(ns.fn.loadBackgroundImageAsync);
-      document.querySelectorAll('iframe[data-src]').forEach(ns.fn.loadImageAsync);
+      Array.prototype.slice.call(document.querySelectorAll('img[data-src]')).forEach(ns.fn.loadImageAsync);
+      Array.prototype.slice.call(document.querySelectorAll('[data-bgsrc]')).forEach(ns.fn.loadBackgroundImageAsync);
+      Array.prototype.slice.call(document.querySelectorAll('iframe[data-src]')).forEach(ns.fn.loadImageAsync);
     },
     initAnimations: function initAnimations() {
       var onLoad = function onLoad() {
