@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const uglifycss = require('gulp-uglifycss');
+const cleanCSS = require('gulp-cleancss');
 const autoprefixer = require('gulp-autoprefixer');
 const uglify = require('gulp-uglify'); // JS Minification
 const concat = require('gulp-concat'); // JS Concatenation
@@ -38,6 +39,7 @@ gulp.task('css', function () {
         .pipe(uglifycss({
             "uglyComments": true
         }))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest('./design/css/'));
 });
 
