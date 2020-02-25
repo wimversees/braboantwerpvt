@@ -13,18 +13,19 @@
             <ul>
                 <?php wp_list_pages(array('title_li' => '', 'sort_column'  => 'post_title')); ?>
             </ul>
-                        
-            <h2><?php t("sitemap-news"); ?></h2>
-            <ul>
-                <?php $archive_query = new WP_Query('showposts=1000');  
-                while ($archive_query->have_posts()) : $archive_query->the_post(); ?>
-                    <li>
-                        <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
-                            <?php echo get_the_date('j M Y H:i'); ?> - <?php the_title(); ?>
-                        </a>
-                    </li>
-                <?php endwhile; ?>
-            </ul>
+            <?php $archive_query = new WP_Query('showposts=1000'); 
+            if($archive_query->have_posts()){ ?>       
+                <h2><?php t("sitemap-news"); ?></h2>
+                <ul>
+                    <?php while ($archive_query->have_posts()) : $archive_query->the_post(); ?>
+                        <li>
+                            <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
+                                <?php echo get_the_date('j M Y H:i'); ?> - <?php the_title(); ?>
+                            </a>
+                        </li>
+                    <?php endwhile; ?>
+                </ul>
+            <?php } ?>
         </div>
         <div class="col-md-3">
             <?php get_sidebar();?> 
