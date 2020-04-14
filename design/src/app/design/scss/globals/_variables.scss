@@ -34,6 +34,7 @@ $background-color: #efefef;
 
 // Link
 $link-color: $brand-color;
+$link-color-hover: darken($brand-color, 10%);
 
 // Page header  
 $page-header-background-color: $white; 

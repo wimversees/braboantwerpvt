@@ -1,9 +1,14 @@
 .navbar-social{
-    path, circle{
-        fill: $heading-color;
-    }
     a {
         font-size: 0;
         padding: 0;
+        path, circle{
+            fill: $heading-color;
+        }
+        &:hover, &:active, &:focus{
+            path, circle{
+                fill: $brand-color-second;
+            }
+        }
     }
 }

@@ -3,7 +3,7 @@ a {
     &:hover,
     &:active,
     &:focus {
-        color: $link-color;
+        color: $link-color-hover;
     }
     &.no-link {
         color: inherit;
@@ -14,4 +14,8 @@ a {
             text-decoration: none;
         }
     }
+}
+
+*[data-href]{
+    cursor: pointer;
 }
