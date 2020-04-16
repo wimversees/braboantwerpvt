@@ -47,7 +47,8 @@ gulp.task('javascript-lib-dev', function(){
     return gulp.src([
         './design/src/app/design/js/lib/jquery/*.js',
         './design/src/app/design/js/lib/popper/*.js',
-        './design/src/app/design/js/lib/bootstrap/**/*.js'
+        './design/src/app/design/js/lib/bootstrap/**/*.js',
+        './design/src/app/design/js/lib/simplelightbox/**/*.js'
         ])
         .pipe(concat('lib-dev.js'))
         .pipe(gulp.dest('./design/src/docs/design/js/'))
@@ -58,7 +59,8 @@ gulp.task('javascript-lib', function(){
     return gulp.src([
         './design/src/app/design/js/lib/jquery/*.js',
         './design/src/app/design/js/lib/popper/*.js',
-        './design/src/app/design/js/lib/bootstrap/**/*.js'
+        './design/src/app/design/js/lib/bootstrap/**/*.js',
+        './design/src/app/design/js/lib/simplelightbox/**/*.js'
         ])
         .pipe(concat('lib.js'))
         .pipe(uglify())
