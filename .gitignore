@@ -17,6 +17,6 @@ wp-content/plugins/hello.php
 /sitemap.xml
 /sitemap.xml.gz
 
-node_modules/
-cache/
+node_modules
+cache
 
