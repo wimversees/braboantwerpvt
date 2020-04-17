@@ -22,7 +22,8 @@ require_once('parts/wiver_navwalker.php');
 // Register custom image sizes
 add_filter('jpeg_quality', function($arg){return 85;});
 add_filter('wp_editor_set_quality', function($arg){return 85;} );
-add_image_size('photo-image', 350, 250, true);
+add_image_size('gallery-thumbnail', 350, 250, true);
+add_image_size('gallery-full', 1400, 950, false);
 // add_image_size('block-image', 255, 165, true);
 
 // add featured image to custom post types

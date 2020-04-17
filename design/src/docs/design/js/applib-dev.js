@@ -840,6 +840,8 @@ window.Lube = function (ns) {
         }
       }
     }
+
+    $('.content-gallery a').simpleLightbox();
   }; // 4. ONCE THE DOM IS READY
 
 

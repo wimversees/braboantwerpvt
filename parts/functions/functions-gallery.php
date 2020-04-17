@@ -32,8 +32,8 @@ function customFormatGallery($string,$attr){
         $output .= '<div class="content-gallery row">';
         foreach($posts as $imagePost){
             $output .= '<div class="col-6 col-sm-4 col-md-3">';
-            $output .= '<a href="' . wp_get_attachment_image_src($imagePost->ID, 'full')[0] . '" title="' . get_the_title($imagePost->ID) . '">';
-            $output .= '<img data-src="' . wp_get_attachment_image_src($imagePost->ID, 'photo-image')[0] . '" alt="' . $imagePost->post_title . '" title="' . get_the_title($imagePost->ID) . '" />';
+            $output .= '<a href="' . wp_get_attachment_image_src($imagePost->ID, 'gallery-full')[0] . '" title="' . get_the_title($imagePost->ID) . '">';
+            $output .= '<img data-src="' . wp_get_attachment_image_src($imagePost->ID, 'gallery-thumbnail')[0] . '" alt="' . $imagePost->post_title . '" title="' . get_the_title($imagePost->ID) . '" />';
             $output .= '</a>';
             $output .= '</div>';
         }
