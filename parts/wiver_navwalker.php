@@ -183,7 +183,7 @@ if ( !class_exists( 'WP_Bootstrap_Navwalker' ) ) {
       }
 
       $atts           = array();
-      $atts['title']  = !empty( $item->attr_title ) ? $item->attr_title : '';
+      $atts['title']  = !empty( $item->attr_title ) ? $item->attr_title : $item->title;
       $atts['target'] = !empty( $item->target ) ? $item->target : '';
       $atts['rel']    = !empty( $item->xfn ) ? $item->xfn : '';
       $atts['href']   = !empty( $item->url ) ? $item->url : ''; 
