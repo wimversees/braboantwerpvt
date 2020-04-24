@@ -26,9 +26,7 @@
         <meta name="msapplication-config" content="<?php getFrontEndFile('/design/img/favicon/browserconfig.xml'); ?>">
 		<meta name="theme-color" content="#ffffff">
 		
-		<?php if(defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0){ ?>
-			<meta http-equiv="content-language" content="<?php echo strtolower(ICL_LANGUAGE_CODE); ?>">
-		<?php } ?>
+		<meta http-equiv="content-language" content="<?php echo get_og_locale(); ?>">
 		
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 		<link rel="canonical" href="<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
@@ -41,11 +39,7 @@
 
 		<?php includecached('parts/header/header-structured-data-info.php'); ?>
 
-		<meta property="og:title" content="<?php page_title(); ?>" />
-		<meta property="og:image" content="<?php echo get_og_image(); ?>" />
-		<meta property="og:url" content="<?php echo " http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI] "; ?>"/>
-		<meta property="og:site_name" content="<?php bloginfo('name'); ?>, proudly powered by www.wiver.be" />
-		<meta property="og:description" content="<?php echo get_og_description(); ?>" />
+		<?php includecached('parts/header/header-og-tags.php', ICL_LANGUAGE_CODE); ?>
 
 		<meta name="wiver-version" content="<?php echo c('version'); ?>">
 

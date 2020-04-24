@@ -7,6 +7,9 @@ function getConfig(){
 		'version'								=> "0.0.1",
 		'hashkey'								=> "ripemd160",
 
+		// language settings
+		'default-locale'						=> "nl_be",
+
 		// google analytics
 		'google-analytics-key'					=> '', // notation: UA-131124377-1
 		'google-maps-key'						=> '', // notation: AIzaSyB_eoi3ppJF4kNz9yTBzsKCTQuokhnqRug
