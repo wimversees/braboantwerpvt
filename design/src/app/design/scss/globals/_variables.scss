@@ -3,43 +3,51 @@
 $base-font-path: '../fonts/';
 $anton-font-path: $base-font-path+'anton';
 $futura-font-path: $base-font-path+'futura';
-$knockout-font-path: $base-font-path+'knockout'; 
-$museo-font-path: $base-font-path+'museosans';  
+$knockout-font-path: $base-font-path+'knockout';
+$museo-font-path: $base-font-path+'museosans';
 $base-img-path: '../img/';
 
 // Fonts
-$heading-font: 'Open Sans', 'Arial', sans-serif;
-$body-font: 'Open Sans', 'Arial', sans-serif;
-$body-color: #9c9c9c; 
+$heading-font: 'Open Sans',
+'Arial',
+sans-serif;
+$body-font: 'Open Sans',
+'Arial',
+sans-serif;
+
+// Colors
 $brand-color: #caa900;
+$body-color: #9c9c9c;
+$background-color: #efefef;
+$background-color-light: #fff;
+$background-color-dark: #000;
+
+// Color variants
 $brand-color-second: darken($brand-color, 10%);
 $brand-color-disabled: darken($brand-color, 50%);
 $heading-color: $brand-color;
 
 // Base colors
 $white: #fff;
-$black: #000;  
+$black: #000;
 $red: #e30613;
 $orange: #f0ad4e;
 $yellow: #ffd500;
 $green: #5cb85c;
 $blue: #53B2E1;
-$teal: #5bc0de; 
-$pink: #95137b;  
-$purple: #009900 ; 
-$silver: $body-color; 
- 
-// Main  
-$background-color: #efefef; 
+$teal: #5bc0de;
+$pink: #95137b;
+$purple: #009900;
+$silver: $body-color;
 
 // Link
 $link-color: $brand-color;
 $link-color-hover: darken($brand-color, 10%);
 
 // Page header  
-$page-header-background-color: $white; 
+$page-header-background-color: $white;
 $page-header-bottom-border-height: 6rem;
-$page-header-mobile-menu-height: 6rem; 
+$page-header-mobile-menu-height: 6rem;
 
 // Navigation
 $navigation-color: $silver;
@@ -53,3 +61,17 @@ $border-thickness: 1px;
 // Fontawesome
 $fa-font-path: '../fonts/fontawesome';
 $spacer: 4rem;
+
+// bootstrap overrides
+$body-bg: $background-color;
+$body-color: $body-color;
+$theme-colors: ('primary': $brand-color,
+    "secondary": $brand-color-second,
+    /*"success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,*/
+    "light": $background-color-light,
+    "dark": $background-color-dark);
+$enable-rounded: false;
+$enable-shadows: true;
