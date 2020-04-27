@@ -1,15 +1,27 @@
-.navbar-toggle {
-    height: 2rem;
-    width: 2.5rem;
-    display: block;
-    float: right;
-    margin-top: 1.4rem;
-    margin-bottom: 1.4rem;
-    .icon-bar {
-        width: 100%;
-        height: 0.3rem;
-        margin-bottom: 0.4rem;
-        background-color: $white;
-        display: block;
+.navbar-toggler {
+    svg rect {
+        fill: $brand-color;
+        transition: $transition-base;
+    }
+
+    &[aria-expanded=true] {
+
+        svg rect {
+            &:nth-child(2) {
+                transform: rotate(45deg);
+                y: -1;
+                x: 4;
+            }
+
+            &:nth-child(3) {
+                transform: rotate(-45deg);
+                y: 13;
+                x: -10;
+            }
+
+            &:nth-child(1) {
+                opacity: 0;
+            }
+        }
     }
 }
