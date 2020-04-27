@@ -25,26 +25,6 @@ function devimage(int $width = 100, int $height = 100, string $text = '', bool $
 }
 
 /**
- * This function returns a palceholder image for a given width, height and possible description
- *
- * @param integer $width
- * @param integer $height
- * @param string $text
- * @return void
- */
-function devtext(int $length = 500, string $textStart = '', bool $echo = true)
-{
-    if (strlen($text) > 0) {
-        $text = $text . ' - ' . $width . 'x' . $height;
-    }
-    $url = '//placehold.it/' . $width . 'x' . $height . '/' . randomHexColor() . '/ddd?text=' . $text;
-    if ($echo) {
-        echo $url;return;
-    }
-    return $url;
-}
-
-/**
  * This function creates a random hex color part (two digits)
  */
 function randomHexColorPart()
