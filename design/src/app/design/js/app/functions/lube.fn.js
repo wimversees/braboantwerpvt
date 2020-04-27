@@ -1,20 +1,20 @@
 ﻿// @param (ns): window.Lube
-window.Lube = (function(ns) {
+window.Lube = (function (ns) {
     // 1. ECMA-262/5
     'use strict';
 
     // 3. FUNCTIONS OBJECT
     ns.fn = {
-        loadImageAsync: function(el) {
+        loadImageAsync: function (el) {
             el.setAttribute('src', el.getAttribute('data-src'));
             el.setAttribute('data-async-loaded', '');
             el.onload = () => {
                 el.removeAttribute('data-src');
             };
         },
-        loadBackgroundImageAsync: function(el){
+        loadBackgroundImageAsync: function (el) {
             let currentStyle = el.getAttribute('style');
-            if(currentStyle && currentStyle.length > 0){
+            if (currentStyle && currentStyle.length > 0) {
                 el.setAttribute('style', currentStyle + ';background-image:url("' + el.getAttribute('data-bgsrc') + '");');
             } else {
                 el.setAttribute('style', 'background-image:url("' + el.getAttribute('data-bgsrc') + '");');
@@ -24,7 +24,7 @@ window.Lube = (function(ns) {
                 el.removeAttribute('data-bgsrc');
             };
         },
-        hide: function(element) {
+        hide: function (element) {
             if (element.constructor == Array || element.constructor == NodeList) {
                 for (let i = 0; i < element.length; i++) {
                     this.hide(element[i]);
@@ -37,7 +37,7 @@ window.Lube = (function(ns) {
             }
         },
 
-        show: function(element) {
+        show: function (element) {
             if (element.constructor == Array || element.constructor == NodeList) {
                 for (let i = 0; i < element.length; i++) {
                     this.show(element[i]);
@@ -50,7 +50,7 @@ window.Lube = (function(ns) {
             }
         },
 
-        addClass: function(element, cssClass) {
+        addClass: function (element, cssClass) {
             if (element.constructor == Array || element.constructor == NodeList) {
                 for (let i = 0; i < element.length; i++) {
                     this.addClass(element[i], cssClass);
@@ -61,7 +61,7 @@ window.Lube = (function(ns) {
             element.classList.add(cssClass);
         },
 
-        toggleClass: function(element, cssClass) {
+        toggleClass: function (element, cssClass) {
             if (element.constructor == Array || element.constructor == NodeList) {
                 let returnValue;
                 for (let i = 0; i < element.length; i++) {
@@ -79,7 +79,7 @@ window.Lube = (function(ns) {
             }
         },
 
-        removeClass: function(element, cssClass) {
+        removeClass: function (element, cssClass) {
             if (element.constructor == Array || element.constructor == NodeList) {
                 for (let i = 0; i < element.length; i++) {
                     this.removeClass(element[i], cssClass);
@@ -90,18 +90,18 @@ window.Lube = (function(ns) {
             element.classList.remove(cssClass);
         },
 
-        toggleAttribute: function(element, attribute) {
+        toggleAttribute: function (element, attribute) {
             element[element.getAttribute(attribute) ? 'removeAttribute' : 'setAttribute'](
                 attribute,
                 ''
             );
         },
 
-        toggleAttributeValue: function(element, attribute) {
+        toggleAttributeValue: function (element, attribute) {
             element.setAttribute(attribute, !(element.getAttribute(attribute) === 'true'));
         },
 
-        closest: function(element, selector) {
+        closest: function (element, selector) {
             if (!element || !selector) {
                 return [];
             }
@@ -118,10 +118,10 @@ window.Lube = (function(ns) {
             return element.closest(selector);
         },
 
-        renderTemplate: function(obj, template) {
+        renderTemplate: function (obj, template) {
             return template.replace(
                 /{{(\w*)}}/g, // or /{(\w*)}/g for "{this} instead of %this%"
-                function(m, key) {
+                function (m, key) {
                     return obj.hasOwnProperty(key) && obj[key] ? obj[key] : '';
                 }
             );
