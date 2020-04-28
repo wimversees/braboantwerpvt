@@ -1,70 +1,72 @@
 <?php
 
 /*
-* SECTION CUSTOM CACHING
-*/
+ * SECTION CUSTOM CACHING
+ */
 
 /**
- * This function returns the output of the given path file. The function will return a cached file when it exists. 
+ * This function returns the output of the given path file. The function will return a cached file when it exists.
  * The cache key extention is used to create a diveration of the cache files.
  *
  * @param string $path needs to include __DIR__
  * @param string $cacheKeyExtention
- * @return void 
+ * @return void
  */
-function includecached($path, $cacheKeyExtention = ''){
-	$cacheEnabled = c('cache-enabled') == 'enabled';
-	// define cache key by used path
-	$fullpath = __DIR__ . '/../../' . $path;
-	$cacheKey = getCacheKeyByFileNameAndExtention($path, $cacheKeyExtention);
-	$file = getCacheFileName($cacheKey);
+function includecached($path, $cacheKeyExtention = '')
+{
+    $cacheEnabled = c('cache-enabled') == 'enabled';
+    // define cache key by used path
+    $fullpath = __DIR__ . '/../../' . $path;
+    $cacheKey = getCacheKeyByFileNameAndExtention($path, $cacheKeyExtention);
+    $file     = getCacheFileName($cacheKey);
 
-	// use cached file
-	if(is_file($file) && $cacheEnabled){
-		include($file);
-	} 
-	// generate and use cached file
-	else {
-		ob_start(); // begin collecting output
-		include $fullpath;
-		$content = ob_get_clean(); // retrieve output, stop buffering
-		if($cacheEnabled){
-			file_put_contents($file, $content);
-		}
-		// print result
-		echo $content;
-	} 
+    // use cached file
+    if (is_file($file) && $cacheEnabled) {
+        include $file;
+    }
+    // generate and use cached file
+    else {
+        ob_start(); // begin collecting output
+        include $fullpath;
+        $content = ob_get_clean(); // retrieve output, stop buffering
+        if ($cacheEnabled) {
+            file_put_contents($file, $content);
+        }
+        // print result
+        echo $content;
+    }
 }
 
 /**
- * This function returns the output the result of a given function. The function will return a cached file when it exists. 
+ * This function returns the output the result of a given function. The function will return a cached file when it exists.
  * The given parameters will be used as the parameters of the given function, as well to define the deiveration of the cache file.
  *
  * @param [type] $functionName
  * @param array $parameters
  * @return void
  */
-function includecachedfunction($functionName, $parameters = []){
-	$cacheEnabled = c('cache-enabled') == 'enabled';
-	// define cache key by used path
-	$cacheKey = getCacheKeyByFileNameAndExtention($functionName, implode('----', $parameters));
-	$file = getCacheFileName($cacheKey);
-	
-	// use cached file
-	if(is_file($file) && $cacheEnabled){
-		include($file);
-	} 
-	// generate and use cached file
-	else {
-		ob_start(); // begin collecting output
-		call_user_func_array($functionName, $parameters);
-		$content = ob_get_clean(); // retrieve output, stop buffering
-		if($cacheEnabled){
-			file_put_contents($file, $content);
-		}
-		// print result
-		echo $content;
-	} 
+function includecachedfunction($functionName, $parameters = [])
+{
+    $cacheEnabled = c('cache-enabled') == 'enabled';
+    // define cache key by used path
+    $cacheKey = getCacheKeyByFileNameAndExtention($functionName, implode('----', $parameters));
+    $file     = getCacheFileName($cacheKey);
+
+    // use cached file
+    if (is_file($file) && $cacheEnabled) {
+        include $file;
+    }
+    // generate and use cached file
+    else {
+        ob_start(); // begin collecting output
+        call_user_func_array($functionName, $parameters);
+        $content = ob_get_clean(); // retrieve output, stop buffering
+        if ($cacheEnabled) {
+            file_put_contents($file, $content);
+        }
+        // print result
+        echo $content;
+    }
 }
 
 /**
@@ -75,13 +77,14 @@ function includecachedfunction($functionName, $parameters = []){
  * @param boolean $enableHashedCache
  * @return void
  */
-function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHashedCache = false){
-	$language = defined('ICL_LANGUAGE_CODE') && ICL_LANGUAGE_CODE && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : 'xx';
-	$baseFileName = str_replace('/', '--', str_replace('.php', '', $extention . '---' . $filename . '_' . $language));
-	if($enableHashedCache){
-		return hash(c('hashkey'), $baseFileName) . '.php';
-	}
-	return urlencode($baseFileName) . '.php';
+function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHashedCache = false)
+{
+    $language     = defined('ICL_LANGUAGE_CODE') && ICL_LANGUAGE_CODE && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : 'xx';
+    $baseFileName = str_replace('/', '--', str_replace('.php', '', $extention . '---' . $filename . '_' . $language));
+    if ($enableHashedCache) {
+        return hash(c('hashkey'), $baseFileName) . '.php';
+    }
+    return urlencode($baseFileName) . '.php';
 }
 
 /**
@@ -90,8 +93,9 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
  * @param [type] $cacheKey
  * @return void
  */
-function getCacheFileName($cacheKey){
-	return __DIR__ . '/../../cache/' . $cacheKey;
+function getCacheFileName($cacheKey)
+{
+    return __DIR__ . '/../../cache/' . $cacheKey;
 }
 
 /**
@@ -99,26 +103,45 @@ function getCacheFileName($cacheKey){
  *
  * @return void
  */
-function clearCustomCache(){
-	$files = glob(__DIR__ . '/../../cache/*'); // get all file names
-	foreach($files as $file){ // iterate files
-	if(is_file($file))
-		unlink($file); // delete file
-	}
+function clearCustomCache()
+{
+    $files = glob(__DIR__ . '/../../cache/*'); // get all file names
+    foreach ($files as $file) { // iterate files
+        if (is_file($file)) {
+            unlink($file);
+        }
+        // delete file
+    }
 }
 
 /**
- * This function returns a url to retreive a given front-end file, depending on the hash of the version of the system  
+ * This function returns a url to retreive a given front-end file, depending on the hash of the version of the system
  * and modification date of the file.
  *
  * @param [type] $path
  * @param boolean $echo
  * @return void
  */
-function getFrontEndFile($path, $echo = true){
-	$fileName = __DIR__ . '/../../' . $path;
-	$modificationTime = file_exists($fileName) ? filemtime($fileName) : '';
-	$fullPath = get_stylesheet_directory_uri() . $path . '?v=' . hash(c('hashkey'), c('version') . $modificationTime);
-	if($echo) echo $fullPath;
-	else return $fullPath;
+function getFrontEndFile($path, $echo = true)
+{
+    // skip caching for local frontend files
+    if (IsLocalEnvironment()) {
+        $fullPath = get_stylesheet_directory_uri() . $path;
+        if ($echo) {
+            echo $fullPath;
+            return;
+        } else {
+            return $fullPath;
+        }
+    }
+
+    $fileName         = __DIR__ . '/../../' . $path;
+    $modificationTime = file_exists($fileName) ? filemtime($fileName) : '';
+    $fullPath         = get_stylesheet_directory_uri() . $path . '?v=' . hash(c('hashkey'), c('version') . $modificationTime);
+    if ($echo) {
+        echo $fullPath;
+    } else {
+        return $fullPath;
+    }
+
 }
