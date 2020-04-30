@@ -40,7 +40,7 @@
 
     <?php includecached('parts/header/header-structured-data-info.php'); ?>
 
-    <?php includecached('parts/header/header-og-tags.php', ICL_LANGUAGE_CODE); ?>
+    <?php includecached('parts/header/header-og-tags.php', GetLocale()); ?>
 
     <meta name="wiver-version" content="<?php echo c('version'); ?>">
 

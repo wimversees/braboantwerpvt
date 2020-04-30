@@ -89,3 +89,11 @@ function c($key)
         return '---' . $key . '---';
     }
 }
+
+/**
+ * This function returns the local parameter, with taking in consideration the ICL_LANGUAGE_CODE parameter
+ */
+function GetLocale()
+{
+    return defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : c('default-locale');
+}

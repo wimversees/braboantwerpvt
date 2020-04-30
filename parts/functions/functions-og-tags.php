@@ -75,5 +75,5 @@ function get_og_description()
  */
 function get_og_locale()
 {
-    return defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : c('default-locale');
+    return GetLocale();
 }
