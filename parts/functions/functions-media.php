@@ -1,5 +1,10 @@
 <?php
 
+// If this file is called directly, abort.
+if (!defined('ABSPATH')) {
+    die();
+}
+
 // Register custom image sizes
 add_filter('jpeg_quality', function ($arg) {return 85;});
 add_filter('wp_editor_set_quality', function ($arg) {return 85;});
