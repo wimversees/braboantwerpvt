@@ -62,9 +62,10 @@ function getBreadCrumbItem($title, $url, $position, $isLastItem = false)
     $output = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
     $output .= '<a itemprop="item" href="' . $url . '" title="' . $title . '">';
     // shorten breadcrumb title for readability
-    $stripLength = 20;
-    if (!$isLastItem && strlen($title) > $stripLength) {
-        $pos = strpos($title, ' ', $stripLength);
+    $stripLength         = 20;
+    $stripLengthLastItem = 50;
+    if (strlen($title) > $stripLength) {
+        $pos = strpos($title, ' ', $isLastItem ? $stripLengthLastItem : $stripLength);
         if ($pos > 0) {
             $title = substr($title, 0, $pos) . '...';
         }
