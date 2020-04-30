@@ -100,7 +100,11 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
  */
 function getCacheFileName($cacheKey)
 {
-    return __DIR__ . '/../../cache/' . $cacheKey;
+    $cacheDirectory = __DIR__ . '/../../cache/';
+    if (!file_exists($cacheDirectory)) {
+        mkdir($cacheDirectory);
+    }
+    return $cacheDirectory . $cacheKey;
 }
 
 /**
