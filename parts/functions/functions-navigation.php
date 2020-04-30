@@ -181,6 +181,10 @@ if (!class_exists('WP_Bootstrap_Navwalker')) {
             $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args, $depth);
             $id = $id ? ' id="' . esc_attr($id) . '"' : '';
 
+            if (!property_exists($this, 'dropdown')) {
+                $this->dropdown = false;
+            }
+
             if (!$this->dropdown) {
                 if (strpos($class_names, 'dropdown') !== false) {
                     $output .= $indent . '<li' /*. $id*/ . $class_names . '>' . $n . $indent . $t;
@@ -311,7 +315,7 @@ if (!class_exists('WP_Bootstrap_Navwalker')) {
                 $n = "\n";
             }
 
-            $output .= $this->dropdown ? '' : str_repeat($t, $depth) . '</li>' . $n;
+            $output .= /*property_exists($this, 'dropdown') && */$this->dropdown ? '' : str_repeat($t, $depth) . '</li>' . $n;
         }
 
         /**
