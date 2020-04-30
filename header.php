@@ -40,7 +40,7 @@
 
     <?php includecached('parts/header/header-structured-data-info.php'); ?>
 
-    <?php includecached('parts/header/header-og-tags.php', GetLocale()); ?>
+    <?php includecached('parts/header/header-og-tags.php', get_the_ID()); ?>
 
     <meta name="wiver-version" content="<?php echo c('version'); ?>">
 
@@ -58,4 +58,4 @@ if (in_array($template, c('enable-wp-head-foot-slugs')) || is_user_logged_in()) 
         <?php include 'parts/header/header-navigation.php'; ?>
     </header>
 
-    <?php includecached('parts/header/header-breadcrumb.php'); ?>
+    <?php includecached('parts/header/header-breadcrumb.php', get_the_ID()); ?>
