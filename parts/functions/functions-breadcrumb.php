@@ -34,6 +34,7 @@ function wiver_breadcrumb()
     $position  = 1;
 
     $breadcrumb_output = '<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">';
+
     if (is_home() || is_front_page()) {
         // Do not show breadcrumbs on homepage or frontpage
         /* if (is_paged()) {
@@ -49,17 +50,25 @@ function wiver_breadcrumb()
             $breadcrumb_output .= getBreadCrumbItem(get_the_title($parent), get_the_permalink($parent), ++$position);
         }
 
-        $breadcrumb_output .= getBreadCrumbItem(get_the_title(get_the_ID()), get_the_permalink(get_the_ID()), ++$position);
+        $breadcrumb_output .= getBreadCrumbItem(get_the_title(get_the_ID()), get_the_permalink(get_the_ID()), ++$position, true);
     }
     $breadcrumb_output .= '</ul>';
 
     return $breadcrumb_output;
 }
 
-function getBreadCrumbItem($title, $url, $position)
+function getBreadCrumbItem($title, $url, $position, $isLastItem = false)
 {
     $output = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
     $output .= '<a itemprop="item" href="' . $url . '" title="' . $title . '">';
+    // shorten breadcrumb title for readability
+    $stripLength = 20;
+    if (!$isLastItem && strlen($title) > $stripLength) {
+        $pos = strpos($title, ' ', $stripLength);
+        if ($pos > 0) {
+            $title = substr($title, 0, $pos) . '...';
+        }
+    }
     $output .= '<span itemprop="name">' . $title . '</span></a>';
     $output .= '<meta itemprop="position" content="' . $position . '" />';
     $output .= '</li>';
