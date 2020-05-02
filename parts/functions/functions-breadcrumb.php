@@ -65,6 +65,7 @@ function getBreadCrumbItem($title, $url, $position, $isLastItem = false)
     $stripLength         = 20;
     $stripLengthLastItem = 50;
     if (strlen($title) > $stripLength) {
+        // search for space and split on first space after split length
         $pos = strpos($title, ' ', $isLastItem ? $stripLengthLastItem : $stripLength);
         if ($pos > 0) {
             $title = substr($title, 0, $pos) . '...';
