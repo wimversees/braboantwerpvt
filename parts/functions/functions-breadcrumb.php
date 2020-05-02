@@ -37,10 +37,6 @@ function wiver_breadcrumb()
 
     if (is_home() || is_front_page()) {
         // Do not show breadcrumbs on homepage or frontpage
-        /* if (is_paged()) {
-    $breadcrumb_output_link .= '<a href="' . $home_link . '">' . $home_text . '</a>';
-    $breadcrumb_output_link .= $page_addon;
-    }*/
     } else {
         $breadcrumb_output .= getBreadCrumbItem($home_text, $home_link, $position);
 
