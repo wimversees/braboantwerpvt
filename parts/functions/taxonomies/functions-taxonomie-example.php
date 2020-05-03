@@ -27,7 +27,7 @@ function add_example_taxonomy()
         'update_item'       => __('Update ' . $singularName, 'textdomain'),
         'add_new_item'      => __('Add New ' . $singularName, 'textdomain'),
         'new_item_name'     => __('New ' . $singularName, 'textdomain'),
-        'menu_name'         => __($singularName, 'textdomain'),
+        'menu_name'         => __($pluralName, 'textdomain'),
     );
 
     $args = array(
