@@ -25,3 +25,8 @@ add_theme_support('post-thumbnails');
 
 // post types
 //require_once 'parts/functions/post-types/functions-posttype-example.php';
+//flush_rewrite_rules()
+
+// taxonomies
+//require_once 'parts/functions/taxonomies/functions-taxonomie-example.php';
+//flush_rewrite_rules()

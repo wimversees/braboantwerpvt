@@ -55,5 +55,8 @@ function getConfig()
          'example'                   => 'example',
         'example-field'             => 'example-field',
         'example-other-field'       => 'example-other-field',
+
+        // custom taxonomy example-tax
+         'example-tax'               => 'example-tax',
     );
 }
