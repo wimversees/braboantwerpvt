@@ -50,5 +50,10 @@ function getConfig()
         'linkedin-link'             => 'w',
         'youtube-link'              => 'w',
         'flickr-link'               => 'w',
+
+        // custom posttype example
+         'example'                   => 'example',
+        'example-field'             => 'example-field',
+        'example-other-field'       => 'example-other-field',
     );
 }
