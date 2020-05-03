@@ -46,7 +46,7 @@ function add_example_taxonomy()
         ),
     );
 
-    register_taxonomy('genre', array('book'), $args);
+    register_taxonomy($taxonomyName, $enableOnPostTypes, $args);
 }
 
 add_action('init', 'add_example_taxonomy', 0);
