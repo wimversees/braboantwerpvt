@@ -10,32 +10,61 @@ if (!defined('ABSPATH')) {
  */
 function create_posttype_example()
 {
-    $postType = c('example');
+    $postType     = c('example');
+    $singularName = "Example";
+    $pluralName   = "Examples";
 
-    register_post_type($postType,
-        // CPT Options
-        array(
-            'labels'             => array(
-                'name'          => __('examples'),
-                'singular_name' => __($postType),
-            ),
-            'public'             => true, // default true, to use the post type on the FE of the website
-             'has_archive'        => true,
-            'rewrite'            => array('slug' => 'example'), // part of the url: blogurl/example/post_name
-             'show_in_rest'       => true,
-            'publicly_queryable' => true,
-            'show_in_nav_menus'  => false, // default $public, make selectable in menu
-        )
+    $singularNameLower = strtolower($singularName);
+    $pluralNameLower   = strtolower($pluralName);
+
+    $labels = array(
+        'name'                  => _x($pluralName, 'Post type general name', 'textdomain'),
+        'singular_name'         => _x($singularName, 'Post type singular name', 'textdomain'),
+        'menu_name'             => _x($pluralName, 'Admin Menu text', 'textdomain'),
+        'name_admin_bar'        => _x($singularName, 'Add New on Toolbar', 'textdomain'),
+        'add_new'               => __('Add New', 'textdomain'),
+        'add_new_item'          => __('Add New ' . $singularName, 'textdomain'),
+        'new_item'              => __('New ' . $singularName, 'textdomain'),
+        'edit_item'             => __('Edit ' . $singularName, 'textdomain'),
+        'view_item'             => __('View ' . $singularName, 'textdomain'),
+        'all_items'             => __('All ' . $pluralName, 'textdomain'),
+        'search_items'          => __('Search ' . $pluralName, 'textdomain'),
+        'parent_item_colon'     => __('Parent ' . $pluralName . ':', 'textdomain'),
+        'not_found'             => __('No ' . $pluralNameLower . ' found.', 'textdomain'),
+        'not_found_in_trash'    => __('No ' . $pluralNameLower . ' found in Trash.', 'textdomain'),
+        'archives'              => _x($singularName . ' archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
+        'insert_into_item'      => _x('Insert into ' . $singularName, 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
+        'uploaded_to_this_item' => _x('Uploaded to this ' . $singularName, 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
+        'filter_items_list'     => _x('Filter ' . $pluralNameLower . ' list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
+        'items_list_navigation' => _x($pluralName . ' list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
+        'items_list'            => _x($pluralName . ' list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
     );
 
-    // set author functionality for post type
     $postTypeSupports = array(
-        // 'author', // add author relation for post type
-        // 'excerpt', // add excerpt for post type
-        // 'thumbnail', // add featured image for post type
+        'title',
+        'editor',
+        'author',
+        //'thumbnail',
+        //'excerpt',
+        //'comments'
     );
-    // add featured image for post type
-    add_post_type_support($postType, $postTypeSupports);
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => $postType),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => $postTypeSupports,
+    );
+
+    register_post_type($postType, $args);
 
     // Add category metabox to post type
     register_taxonomy_for_object_type('category', $postType);
