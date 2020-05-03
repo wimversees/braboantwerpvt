@@ -51,6 +51,10 @@ function getConfig()
         'youtube-link'                               => 'w',
         'flickr-link'                                => 'w',
 
+        // permalink settings
+         'remove-taxonomy-name-from-permalinks'       => false, // if true, taxonomy names like %category% will be removed from the permalinks
+         'remove-taxonomy-from-permalinks-taxomies'   => array('category', 'post_tag', 'example-tax'), // if true, taxonomy names like %category% will be removed from the permalinks
+
         // taxonomy settings
          'taxonomy-save-parent-taxonomies'            => array('category', 'example-tax'), // save parent taxonomies for the selected one in the post
          'taxonomy-save-parent-taxonomies-post-types' => array('post', 'example'), // the post types to save parent taxonomies for

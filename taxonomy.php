@@ -1,11 +1,12 @@
-<?php get_header();?>
+<?php get_header(); ?>
 
-<?php while ( have_posts() ) : the_post(); ?>
+tax;
+<?php while (have_posts()): the_post(); ?>
 
 <?php the_content(); ?>
 
 <?php endwhile; ?>
 
-<?php get_sidebar();?>
+<?php get_sidebar(); ?>
 
-<?php get_footer();?>
+<?php get_footer(); ?>

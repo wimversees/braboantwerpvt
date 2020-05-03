@@ -19,6 +19,7 @@ require_once 'parts/functions/functions-sitemap.php';
 require_once 'parts/functions/functions-wpcf7.php';
 require_once 'parts/functions/functions-navigation.php';
 require_once 'parts/functions/functions-taxonomies.php';
+//require_once 'parts/functions/functions-permalinks.php';
 
 // theme supports
 add_theme_support('menus');
@@ -32,4 +33,4 @@ require_once 'parts/functions/post-types/functions-posttype-example.php';
 
 // taxonomies
 require_once 'parts/functions/taxonomies/functions-taxonomie-example.php';
-// flush_rewrite_rules();
+flush_rewrite_rules();
