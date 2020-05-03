@@ -28,8 +28,8 @@ add_theme_support('post-thumbnails');
 require_once 'parts/functions/post-types/functions-posttype-post.php';
 require_once 'parts/functions/post-types/functions-posttype-page.php';
 require_once 'parts/functions/post-types/functions-posttype-example.php';
-//flush_rewrite_rules()
+// flush_rewrite_rules();
 
 // taxonomies
 require_once 'parts/functions/taxonomies/functions-taxonomie-example.php';
-//flush_rewrite_rules()
+// flush_rewrite_rules();
