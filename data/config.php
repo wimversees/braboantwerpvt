@@ -15,6 +15,10 @@ function getConfig()
          'google-analytics-key'      => '', // notation: UA-131124377-1
          'google-maps-key'           => '', // notation: AIzaSyB_eoi3ppJF4kNz9yTBzsKCTQuokhnqRug
 
+        // search config
+         'search-enabled'            => false,
+        'search-page'               => get_the_permalink(gpid('page-search')) . '?q=',
+
         // address configuration
          'company-micro-data-type'   => 'LocalBusiness',
         'company-name'              => '',

@@ -39,6 +39,10 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
 
     <?php includecached('parts/header/header-structured-data-info.php'); ?>
+    <?php if (c('search-enabled')) {
+    includecached('parts/header/header-structured-data-searchbox.php');
+}
+?>
 
     <?php includecached('parts/header/header-og-tags.php', get_the_ID()); ?>
 
