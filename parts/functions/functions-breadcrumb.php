@@ -29,11 +29,11 @@ function wiver_breadcrumb()
 {
     global $post;
     // args
-    $home_text = get_the_title(gpid('page-home'));
+    $home_text = get_bloginfo('title'); // get_the_title(gpid('page-home'));
     $home_link = get_the_permalink(gpid('page-home'));
     $position  = 1;
 
-    $breadcrumb_output = '<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">';
+    $breadcrumb_output = '<ul class="breadcrumb justify-content-center" itemscope itemtype="http://schema.org/BreadcrumbList">';
     $breadcrumb_output .= getBreadCrumbItem($home_text, $home_link, $position);
 
     if (is_home() || is_front_page()) {
@@ -69,11 +69,10 @@ function getBreadCrumbItem($title, $url, $position, $isLastItem = false)
     $output = '<li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">';
     $output .= '<a itemprop="item" href="' . $url . '" title="' . $title . '">';
     // shorten breadcrumb title for readability
-    $stripLength         = 20;
-    $stripLengthLastItem = 50;
+    $stripLength = $isLastItem ? 50 : 20;
     if (strlen($title) > $stripLength) {
         // search for space and split on first space after split length
-        $pos = strpos($title, ' ', $isLastItem ? $stripLengthLastItem : $stripLength);
+        $pos = strpos($title, ' ', $stripLength);
         if ($pos > 0) {
             $title = substr($title, 0, $pos) . '...';
         }
