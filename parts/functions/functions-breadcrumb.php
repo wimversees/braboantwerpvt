@@ -34,20 +34,31 @@ function wiver_breadcrumb()
     $position  = 1;
 
     $breadcrumb_output = '<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">';
+    $breadcrumb_output .= getBreadCrumbItem($home_text, $home_link, $position);
 
     if (is_home() || is_front_page()) {
         // Do not show breadcrumbs on homepage or frontpage
+    } elseif (is_tax() || is_category() || is_tag()) {
+        $term         = get_queried_object();
+        $parrentTerms = array();
+        $parent       = $term->parent;
+        while ($parent) {
+            $parentTerm     = get_term($parent, $term->taxonomy);
+            $parrentTerms[] = $parentTerm;
+            $parent         = $parentTerm->parent;
+        }
+        foreach (array_reverse($parrentTerms) as $parentTerm) {
+            $breadcrumb_output .= getBreadCrumbItem($parentTerm->name, get_term_link($parentTerm), ++$position);
+        }
+        $breadcrumb_output .= getBreadCrumbItem($term->name, get_term_link($term), ++$position, true);
     } else {
-        $breadcrumb_output .= getBreadCrumbItem($home_text, $home_link, $position);
-
         $parentsOfCurrentpage = array_reverse(get_post_ancestors($post));
-
         foreach ($parentsOfCurrentpage as $parent) {
             $breadcrumb_output .= getBreadCrumbItem(get_the_title($parent), get_the_permalink($parent), ++$position);
         }
-
         $breadcrumb_output .= getBreadCrumbItem(get_the_title(get_the_ID()), get_the_permalink(get_the_ID()), ++$position, true);
     }
+
     $breadcrumb_output .= '</ul>';
 
     return $breadcrumb_output;
