@@ -25,9 +25,19 @@ function create_sitemap()
  */
 function SaveSitemap($name, $sitemapContent)
 {
+    $cleanContent = GetCleanSitemapContent($sitemapContent);
     $fp = fopen(ABSPATH . $name, 'w');
-    fwrite($fp, $sitemapContent);
+    fwrite($fp, $cleanContent);
     fclose($fp);
+}
+
+/**
+ * This function cleans and formats the given sitemap content
+ */
+function GetCleanSitemapContent($sitemapContent){
+    $sitemapContent = str_replace('&', '&amp;', $sitemapContent);
+    $sitemapContent = iconv('UTF-8','ISO-8859-1//TRANSLIT//IGNORE', $sitemapContent);
+    return $sitemapContent;
 }
 
 /**
