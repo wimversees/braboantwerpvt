@@ -21,6 +21,9 @@ require_once 'parts/functions/functions-navigation.php';
 require_once 'parts/functions/functions-taxonomies.php';
 require_once 'parts/functions/functions-permalinks.php';
 
+// admin pages
+require_once 'parts/functions/admin/functions-admin-toolbox.php';
+
 // theme supports
 add_theme_support('menus');
 add_theme_support('post-thumbnails');
