@@ -37,7 +37,7 @@ function getConfig()
         // sitemap settings
          'sitemap-post-types'                         => array('page', 'post'),
         'sitemap-taxonomies'                         => array('category', 'example-tax'),
-        'sitemap-use-splitted-structure'             => false,
+        'sitemap-use-splitted-structure'             => true,
 
         // wp_head, wp_footer settings
          'enable-wp-head-foot-slugs'                  => array('page-contact.php'),

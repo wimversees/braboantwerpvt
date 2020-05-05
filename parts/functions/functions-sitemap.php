@@ -41,7 +41,7 @@ function CreateDividedSitemaps($sitemapName = 'sitemap.xml')
     // generate sub sitemaps by post type
     foreach (c('sitemap-post-types') as $postType) {
         $subSitemapName = 'sitemap_' . $postType . '.xml';
-        $sitemap = GetSitemapXmlHeader();
+        $sitemap        = GetSitemapXmlHeader();
         $sitemap .= GetSingleSitemapHeader();
         $sitemap .= GetSitemapContentForPostType($postType);
         $sitemap .= GetSingleSitemapFooter();
@@ -52,7 +52,7 @@ function CreateDividedSitemaps($sitemapName = 'sitemap.xml')
     // generate sub sitemaps by taxonomy
     foreach (c('sitemap-taxonomies') as $termType) {
         $subSitemapName = 'sitemap_' . $termType . '.xml';
-        $sitemap = GetSitemapXmlHeader();
+        $sitemap        = GetSitemapXmlHeader();
         $sitemap .= GetSingleSitemapHeader();
         $sitemap .= GetSitemapContentForTaxonomy($termType);
         $sitemap .= GetSingleSitemapFooter();
@@ -92,7 +92,8 @@ function GetSitemapContentForPostType($postType)
     $sitemap = '';
     $args    = array(
         'numberposts' => -1,
-        'post_type'   => $postType,
+        'post_status' => 'publish', // add explicit publish state to fix draft statusses because sitemap is generated when a user is logged in
+         'post_type'   => $postType,
         'orderby'     => 'modified',
         'order'       => 'DESC',
     );
@@ -133,7 +134,7 @@ function GetSitemapContentForTaxonomy($taxonomyType)
  */
 function GetSingleSitemapHeader()
 {
-    return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
+    return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
 }
 
 /**
@@ -182,8 +183,15 @@ function GetSitemapSingleTaxonomy($term, $frequency = 'daily')
  */
 function GetSitemapSinglePost($post, $frequency = 'monthly')
 {
-    $postdate = explode(" ", $post->post_modified);
-    return GetSitemapSingleItem(get_permalink($post->ID), $postdate[0], $frequency);
+    $postdate       = explode(" ", $post->post_modified);
+    $sitemapContent = GetSitemapSingleItem(get_permalink($post->ID), $postdate[0], $frequency);
+    // add featured image as image sitemap
+    if (has_post_thumbnail($post->ID)) {
+        $imageTitle     = $post->post_title;
+        $imageUrl       = get_the_post_thumbnail_url($post->ID);
+        $sitemapContent = str_replace('</url>', GetSitemapSingleImage($imageUrl, $imageTitle) . '</url>', $sitemapContent);
+    }
+    return $sitemapContent;
 }
 
 /**
@@ -197,6 +205,24 @@ function GetSitemapSingleItem($url, $date, $frequency = 'monthly', $priority = 0
         '<changefreq>' . $frequency . '</changefreq>' .
         '<priority>' . $priority . '</priority>' .
         '</url>';
+}
+
+/**
+ * This function returns the image sitemap string for a given imageUrl, title and geolocation.
+ */
+function GetSitemapSingleImage($imageUrl, $title, $geoLocation = '', $caption = '')
+{
+    $caption      = strlen($caption) > 0 ? $caption : $title;
+    $imageSitemap = '<image:image>' .
+        '<image:loc>' . $imageUrl . '</image:loc>' .
+        '<image:title>' . $title . '</image:title>' .
+        '<image:caption>' . $caption . '</image:caption>';
+    if (strlen($geoLocation) > 0) {
+        $imageSitemap .= '<image:geo_location>' . $geoLocation . '</image:geo_location>';
+    }
+
+    $imageSitemap .= '</image:image>';
+    return $imageSitemap;
 }
 
 /**
