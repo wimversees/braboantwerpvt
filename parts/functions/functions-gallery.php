@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
     die();
 }
 
-add_filter('post_gallery', 'customFormatGallery', 10, 2);
+remove_shortcode('gallery', 'gallery_shortcode');
+add_shortcode('gallery', 'customFormatGallery');
 add_filter('use_default_gallery_style', '__return_false');
 
 function customFormatGallery($string, $attr)
