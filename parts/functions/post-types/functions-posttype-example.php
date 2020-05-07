@@ -5,14 +5,26 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+$examplePostTypeConfig = new PostTypeConfig(
+    c('example'),
+    "Example",
+    "Examples",
+    array(
+        new FieldConfig(FieldType::SingleLineText, 'test-field', 'test field label'),
+        new FieldConfig(FieldType::SingleLineText, 'test-field-2', 'test field label 2'),
+    )
+);
+
 /**
  * Register Post Type example
  */
 function create_posttype_example()
 {
-    $postType     = c('example');
-    $singularName = "Example";
-    $pluralName   = "Examples";
+    global $examplePostTypeConfig;
+
+    $postType     = $examplePostTypeConfig->postType;
+    $singularName = $examplePostTypeConfig->singularName;
+    $pluralName   = $examplePostTypeConfig->pluralName;
 
     $singularNameLower = strtolower($singularName);
     $pluralNameLower   = strtolower($pluralName);
@@ -32,12 +44,12 @@ function create_posttype_example()
         'parent_item_colon'     => __('Parent ' . $pluralName . ':', 'textdomain'),
         'not_found'             => __('No ' . $pluralNameLower . ' found.', 'textdomain'),
         'not_found_in_trash'    => __('No ' . $pluralNameLower . ' found in Trash.', 'textdomain'),
-        'archives'              => _x($singularName . ' archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'textdomain'),
-        'insert_into_item'      => _x('Insert into ' . $singularName, 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
-        'uploaded_to_this_item' => _x('Uploaded to this ' . $singularName, 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
-        'filter_items_list'     => _x('Filter ' . $pluralNameLower . ' list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'textdomain'),
-        'items_list_navigation' => _x($pluralName . ' list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'textdomain'),
-        'items_list'            => _x($pluralName . ' list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'textdomain'),
+        'archives'              => _x($singularName . ' archives', 'The post type archive label used in nav menus. Default "Post Archives". Added in 4.4', 'textdomain'),
+        'insert_into_item'      => _x('Insert into ' . $singularName, 'Overrides the "Insert into post"/"Insert into page" phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
+        'uploaded_to_this_item' => _x('Uploaded to this ' . $singularName, 'Overrides the "Uploaded to this post"/"Uploaded to this page" phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
+        'filter_items_list'     => _x('Filter ' . $pluralNameLower . ' list', 'Screen reader text for the filter links heading on the post type listing screen. Default "Filter posts list"/"Filter pages list". Added in 4.4', 'textdomain'),
+        'items_list_navigation' => _x($pluralName . ' list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default "Posts list navigation"/"Pages list navigation". Added in 4.4', 'textdomain'),
+        'items_list'            => _x($pluralName . ' list', 'Screen reader text for the items list heading on the post type listing screen. Default "Posts list"/"Pages list". Added in 4.4', 'textdomain'),
     );
 
     $postTypeSupports = array(
@@ -77,12 +89,14 @@ add_action('init', 'create_posttype_example');
 
 function example_metaboxes()
 {
-    $postType      = c('example');
+    global $examplePostTypeConfig;
+    $postType      = $examplePostTypeConfig->postType;
     $postTypeViews = [$postType];
+    $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
     foreach ($postTypeViews as $postTypeView) {
         add_meta_box(
             'example_metabox', // Unique ID
-             'example Meta Box Title', // Box title
+            $metaBoxTitle, // Box title
              'example_metabox_html', // Content callback, must be of type callable
             $postTypeView // Post type
         );
@@ -92,48 +106,23 @@ add_action('add_meta_boxes', 'example_metaboxes');
 
 function example_metabox_html($post)
 {
-    $value = get_post_meta($post->ID, c('example-field'), true);
-    echo $value;
-    ?>
-<div class="row">
-    <div class="col-6">
-        <label for="<?php echo c('example-field'); ?>">Description for this field</label>
-    </div>
-    <div class="col-6">
-        <select name="<?php echo c('example-field'); ?>" id="<?php echo c('example-field'); ?>" class="postbox">
-            <option value="">Select something...</option>
-            <option value="something" <?php selected($value, 'something'); ?>>Something</option>
-            <option value="else" <?php selected($value, 'else'); ?>>Else</option>
-        </select>
-    </div>
-    <div class="col-6">
-        <?php
-$valueOther = get_post_meta($post->ID, c('example-other-field'), true);
-    echo $valueOther; ?>
-        <label for="<?php echo c('example-other-field'); ?>">Description for other field</label>
-    </div>
-    <div class="col-6">
-        <input name="<?php echo c('example-other-field'); ?>" id="<?php echo c('example-other-field'); ?>" value="<?php echo $valueOther; ?>" />
-    </div>
-</div>
-<?php
+    global $examplePostTypeConfig;
+    echo '<div class="wiver-fields">';
+    echo '<table>';
+    foreach ($examplePostTypeConfig->fields as $field) {
+        SingleLineTextField($post, $field);
+    }
+    echo '</table>';
+    echo '</div>';
 }
 
 function example_save_postdata($post_id)
 {
-    if (array_key_exists(c('example-field'), $_POST)) {
-        update_post_meta(
-            $post_id,
-            c('example-field'),
-            $_POST[c('example-field')]
-        );
-    }
-    if (array_key_exists(c('example-other-field'), $_POST)) {
-        update_post_meta(
-            $post_id,
-            c('example-other-field'),
-            $_POST[c('example-other-field')]
-        );
+    global $examplePostTypeConfig;
+    foreach ($examplePostTypeConfig->fields as $field) {
+        if (array_key_exists($field->fieldSlug, $_POST)) {
+            saveField($post_id, $field->fieldSlug, $field->fieldType);
+        }
     }
 }
 add_action('save_post', 'example_save_postdata');

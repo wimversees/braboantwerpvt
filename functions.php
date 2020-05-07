@@ -20,13 +20,19 @@ require_once 'parts/functions/functions-wpcf7.php';
 require_once 'parts/functions/functions-navigation.php';
 require_once 'parts/functions/functions-taxonomies.php';
 require_once 'parts/functions/functions-permalinks.php';
+require_once 'parts/functions/admin/functions-admin.php';
 
 // admin pages
-require_once 'parts/functions/admin/functions-admin-toolbox.php';
+require_once 'parts/functions/admin/toolbox/functions-admin-toolbox.php';
 
 // theme supports
 add_theme_support('menus');
 add_theme_support('post-thumbnails');
+
+// post types init
+require_once 'parts/functions/admin/fields/config/field-config-class.php';
+require_once 'parts/functions/post-types/config/posttype-config-class.php';
+require_once 'parts/functions/admin/fields/functions-fields.php';
 
 // post types
 require_once 'parts/functions/post-types/functions-posttype-post.php';
@@ -35,5 +41,5 @@ require_once 'parts/functions/post-types/functions-posttype-example.php';
 // flush_rewrite_rules();
 
 // taxonomies
-require_once 'parts/functions/taxonomies/functions-taxonomie-example.php';
+require_once 'parts/functions/taxonomies/functions-taxonomy-example.php';
 flush_rewrite_rules();

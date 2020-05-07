@@ -26,6 +26,23 @@ gulp.task('sass', function () {
             })
         )
         .pipe(gulp.dest('./design/src/docs/design/css'));
+}); 
+
+gulp.task('admin-sass', function () {
+    return gulp.src('./parts/functions/admin/design/src/scss/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({            
+                overrideBrowserslist: ['last 2 versions', 'ie >= 8', 'ios >= 8'],
+                cascade: false
+            }
+        ))
+        .pipe(
+            sourcemaps.write({
+                sourceRoot: './parts/functions/admin/design/src/scss/'
+            })
+        )
+        .pipe(gulp.dest('./parts/functions/admin/design/css/'));
 });
  
 gulp.task('css-dev', function () {
@@ -95,12 +112,13 @@ gulp.task('javascript-applib', function(){
         .pipe(gulp.dest('./design/js/'));
 });
 
-gulp.task('run', gulp.series(['sass', 'css', 'css-dev', 'javascript-lib', 'javascript-lib-dev', 'javascript-applib', 'javascript-applib-dev']));
+gulp.task('run', gulp.series(['sass', 'admin-sass', 'css', 'css-dev', 'javascript-lib', 'javascript-lib-dev', 'javascript-applib', 'javascript-applib-dev']));
 
 gulp.task('watch', function(){
     // css watchers
     gulp.watch('./design/src/app/design/**/*.scss', gulp.series(['sass']));
     gulp.watch('./design/src/docs/design/css/**/*.css', gulp.series(['css', 'css-dev']));
+    gulp.watch('./parts/functions/admin/design/**/*.scss', gulp.series(['admin-sass']));
     // js watchers
     gulp.watch('./design/src/app/design/js/lib/**/*.js', gulp.series(['javascript-lib', 'javascript-lib-dev']));
     gulp.watch('./design/src/app/design/js/app/**/*.js', gulp.series(['javascript-applib', 'javascript-applib-dev']));

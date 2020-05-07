@@ -1,0 +1,10 @@
+.wiver-fields table {
+  width: 100%;
+  border-collapse: collapse; }
+  .wiver-fields table tr:nth-child(even) {
+    background-color: #f9f9f9; }
+  .wiver-fields table td,
+  .wiver-fields table th {
+    padding: 0.25rem 1rem; }
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZpZWxkcy9maWVsZHMuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUVRLFdBQVc7RUFDWCx5QkFBeUIsRUFBQTtFQUhqQztJQU1ZLHlCQUF5QixFQUFBO0VBTnJDOztJQVdZLHFCQUFxQixFQUFBIiwiZmlsZSI6ImZpZWxkcy9maWVsZHMuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLndpdmVyLWZpZWxkcyB7XHJcbiAgICB0YWJsZSB7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcclxuXHJcbiAgICAgICAgdHI6bnRoLWNoaWxkKGV2ZW4pIHtcclxuICAgICAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogI2Y5ZjlmOTtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIHRkLFxyXG4gICAgICAgIHRoIHtcclxuICAgICAgICAgICAgcGFkZGluZzogMC4yNXJlbSAxcmVtO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxufSJdLCJzb3VyY2VSb290IjoiLi9wYXJ0cy9mdW5jdGlvbnMvYWRtaW4vZGVzaWduL3NyYy9zY3NzLyJ9 */

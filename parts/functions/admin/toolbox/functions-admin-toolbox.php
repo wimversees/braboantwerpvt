@@ -65,24 +65,6 @@ function WiverAdminToolbox()
         </table>
         <?php submit_button("Execute"); ?>
         </form>
-    </div>
-    <style>
-    .alert {
-        position: relative;
-        padding: 0.75rem 1.25rem;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-    }
-    .alert-warning {
-        color: #856f00;
-        background-color: #fff7cc;
-        border-color: #fff3b8;
-    }
-    .alert-success {
-        color: #306030;
-        background-color: #def1de;
-        border-color: #d1ebd1;
-    }
-    </style>
+    </div>    
 	<?php
 }
