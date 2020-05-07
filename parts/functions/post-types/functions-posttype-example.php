@@ -90,11 +90,13 @@ add_action('init', 'create_posttype_example');
 function example_metaboxes()
 {
     global $examplePostTypeConfig;
-    $postType      = $examplePostTypeConfig->postType;
-    $postTypeViews = [$postType];
-    $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
-    foreach ($postTypeViews as $postTypeView) {
-        add_meta_box('example_metabox', $metaBoxTitle, 'example_metabox_html', $postTypeView);
+    if ($examplePostTypeConfig->fields) {
+        $postType      = $examplePostTypeConfig->postType;
+        $postTypeViews = [$postType];
+        $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
+        foreach ($postTypeViews as $postTypeView) {
+            add_meta_box('example_metabox', $metaBoxTitle, 'example_metabox_html', $postTypeView);
+        }
     }
 }
 add_action('add_meta_boxes', 'example_metaboxes');

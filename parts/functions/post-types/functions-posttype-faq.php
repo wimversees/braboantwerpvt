@@ -89,16 +89,18 @@ add_action('init', 'create_posttype_faq');
 function faq_metaboxes()
 {
     global $faqPostTypeConfig;
-    $postType      = $faqPostTypeConfig->postType;
-    $postTypeViews = [$postType];
-    $metaBoxTitle  = $faqPostTypeConfig->singularName . ' Fields';
-    foreach ($postTypeViews as $postTypeView) {
-        add_meta_box(
-            'faq_metabox', // Unique ID
-            $metaBoxTitle, // Box title
-             'faq_metabox_html', // Content callback, must be of type callable
-            $postTypeView // Post type
-        );
+    if ($faqPostTypeConfig->fields) {
+        $postType      = $faqPostTypeConfig->postType;
+        $postTypeViews = [$postType];
+        $metaBoxTitle  = $faqPostTypeConfig->singularName . ' Fields';
+        foreach ($postTypeViews as $postTypeView) {
+            add_meta_box(
+                'faq_metabox', // Unique ID
+                $metaBoxTitle, // Box title
+                 'faq_metabox_html', // Content callback, must be of type callable
+                $postTypeView // Post type
+            );
+        }
     }
 }
 add_action('add_meta_boxes', 'faq_metaboxes');
