@@ -11,7 +11,7 @@ $examplePostTypeConfig = new PostTypeConfig(
     "Examples",
     array(
         new FieldConfig(FieldType::SingleLineText, c('example-field'), 'test field label'),
-        new FieldConfig(FieldType::SingleLineText, c('example-other-field'), 'test field label 2'),
+        new FieldConfig(FieldType::Checkbox, c('example-other-field'), 'test field label 2'),
     )
 );
 
@@ -94,12 +94,7 @@ function example_metaboxes()
     $postTypeViews = [$postType];
     $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
     foreach ($postTypeViews as $postTypeView) {
-        add_meta_box(
-            'example_metabox', // Unique ID
-            $metaBoxTitle, // Box title
-             'example_metabox_html', // Content callback, must be of type callable
-            $postTypeView // Post type
-        );
+        add_meta_box('example_metabox', $metaBoxTitle, 'example_metabox_html', $postTypeView);
     }
 }
 add_action('add_meta_boxes', 'example_metaboxes');
@@ -110,7 +105,7 @@ function example_metabox_html($post)
     echo '<div class="wiver-fields">';
     echo '<table>';
     foreach ($examplePostTypeConfig->fields as $field) {
-        SingleLineTextField($post, $field);
+        renderField($post, $field);
     }
     echo '</table>';
     echo '</div>';
@@ -120,9 +115,7 @@ function example_save_postdata($post_id)
 {
     global $examplePostTypeConfig;
     foreach ($examplePostTypeConfig->fields as $field) {
-        if (array_key_exists($field->fieldSlug, $_POST)) {
-            saveField($post_id, $field->fieldSlug, $field->fieldType);
-        }
+        saveField($post_id, $field->fieldSlug, $field->fieldType);
     }
 }
 add_action('save_post', 'example_save_postdata');

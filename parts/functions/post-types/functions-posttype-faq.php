@@ -10,7 +10,7 @@ $faqPostTypeConfig = new PostTypeConfig(
     "Faq",
     "Faqs",
     array(
-        new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq')
+        new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq'),
     )
 );
 
@@ -119,9 +119,7 @@ function faq_save_postdata($post_id)
 {
     global $faqPostTypeConfig;
     foreach ($faqPostTypeConfig->fields as $field) {
-        if (array_key_exists($field->fieldSlug, $_POST)) {
-            saveField($post_id, $field->fieldSlug, $field->fieldType);
-        }
+        saveField($post_id, $field->fieldSlug, $field->fieldType);
     }
 }
 add_action('save_post', 'faq_save_postdata');

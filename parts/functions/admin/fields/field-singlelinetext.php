@@ -6,14 +6,13 @@ if (!defined('ABSPATH')) {
 }
 
 /**
- * This function generated a single line text field for admin views, it also handles the save action of this field
+ * This function generated a single line text field for admin views
  */
 function SingleLineTextField($post, $fieldConfig)
 {
-    $fieldSlug = $fieldConfig->fieldSlug;
+    $fieldSlug  = $fieldConfig->fieldSlug;
     $fieldLabel = $fieldConfig->fieldLabel;
 
-    //SaveSingleLineText($post->ID, $fieldSlug);
     $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
     RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue);
 }
@@ -30,4 +29,9 @@ function RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue)
         </td>
     </tr>
     <?php
+}
+
+function SaveSingleLineText($post_id, $fieldSlug)
+{
+    update_post_meta($post_id, $fieldSlug, $_POST[$fieldSlug]);
 }
