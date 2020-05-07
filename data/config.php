@@ -66,6 +66,10 @@ function getConfig()
         'example-field'                              => 'example-field',
         'example-other-field'                        => 'example-other-field',
 
+        // custom posttype faq
+        //  'faq'                                        => 'faq',
+        // 'faq-field'                                  => 'faq-field',
+
         // custom taxonomy example-tax
          'example-tax'                                => 'example-tax',
     );

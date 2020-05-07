@@ -5,26 +5,25 @@ if (!defined('ABSPATH')) {
     die();
 }
 
-$examplePostTypeConfig = new PostTypeConfig(
-    c('example'),
-    "Example",
-    "Examples",
+$faqPostTypeConfig = new PostTypeConfig(
+    c('faq'),
+    "Faq",
+    "Faqs",
     array(
-        new FieldConfig(FieldType::SingleLineText, c('example-field'), 'test field label'),
-        new FieldConfig(FieldType::SingleLineText, c('example-other-field'), 'test field label 2'),
+        new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq')
     )
 );
 
 /**
- * Register Post Type example
+ * Register Post Type faq
  */
-function create_posttype_example()
+function create_posttype_faq()
 {
-    global $examplePostTypeConfig;
+    global $faqPostTypeConfig;
 
-    $postType     = $examplePostTypeConfig->postType;
-    $singularName = $examplePostTypeConfig->singularName;
-    $pluralName   = $examplePostTypeConfig->pluralName;
+    $postType     = $faqPostTypeConfig->postType;
+    $singularName = $faqPostTypeConfig->singularName;
+    $pluralName   = $faqPostTypeConfig->pluralName;
 
     $singularNameLower = strtolower($singularName);
     $pluralNameLower   = strtolower($pluralName);
@@ -85,44 +84,44 @@ function create_posttype_example()
 /**
  * The actual register of the posttype
  */
-add_action('init', 'create_posttype_example');
+add_action('init', 'create_posttype_faq');
 
-function example_metaboxes()
+function faq_metaboxes()
 {
-    global $examplePostTypeConfig;
-    $postType      = $examplePostTypeConfig->postType;
+    global $faqPostTypeConfig;
+    $postType      = $faqPostTypeConfig->postType;
     $postTypeViews = [$postType];
-    $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
+    $metaBoxTitle  = $faqPostTypeConfig->singularName . ' Fields';
     foreach ($postTypeViews as $postTypeView) {
         add_meta_box(
-            'example_metabox', // Unique ID
+            'faq_metabox', // Unique ID
             $metaBoxTitle, // Box title
-             'example_metabox_html', // Content callback, must be of type callable
+             'faq_metabox_html', // Content callback, must be of type callable
             $postTypeView // Post type
         );
     }
 }
-add_action('add_meta_boxes', 'example_metaboxes');
+add_action('add_meta_boxes', 'faq_metaboxes');
 
-function example_metabox_html($post)
+function faq_metabox_html($post)
 {
-    global $examplePostTypeConfig;
+    global $faqPostTypeConfig;
     echo '<div class="wiver-fields">';
     echo '<table>';
-    foreach ($examplePostTypeConfig->fields as $field) {
+    foreach ($faqPostTypeConfig->fields as $field) {
         SingleLineTextField($post, $field);
     }
     echo '</table>';
     echo '</div>';
 }
 
-function example_save_postdata($post_id)
+function faq_save_postdata($post_id)
 {
-    global $examplePostTypeConfig;
-    foreach ($examplePostTypeConfig->fields as $field) {
+    global $faqPostTypeConfig;
+    foreach ($faqPostTypeConfig->fields as $field) {
         if (array_key_exists($field->fieldSlug, $_POST)) {
             saveField($post_id, $field->fieldSlug, $field->fieldType);
         }
     }
 }
-add_action('save_post', 'example_save_postdata');
+add_action('save_post', 'faq_save_postdata');

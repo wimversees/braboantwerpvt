@@ -38,6 +38,7 @@ require_once 'parts/functions/admin/fields/functions-fields.php';
 require_once 'parts/functions/post-types/functions-posttype-post.php';
 require_once 'parts/functions/post-types/functions-posttype-page.php';
 require_once 'parts/functions/post-types/functions-posttype-example.php';
+// require_once 'parts/functions/post-types/functions-posttype-faq.php';
 // flush_rewrite_rules();
 
 // taxonomies
