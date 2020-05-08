@@ -51,3 +51,14 @@ function renderField($post, $field)
             break;
     }
 }
+
+function renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment = '', $required = false)
+{
+    ?>
+<label for="<?php echo $fieldSlug; ?>"><?php echo $fieldLabel;
+    echo $required ? ' * ' : ''; ?></label>
+<?php if (strlen($fieldComment) > 0) { ?>
+<p class="field-comment"><?php echo $fieldComment; ?></p>
+<?php
+}
+}

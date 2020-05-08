@@ -10,20 +10,21 @@ if (!defined('ABSPATH')) {
  */
 function UrlField($post, $fieldConfig)
 {
-    $fieldSlug  = $fieldConfig->fieldSlug;
-    $fieldLabel = $fieldConfig->fieldLabel;
-    $required   = $fieldConfig->required;
+    $fieldSlug    = $fieldConfig->fieldSlug;
+    $fieldLabel   = $fieldConfig->fieldLabel;
+    $required     = $fieldConfig->required;
+    $fieldComment = $fieldConfig->fieldComment;
 
     $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
-    RenderUrl($fieldSlug, $fieldLabel, $fieldValue, $required);
+    RenderUrl($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment);
 }
 
-function RenderUrl($fieldSlug, $fieldLabel, $fieldValue, $required)
+function RenderUrl($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment)
 {
     ?>
 <tr>
     <th>
-        <label for="<?php echo $fieldSlug; ?>"><?php echo $fieldLabel; ?></label>
+        <?php renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment, $required); ?>
     </th>
     <td>
         <input type="url" name="<?php echo $fieldSlug; ?>" id="<?php echo $fieldSlug; ?>" value="<?php echo $fieldValue; ?>"

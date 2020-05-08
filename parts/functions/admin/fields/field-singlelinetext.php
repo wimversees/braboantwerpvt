@@ -10,20 +10,21 @@ if (!defined('ABSPATH')) {
  */
 function SingleLineTextField($post, $fieldConfig)
 {
-    $fieldSlug  = $fieldConfig->fieldSlug;
-    $fieldLabel = $fieldConfig->fieldLabel;
-    $required   = $fieldConfig->required;
+    $fieldSlug    = $fieldConfig->fieldSlug;
+    $fieldLabel   = $fieldConfig->fieldLabel;
+    $required     = $fieldConfig->required;
+    $fieldComment = $fieldConfig->fieldComment;
 
     $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
-    RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue, $required);
+    RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment);
 }
 
-function RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue, $required)
+function RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment)
 {
     ?>
 <tr>
     <th>
-        <label for="<?php echo $fieldSlug; ?>"><?php echo $fieldLabel; ?></label>
+        <?php renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment, $required); ?>
     </th>
     <td>
         <input name="<?php echo $fieldSlug; ?>" id="<?php echo $fieldSlug; ?>" value="<?php echo $fieldValue; ?>"
