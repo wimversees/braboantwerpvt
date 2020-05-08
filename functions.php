@@ -39,8 +39,11 @@ require_once 'parts/functions/post-types/functions-posttype-post.php';
 require_once 'parts/functions/post-types/functions-posttype-page.php';
 require_once 'parts/functions/post-types/functions-posttype-example.php';
 // require_once 'parts/functions/post-types/functions-posttype-faq.php';
-// flush_rewrite_rules();
 
 // taxonomies
 require_once 'parts/functions/taxonomies/functions-taxonomy-example.php';
-flush_rewrite_rules();
+
+// flush rewrite rules on local environment
+if (IsLocalEnvironment()) {
+    flush_rewrite_rules();
+}
