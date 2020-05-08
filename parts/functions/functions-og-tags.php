@@ -25,7 +25,7 @@ function get_og_image()
 
     }
     // default image
-    return get_stylesheet_directory_uri() . c('default-og-image');
+    return getFrontEndFile(c('default-og-image'), false);
 }
 
 /**
