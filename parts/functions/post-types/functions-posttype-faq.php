@@ -10,7 +10,7 @@ $faqPostTypeConfig = new PostTypeConfig(
     "Faq",
     "Faqs",
     array(
-        new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq'),
+        new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq', true),
     )
 );
 
