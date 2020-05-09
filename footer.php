@@ -77,7 +77,7 @@ wp_nav_menu(array(
     </div>
 </footer>
 
-<script async src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/lib.js' : '/design/js/lib-dev.js'); ?>" type="text/javascript"></script>
+<script src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/lib.js' : '/design/js/lib-dev.js'); ?>" type="text/javascript"></script>
 <script async src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/applib.js' : '/design/js/applib-dev.js'); ?>" type="text/javascript">
 </script>
 
