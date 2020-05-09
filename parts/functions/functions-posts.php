@@ -15,16 +15,36 @@ function page_title()
     $default = get_bloginfo('name') . ' - ' . get_bloginfo('description');
     if (is_home() || is_front_page()) {
         echo $default;
+        return;
+    }
+    echo GetPageTitleH1() . ' - ' . $default;
+}
+
+/**
+ * This function returns the h1 title of the current page, according to the type of page
+ */
+function GetPageTitleH1()
+{
+    if (is_home() || is_front_page()) {
+        // Do not return title
+    } elseif (is_single()) {
+        return get_the_title(get_the_ID());
+    } elseif (is_author()) {
+        global $author;
+        $userdata = get_userdata($author);
+        return $userdata->data->user_nicename;
+    } elseif (is_archive() && !is_tax() && !is_category() && !is_tag()) {
+        $archive = get_queried_object();
+        return $archive->label;
+    } elseif (is_tax() || is_category() || is_tag()) {
+        $term = get_queried_object();
+        return $term->name;
+    } elseif (is_search()) {
+        return sprintf(t('search-breadcrumb-title', false), get_search_query());
     } elseif (is_404()) {
-        echo t('404-title') . ' - ' . $default;
-    } elseif (is_category()) {
-        single_cat_title();
-        echo ' - ' . $default;
-    } elseif (is_post_type_archive()) {
-        post_type_archive_title();
-        echo ' - ' . $default;
+        return t('404-breadcrumb-title', false);
     } else {
-        echo get_the_title() . ' - ' . $default;
+        return get_the_title(get_the_ID());
     }
 }
 
