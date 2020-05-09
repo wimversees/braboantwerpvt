@@ -37,6 +37,7 @@ require_once 'parts/functions/admin/fields/functions-fields.php';
 // post types
 require_once 'parts/functions/post-types/functions-posttype-post.php';
 require_once 'parts/functions/post-types/functions-posttype-page.php';
+require_once 'parts/functions/post-types/functions-posttype-author.php';
 require_once 'parts/functions/post-types/functions-posttype-example.php';
 // require_once 'parts/functions/post-types/functions-posttype-faq.php';
 

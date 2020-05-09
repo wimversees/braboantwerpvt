@@ -33,12 +33,25 @@ function wiver_breadcrumb()
     $home_link = get_the_permalink(gpid('page-home'));
     $position  = 1;
 
-    $breadcrumb_output = '<ul class="breadcrumb justify-content-center" itemscope itemtype="http://schema.org/BreadcrumbList">';
+    $breadcrumb_output = '<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">';
     $breadcrumb_output .= getBreadCrumbItem($home_text, $home_link, $position);
 
     if (is_home() || is_front_page()) {
         // Do not show breadcrumbs on homepage or frontpage
-    } elseif (is_archive()) {
+    } elseif (is_single()) {
+        $postType = get_post_type();
+        // If it is a custom post type display name and link
+        if ($postType != 'post') {
+            $postTypeObject      = get_post_type_object($postType);
+            $postTypeArchiveLink = get_post_type_archive_link($postType);
+            $breadcrumb_output .= getBreadCrumbItem($postTypeObject->labels->name, $postTypeArchiveLink, ++$position);
+        }
+        $breadcrumb_output .= getBreadCrumbItem(get_the_title(get_the_ID()), get_the_permalink(get_the_ID()), ++$position, true);
+    } elseif (is_author()) {
+        global $author;
+        $userdata = get_userdata($author);
+        $breadcrumb_output .= getBreadCrumbItem($userdata->data->user_nicename, get_author_posts_url($author), ++$position);
+    } elseif (is_archive() && !is_tax() && !is_category() && !is_tag()) {
         $archive = get_queried_object();
         $breadcrumb_output .= getBreadCrumbItem($archive->label, get_post_type_archive_link($archive->name), ++$position, true);
     } elseif (is_tax() || is_category() || is_tag()) {
@@ -54,7 +67,12 @@ function wiver_breadcrumb()
             $breadcrumb_output .= getBreadCrumbItem($parentTerm->name, get_term_link($parentTerm), ++$position);
         }
         $breadcrumb_output .= getBreadCrumbItem($term->name, get_term_link($term), ++$position, true);
+    } elseif (is_search()) {
+        $breadcrumb_output .= getBreadCrumbItem(sprintf(t('search-breadcrumb-title', false), get_search_query()), GetCurrentFullUrl(), ++$position, true);
+    } elseif (is_404()) {
+        $breadcrumb_output .= getBreadCrumbItem(t('404-breadcrumb-title', false), '#', ++$position, true);
     } else {
+        // default for pages
         $parentsOfCurrentpage = array_reverse(get_post_ancestors($post));
         foreach ($parentsOfCurrentpage as $parent) {
             $breadcrumb_output .= getBreadCrumbItem(get_the_title($parent), get_the_permalink($parent), ++$position);
@@ -84,4 +102,9 @@ function getBreadCrumbItem($title, $url, $position, $isLastItem = false)
     $output .= '<meta itemprop="position" content="' . $position . '" />';
     $output .= '</li>';
     return $output;
+}
+
+function GetCurrentFullUrl()
+{
+    return (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 }
