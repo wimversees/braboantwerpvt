@@ -38,6 +38,9 @@ function wiver_breadcrumb()
 
     if (is_home() || is_front_page()) {
         // Do not show breadcrumbs on homepage or frontpage
+    } elseif (is_archive()) {
+        $archive = get_queried_object();
+        $breadcrumb_output .= getBreadCrumbItem($archive->label, get_post_type_archive_link($archive->name), ++$position, true);
     } elseif (is_tax() || is_category() || is_tag()) {
         $term         = get_queried_object();
         $parrentTerms = array();
