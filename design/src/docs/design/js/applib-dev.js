@@ -50,7 +50,7 @@ window.Lube = function (ns) {
         });
         link.addEventListener('mousedown', function (e) {
           if (!e.currentTarget.matches('a')) {
-            window.open(link.dataset.href, '_blank');
+            window.location = link.dataset.href;
             return false;
           }
         });
