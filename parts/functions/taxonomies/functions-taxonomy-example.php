@@ -80,7 +80,7 @@ function example_tax_metabox_html($tag)
 {
     global $exampleTaxonomyConfig;
     foreach ($exampleTaxonomyConfig->fields as $field) {
-        RenderField($tag, $field);
+        RenderField($tag, $field, SaveOrRenderForType::Term);
     }
 }
 add_action($exampleTaxonomyConfig->taxonomyType . '_edit_form_fields', 'example_tax_metabox_html');
@@ -89,7 +89,7 @@ function example_tax_save_postdata($term_id)
 {
     global $exampleTaxonomyConfig;
     foreach ($exampleTaxonomyConfig->fields as $field) {
-        SaveField($term_id, $field->fieldSlug, $field->fieldType);
+        SaveFieldForTaxonomy($term_id, $field->fieldSlug, $field->fieldType);
     }
 }
-add_action('edited_terms', 'example_tax_save_postdata');
+add_action('edited_' . $exampleTaxonomyConfig->taxonomyType, 'example_tax_save_postdata');

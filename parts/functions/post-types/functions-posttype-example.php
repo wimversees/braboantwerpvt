@@ -105,7 +105,7 @@ function example_metabox_html($post)
 {
     global $examplePostTypeConfig;
     echo '<div class="wiver-fields">';
-    echo '<table>';
+    echo '<table class="form-table">';
     foreach ($examplePostTypeConfig->fields as $field) {
         RenderField($post, $field);
     }

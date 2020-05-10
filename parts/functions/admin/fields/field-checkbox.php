@@ -8,10 +8,10 @@ if (!defined('ABSPATH')) {
 /**
  * This function generated a checkbox field for admin views
  */
-function CheckboxField($post, $fieldConfig)
+function CheckboxField($object, $fieldConfig, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     $fieldSlug  = $fieldConfig->fieldSlug;
-    $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
+    $fieldValue = GetStoredFieldValue($object, $fieldSlug, $saveOrRenderForType);
     RenderCheckBox($fieldConfig, $fieldValue);
 }
 
@@ -22,11 +22,8 @@ function RenderCheckBox($fieldConfig, $fieldValue)
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
-function SaveCheckBox($post_id, $fieldSlug)
+function SaveCheckBox($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
-    if (array_key_exists($fieldSlug, $_POST) && $_POST[$fieldSlug] == $fieldSlug) {
-        update_post_meta($post_id, $fieldSlug, 1);
-    } else {
-        update_post_meta($post_id, $fieldSlug, 0);
-    }
+    $valueToStore = array_key_exists($fieldSlug, $_POST) && $_POST[$fieldSlug] == $fieldSlug ? 1 : 0;
+    StoreFieldValue($objectId, $fieldSlug, $valueToStore, $saveOrRenderForType);
 }

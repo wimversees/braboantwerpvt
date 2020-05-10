@@ -109,9 +109,9 @@ function faq_metabox_html($post)
 {
     global $faqPostTypeConfig;
     echo '<div class="wiver-fields">';
-    echo '<table>';
+    echo '<table class="form-table">';
     foreach ($faqPostTypeConfig->fields as $field) {
-        SingleLineTextField($post, $field);
+        RenderField($post, $field);
     }
     echo '</table>';
     echo '</div>';

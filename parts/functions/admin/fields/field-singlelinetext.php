@@ -8,10 +8,10 @@ if (!defined('ABSPATH')) {
 /**
  * This function generated a single line text field for admin views
  */
-function SingleLineTextField($post, $fieldConfig)
+function SingleLineTextField($object, $fieldConfig, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     $fieldSlug  = $fieldConfig->fieldSlug;
-    $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
+    $fieldValue = GetStoredFieldValue($object, $fieldSlug, $saveOrRenderForType);
     RenderSingleLineText($fieldConfig, $fieldValue);
 }
 
@@ -22,9 +22,10 @@ function RenderSingleLineText($fieldConfig, $fieldValue)
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
-function SaveSingleLineText($post_id, $fieldSlug)
+function SaveSingleLineText($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     if (array_key_exists($fieldSlug, $_POST)) {
-        update_post_meta($post_id, $fieldSlug, $_POST[$fieldSlug]);
+        $valueToStore = $_POST[$fieldSlug];
+        StoreFieldValue($objectId, $fieldSlug, $valueToStore, $saveOrRenderForType);
     }
 }
