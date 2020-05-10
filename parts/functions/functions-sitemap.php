@@ -26,7 +26,7 @@ function create_sitemap()
 function SaveSitemap($name, $sitemapContent)
 {
     $cleanContent = GetCleanSitemapContent($sitemapContent);
-    $fp = fopen(ABSPATH . $name, 'w');
+    $fp           = fopen(ABSPATH . $name, 'w');
     fwrite($fp, $cleanContent);
     fclose($fp);
 }
@@ -34,9 +34,10 @@ function SaveSitemap($name, $sitemapContent)
 /**
  * This function cleans and formats the given sitemap content
  */
-function GetCleanSitemapContent($sitemapContent){
+function GetCleanSitemapContent($sitemapContent)
+{
     $sitemapContent = str_replace('&', '&amp;', $sitemapContent);
-    $sitemapContent = iconv('UTF-8','ISO-8859-1//TRANSLIT//IGNORE', $sitemapContent);
+    $sitemapContent = iconv('UTF-8', 'ISO-8859-1//TRANSLIT//IGNORE', $sitemapContent);
     return $sitemapContent;
 }
 
@@ -128,6 +129,7 @@ function GetSitemapContentForTaxonomy($taxonomyType)
     $args    = array(
         'numberposts' => -1,
         'taxonomy'    => $taxonomyType,
+        'hide_empty'  => false,
         'orderby'     => 'modified',
         'order'       => 'DESC',
     );
