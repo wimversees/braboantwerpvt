@@ -23,7 +23,7 @@ function includecached($path, $cacheKeyExtention = '')
     // define cache key by used path
     $fullpath = __DIR__ . '/../../' . $path;
     $cacheKey = getCacheKeyByFileNameAndExtention($path, $cacheKeyExtention);
-    $file     = getCacheFileName($cacheKey);
+    $file     = getCacheFileName($cacheKey, $path);
 
     // use cached file
     if (is_file($file) && $cacheEnabled) {
@@ -55,7 +55,7 @@ function includecachedfunction($functionName, $parameters = [])
     $cacheEnabled = c('cache-enabled') == 'enabled';
     // define cache key by used path
     $cacheKey = getCacheKeyByFileNameAndExtention($functionName, implode('----', $parameters));
-    $file     = getCacheFileName($cacheKey);
+    $file     = getCacheFileName($cacheKey, $functionName);
 
     // use cached file
     if (is_file($file) && $cacheEnabled) {
@@ -87,9 +87,9 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
     $language     = GetLocale();
     $baseFileName = str_replace('/', '--', str_replace('.php', '', $extention . '---' . $filename . '_' . $language));
     if ($enableHashedCache) {
-        return hash(c('hashkey'), $baseFileName) . '.php';
+        return hash(c('hashkey'), $baseFileName . '.cache');
     }
-    return urlencode($baseFileName) . '.php';
+    return urlencode($baseFileName) . '.cache';
 }
 
 /**
@@ -98,13 +98,27 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
  * @param [type] $cacheKey
  * @return void
  */
-function getCacheFileName($cacheKey)
+function getCacheFileName($cacheKey, $fileName)
 {
     $cacheDirectory = __DIR__ . '/../../cache/';
     if (!file_exists($cacheDirectory)) {
         mkdir($cacheDirectory);
     }
-    return $cacheDirectory . $cacheKey;
+    $cacheSubdirectory = $cacheDirectory . getSpecificCacheFolder($fileName);
+    if (!file_exists($cacheSubdirectory)) {
+        mkdir($cacheSubdirectory);
+    }
+    return $cacheSubdirectory . $cacheKey;
+}
+
+/**
+ * This function returns the full path of the cache specific folder
+ */
+function getSpecificCacheFolder($fileName)
+{
+    $originalFileNameParts = explode('/', $fileName);
+    $cacheFolder           = explode('.', end($originalFileNameParts))[0];
+    return strtolower($cacheFolder) . '/';
 }
 
 /**
@@ -114,12 +128,19 @@ function getCacheFileName($cacheKey)
  */
 function clearCustomCache()
 {
-    $files = glob(__DIR__ . '/../../cache/*'); // get all file names
+    // remove all cache files
+    $files = glob(__DIR__ . '/../../cache/**/*'); // get all file names
     foreach ($files as $file) { // iterate files
         if (is_file($file)) {
             unlink($file);
         }
-        // delete file
+    }
+    // remove all directories
+    $directories = glob(__DIR__ . '/../../cache/*'); // get all file names
+    foreach ($directories as $directory) { // iterate files
+        if (is_dir($directory)) {
+            rmdir($directory);
+        }
     }
 }
 
