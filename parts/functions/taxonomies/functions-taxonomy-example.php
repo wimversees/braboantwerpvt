@@ -5,29 +5,54 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+$exampleTaxonomyConfig = new TaxonomyConfig(
+    c('example-tax'),
+    "Example",
+    "Examples",
+    array('post', c('example')),
+    array(
+        new FieldConfig(FieldType::SingleLineText, c('tax-example-field'), 'test field label for taxonomy test field', true, 'fieldcomment'),
+        new FieldConfig(FieldType::Url, c('tax-example-field-2'), 'url', true, 'url'),
+        new FieldConfig(FieldType::Checkbox, c('tax-example-field-3'), 'checkbox', false, 'checkbox'),
+    )
+);
+
 /**
  * Add custom taxonomy example-tax
  */
 function add_example_taxonomy()
 {
-    $taxonomyName      = c('example-tax');
-    $singularName      = "Example";
-    $pluralName        = "Examples";
-    $slug              = strtolower($taxonomyName);
-    $enableOnPostTypes = array('post', c('example'));
+    global $exampleTaxonomyConfig;
+
+    $taxonomyType     = $exampleTaxonomyConfig->taxonomyType;
+    $singularName     = $exampleTaxonomyConfig->singularName;
+    $pluralName       = $exampleTaxonomyConfig->pluralName;
+    $enabledPostTypes = $exampleTaxonomyConfig->enabledPostTypes;
+
+    $singularNameLower = strtolower($singularName);
+    $pluralNameLower   = strtolower($pluralName);
 
     $labels = array(
-        'name'              => _x($pluralName, 'taxonomy general name', 'textdomain'),
-        'singular_name'     => _x($singularName, 'taxonomy singular name', 'textdomain'),
-        'search_items'      => __('Search ' . $pluralName, 'textdomain'),
-        'all_items'         => __('All ' . $pluralName, 'textdomain'),
-        'parent_item'       => __('Parent ' . $singularName, 'textdomain'),
-        'parent_item_colon' => __('Parent ' . $singularName . ':', 'textdomain'),
-        'edit_item'         => __('Edit ' . $singularName, 'textdomain'),
-        'update_item'       => __('Update ' . $singularName, 'textdomain'),
-        'add_new_item'      => __('Add New ' . $singularName, 'textdomain'),
-        'new_item_name'     => __('New ' . $singularName, 'textdomain'),
-        'menu_name'         => __($pluralName, 'textdomain'),
+        'name'                  => _x($pluralName, 'Post type general name', 'textdomain'),
+        'singular_name'         => _x($singularName, 'Post type singular name', 'textdomain'),
+        'menu_name'             => _x($pluralName, 'Admin Menu text', 'textdomain'),
+        'name_admin_bar'        => _x($singularName, 'Add New on Toolbar', 'textdomain'),
+        'add_new'               => __('Add New', 'textdomain'),
+        'add_new_item'          => __('Add New ' . $singularName, 'textdomain'),
+        'new_item'              => __('New ' . $singularName, 'textdomain'),
+        'edit_item'             => __('Edit ' . $singularName, 'textdomain'),
+        'view_item'             => __('View ' . $singularName, 'textdomain'),
+        'all_items'             => __('All ' . $pluralName, 'textdomain'),
+        'search_items'          => __('Search ' . $pluralName, 'textdomain'),
+        'parent_item_colon'     => __('Parent ' . $pluralName . ':', 'textdomain'),
+        'not_found'             => __('No ' . $pluralNameLower . ' found.', 'textdomain'),
+        'not_found_in_trash'    => __('No ' . $pluralNameLower . ' found in Trash.', 'textdomain'),
+        'archives'              => _x($singularName . ' archives', 'The post type archive label used in nav menus. Default "Post Archives". Added in 4.4', 'textdomain'),
+        'insert_into_item'      => _x('Insert into ' . $singularName, 'Overrides the "Insert into post"/"Insert into page" phrase (used when inserting media into a post). Added in 4.4', 'textdomain'),
+        'uploaded_to_this_item' => _x('Uploaded to this ' . $singularName, 'Overrides the "Uploaded to this post"/"Uploaded to this page" phrase (used when viewing media attached to a post). Added in 4.4', 'textdomain'),
+        'filter_items_list'     => _x('Filter ' . $pluralNameLower . ' list', 'Screen reader text for the filter links heading on the post type listing screen. Default "Filter posts list"/"Filter pages list". Added in 4.4', 'textdomain'),
+        'items_list_navigation' => _x($pluralName . ' list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default "Posts list navigation"/"Pages list navigation". Added in 4.4', 'textdomain'),
+        'items_list'            => _x($pluralName . ' list', 'Screen reader text for the items list heading on the post type listing screen. Default "Posts list"/"Pages list". Added in 4.4', 'textdomain'),
     );
 
     $args = array(
@@ -40,13 +65,31 @@ function add_example_taxonomy()
         'show_in_quick_edit' => true, // show in the quick/bulk edit panel
          'query_var'          => true,
         'rewrite'            => array(
-            'slug'         => $slug, // This controls the base slug that will display before each term
+            'slug'         => $taxonomyType, // This controls the base slug that will display before each term
              'with_front'   => false, // Don't display the category base before "/example-taxs/"
              'hierarchical' => true, // This will allow URL's like "/example-taxs/boston/cambridge/"
         ),
     );
 
-    register_taxonomy($taxonomyName, $enableOnPostTypes, $args);
+    register_taxonomy($taxonomyType, $enabledPostTypes, $args);
 }
 
 add_action('init', 'add_example_taxonomy', 0);
+
+function example_tax_metabox_html($tag)
+{
+    global $exampleTaxonomyConfig;
+    foreach ($exampleTaxonomyConfig->fields as $field) {
+        RenderField($tag, $field);
+    }
+}
+add_action($exampleTaxonomyConfig->taxonomyType . '_edit_form_fields', 'example_tax_metabox_html');
+
+function example_tax_save_postdata($term_id)
+{
+    global $exampleTaxonomyConfig;
+    foreach ($exampleTaxonomyConfig->fields as $field) {
+        SaveField($term_id, $field->fieldSlug, $field->fieldType);
+    }
+}
+add_action('edited_terms', 'example_tax_save_postdata');

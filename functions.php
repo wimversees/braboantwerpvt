@@ -32,6 +32,7 @@ add_theme_support('post-thumbnails');
 // post types init
 require_once 'parts/functions/admin/fields/config/field-config-class.php';
 require_once 'parts/functions/post-types/config/posttype-config-class.php';
+require_once 'parts/functions/taxonomies/config/taxonomy-config-class.php';
 require_once 'parts/functions/admin/fields/functions-fields.php';
 
 // post types

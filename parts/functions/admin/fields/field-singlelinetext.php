@@ -10,28 +10,16 @@ if (!defined('ABSPATH')) {
  */
 function SingleLineTextField($post, $fieldConfig)
 {
-    $fieldSlug    = $fieldConfig->fieldSlug;
-    $fieldLabel   = $fieldConfig->fieldLabel;
-    $required     = $fieldConfig->required;
-    $fieldComment = $fieldConfig->fieldComment;
-
+    $fieldSlug  = $fieldConfig->fieldSlug;
     $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
-    RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment);
+    RenderSingleLineText($fieldConfig, $fieldValue);
 }
 
-function RenderSingleLineText($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment)
+function RenderSingleLineText($fieldConfig, $fieldValue)
 {
-    ?>
-<tr>
-    <th>
-        <?php renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment, $required); ?>
-    </th>
-    <td>
-        <input name="<?php echo $fieldSlug; ?>" id="<?php echo $fieldSlug; ?>" value="<?php echo $fieldValue; ?>"
-            <?php echo $required ? 'required' : ''; ?> />
-    </td>
-</tr>
-<?php
+    $fieldSlug = $fieldConfig->fieldSlug;
+    $fieldHtml = '<input type="text" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
 function SaveSingleLineText($post_id, $fieldSlug)

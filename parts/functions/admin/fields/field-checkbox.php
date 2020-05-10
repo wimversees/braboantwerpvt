@@ -10,28 +10,16 @@ if (!defined('ABSPATH')) {
  */
 function CheckboxField($post, $fieldConfig)
 {
-    $fieldSlug    = $fieldConfig->fieldSlug;
-    $fieldLabel   = $fieldConfig->fieldLabel;
-    $fieldComment = $fieldConfig->fieldComment;
-    $required     = $fieldConfig->required;
-
+    $fieldSlug  = $fieldConfig->fieldSlug;
     $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
-    RenderCheckBox($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment);
+    RenderCheckBox($fieldConfig, $fieldValue);
 }
 
-function RenderCheckBox($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment)
+function RenderCheckBox($fieldConfig, $fieldValue)
 {
-    ?>
-<tr>
-    <th>
-        <?php renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment); ?>
-    </th>
-    <td>
-        <input type="checkbox" name="<?php echo $fieldSlug; ?>" id="<?php echo $fieldSlug; ?>" value="<?php echo $fieldSlug; ?>"
-            <?php echo $fieldValue == 1 ? 'checked' : ''; ?> />
-    </td>
-</tr>
-<?php
+    $fieldSlug = $fieldConfig->fieldSlug;
+    $fieldHtml = '<input type="checkbox" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldSlug . '" ' . ($fieldValue == 1 ? 'checked' : '') . ' />';
+    RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
 function SaveCheckBox($post_id, $fieldSlug)

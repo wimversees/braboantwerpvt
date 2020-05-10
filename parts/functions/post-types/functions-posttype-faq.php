@@ -121,7 +121,7 @@ function faq_save_postdata($post_id)
 {
     global $faqPostTypeConfig;
     foreach ($faqPostTypeConfig->fields as $field) {
-        saveField($post_id, $field->fieldSlug, $field->fieldType);
+        SaveField($post_id, $field->fieldSlug, $field->fieldType);
     }
 }
 add_action('save_post', 'faq_save_postdata');

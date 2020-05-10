@@ -10,28 +10,16 @@ if (!defined('ABSPATH')) {
  */
 function UrlField($post, $fieldConfig)
 {
-    $fieldSlug    = $fieldConfig->fieldSlug;
-    $fieldLabel   = $fieldConfig->fieldLabel;
-    $required     = $fieldConfig->required;
-    $fieldComment = $fieldConfig->fieldComment;
-
+    $fieldSlug  = $fieldConfig->fieldSlug;
     $fieldValue = get_post_meta($post->ID, $fieldSlug, true);
-    RenderUrl($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment);
+    RenderUrl($fieldConfig, $fieldValue);
 }
 
-function RenderUrl($fieldSlug, $fieldLabel, $fieldValue, $required, $fieldComment)
+function RenderUrl($fieldConfig, $fieldValue)
 {
-    ?>
-<tr>
-    <th>
-        <?php renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment, $required); ?>
-    </th>
-    <td>
-        <input type="url" name="<?php echo $fieldSlug; ?>" id="<?php echo $fieldSlug; ?>" value="<?php echo $fieldValue; ?>"
-            <?php echo $required ? 'required' : ''; ?> />
-    </td>
-</tr>
-<?php
+    $fieldSlug = $fieldConfig->fieldSlug;
+    $fieldHtml = '<input type="url" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
 function SaveUrl($post_id, $fieldSlug)

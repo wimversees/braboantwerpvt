@@ -72,5 +72,8 @@ function getConfig()
 
         // custom taxonomy example-tax
          'example-tax'                                => 'example-tax',
+        'tax-example-field'                          => 'tax-example-field',
+        'tax-example-field-2'                        => 'tax-example-field-2',
+        'tax-example-field-3'                        => 'tax-example-field-3',
     );
 }

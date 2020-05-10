@@ -107,7 +107,7 @@ function example_metabox_html($post)
     echo '<div class="wiver-fields">';
     echo '<table>';
     foreach ($examplePostTypeConfig->fields as $field) {
-        renderField($post, $field);
+        RenderField($post, $field);
     }
     echo '</table>';
     echo '</div>';
@@ -117,7 +117,7 @@ function example_save_postdata($post_id)
 {
     global $examplePostTypeConfig;
     foreach ($examplePostTypeConfig->fields as $field) {
-        saveField($post_id, $field->fieldSlug, $field->fieldType);
+        SaveField($post_id, $field->fieldSlug, $field->fieldType);
     }
 }
 add_action('save_post', 'example_save_postdata');

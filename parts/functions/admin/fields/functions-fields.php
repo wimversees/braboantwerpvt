@@ -16,7 +16,7 @@ require_once 'field-checkbox.php';
 require_once 'field-singlelinetext.php';
 require_once 'field-url.php';
 
-function saveField($post_id, $fieldSlug, $fieldType)
+function SaveField($post_id, $fieldSlug, $fieldType)
 {
     switch ($fieldType) {
         case FieldType::Checkbox:
@@ -34,7 +34,7 @@ function saveField($post_id, $fieldSlug, $fieldType)
     }
 }
 
-function renderField($post, $field)
+function RenderField($post, $field)
 {
     switch ($field->fieldType) {
         case FieldType::Checkbox:
@@ -52,13 +52,17 @@ function renderField($post, $field)
     }
 }
 
-function renderFieldLabel($fieldSlug, $fieldLabel, $fieldComment = '', $required = false)
+function RenderFieldHtml($fieldConfig, $fieldHtml)
 {
     ?>
-<label for="<?php echo $fieldSlug; ?>"><?php echo $fieldLabel;
-    echo $required ? ' * ' : ''; ?></label>
-<?php if (strlen($fieldComment) > 0) { ?>
-<p class="field-comment"><?php echo $fieldComment; ?></p>
-<?php
-}
-}
+<tr class="form-field<?php echo $fieldConfig->required ? 'form-required' : ''; ?>">
+    <th scope="row">
+        <label for="<?php echo $fieldConfig->fieldSlug; ?>"><?php echo $fieldConfig->fieldLabel; ?></label>
+    </th>
+    <td><?php echo $fieldHtml; ?>
+        <?php if (strlen($fieldConfig->fieldComment) > 0) { ?>
+        <p class="description"><?php echo $fieldConfig->fieldComment; ?></p>
+        <?php } ?>
+    </td>
+</tr>
+<?php }
