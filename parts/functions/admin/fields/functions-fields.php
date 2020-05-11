@@ -47,6 +47,11 @@ function SaveFieldForTaxonomy($term_id, $fieldSlug, $fieldType)
 
 function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
+    // set post object to null for taxonomy creation form
+    if (is_string($post)) {
+        $post = null;
+    }
+
     switch ($field->fieldType) {
         case FieldType::Checkbox:
             CheckboxField($post, $field, $saveOrRenderForType);
@@ -80,6 +85,10 @@ function RenderFieldHtml($fieldConfig, $fieldHtml)
 
 function GetStoredFieldValue($object, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
+    if ($object == null) {
+        return;
+    }
+
     switch ($saveOrRenderForType) {
         case SaveOrRenderForType::Post:
             $objectId = $object->ID;
