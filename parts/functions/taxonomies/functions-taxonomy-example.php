@@ -79,9 +79,13 @@ add_action('init', 'add_example_taxonomy', 0);
 function example_tax_metabox_html($tag)
 {
     global $exampleTaxonomyConfig;
+    echo '<div class="wiver-fields">';
     foreach ($exampleTaxonomyConfig->fields as $field) {
+        echo '<div class="form-field">';
         RenderField($tag, $field, SaveOrRenderForType::Term);
+        echo '</div>';
     }
+    echo '</div>';
 }
 add_action($exampleTaxonomyConfig->taxonomyType . '_add_form_fields', 'example_tax_metabox_html');
 add_action($exampleTaxonomyConfig->taxonomyType . '_edit_form_fields', 'example_tax_metabox_html');
