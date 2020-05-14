@@ -13,7 +13,7 @@ function change_term_request_for_removed_taxonomies($query)
         return $query;
     }
 
-    if ('remove-taxonomy-name-from-permalinks' == true) {
+    if (c('remove-taxonomy-name-from-permalinks') == true) {
         $taxonomiesToRedirect = c('remove-taxonomy-from-permalinks-taxomies');
         //print_r($query);
 
@@ -90,7 +90,7 @@ function change_term_request_for_removed_taxonomies($query)
 add_filter('term_link', 'remove_term_from_permalink', 10, 3);
 function remove_term_from_permalink($url, $term, $taxonomy)
 {
-    if ('remove-taxonomy-name-from-permalinks' == true) {
+    if (c('remove-taxonomy-name-from-permalinks') == true) {
         $taxonomiesToRedirect = c('remove-taxonomy-from-permalinks-taxomies');
         foreach ($taxonomiesToRedirect as $taxonomyToRemove) {
             $taxonomy_name = $taxonomyToRemove;
@@ -112,7 +112,7 @@ function remove_term_from_permalink($url, $term, $taxonomy)
 add_action('template_redirect', 'default_term_redirect');
 function default_term_redirect()
 {
-    if ('remove-taxonomy-name-from-permalinks' == true) {
+    if (c('remove-taxonomy-name-from-permalinks') == true) {
         $taxonomiesToRedirect = c('remove-taxonomy-from-permalinks-taxomies');
         foreach ($taxonomiesToRedirect as $taxonomyToRedirect) {
             $taxonomy_name = $taxonomyToRedirect;
