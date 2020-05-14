@@ -65,7 +65,7 @@ function add_example_taxonomy()
         'show_in_quick_edit' => true, // show in the quick/bulk edit panel
          'query_var'          => true,
         'rewrite'            => array(
-            'slug'         => '/', // This controls the base slug that will display before each term
+            'slug'         => $taxonomyType, // This controls the base slug that will display before each term
              'with_front'   => false, // Don't display the category base before "/example-taxs/"
              'hierarchical' => true, // This will allow URL's like "/example-taxs/boston/cambridge/"
         ),
