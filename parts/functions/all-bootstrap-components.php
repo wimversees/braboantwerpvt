@@ -306,5 +306,10 @@
             </nav>
         </div>
     </div>
+
+    <div>
+        <i class="far fa-user"></i>
+        <i class="fas fa-shopping-basket"></i>
+    </div>
 </div>
 <?php }
