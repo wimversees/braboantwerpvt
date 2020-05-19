@@ -12,6 +12,7 @@ $examplePostTypeConfig = new PostTypeConfig(
     array(
         new FieldConfig(FieldType::SingleLineText, c('example-field'), 'test field label', true, 'this is a comment for the field'),
         new FieldConfig(FieldType::Checkbox, c('example-other-field'), 'test field label 2'),
+        new FieldConfig(FieldType::Date, c('example-other-field-2'), 'test field date'),
     )
 );
 

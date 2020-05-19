@@ -8,6 +8,7 @@ if (!defined('ABSPATH')) {
 abstract class FieldType
 {
     const Checkbox       = 'Checkbox';
+    const Date           = 'Date';
     const SingleLineText = 'SingleLineText';
     const Url            = 'Url';
 }
@@ -19,6 +20,7 @@ abstract class SaveOrRenderForType
 }
 
 require_once 'field-checkbox.php';
+require_once 'field-date.php';
 require_once 'field-singlelinetext.php';
 require_once 'field-url.php';
 
@@ -27,6 +29,9 @@ function SaveField($post_id, $fieldSlug, $fieldType, $saveOrRenderForType = Save
     switch ($fieldType) {
         case FieldType::Checkbox:
             SaveCheckbox($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::Date:
+            SaveDateField($post_id, $fieldSlug, $saveOrRenderForType);
             break;
         case FieldType::SingleLineText:
             SaveSingleLineText($post_id, $fieldSlug, $saveOrRenderForType);
@@ -55,6 +60,9 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
     switch ($field->fieldType) {
         case FieldType::Checkbox:
             CheckboxField($post, $field, $saveOrRenderForType);
+            break;
+        case FieldType::Date:
+            DateField($post, $field, $saveOrRenderForType);
             break;
         case FieldType::SingleLineText:
             SingleLineTextField($post, $field, $saveOrRenderForType);
