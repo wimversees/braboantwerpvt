@@ -65,6 +65,7 @@ gulp.task('javascript-lib-dev', function(){
         './design/src/app/design/js/lib/jquery/*.js',
         './design/src/app/design/js/lib/popper/*.js',
         './design/src/app/design/js/lib/bootstrap/**/*.js',
+        // './design/src/app/design/js/lib/leaflet/**/*.js', // no leaflet for local environment
         './design/src/app/design/js/lib/simplelightbox/**/*.js'
         ])
         .pipe(concat('lib-dev.js'))
@@ -77,6 +78,7 @@ gulp.task('javascript-lib', function(){
         './design/src/app/design/js/lib/jquery/*.js',
         './design/src/app/design/js/lib/popper/*.js',
         './design/src/app/design/js/lib/bootstrap/**/*.js',
+        './design/src/app/design/js/lib/leaflet/**/*.js',
         './design/src/app/design/js/lib/simplelightbox/**/*.js'
         ])
         .pipe(concat('lib.js'))
