@@ -41,7 +41,7 @@ function post_metaboxes()
         $postTypeViews = [$postType];
         $metaBoxTitle  = $postTypeConfig->singularName . ' Fields';
         foreach ($postTypeViews as $postTypeView) {
-            add_meta_box('post_metabox', $metaBoxTitle, 'post_metabox_html', $postTypeView);
+            add_meta_box('post_metabox', $metaBoxTitle, 'post_metabox_html', $postTypeView, 'normal', 'high');
         }
     }
 }

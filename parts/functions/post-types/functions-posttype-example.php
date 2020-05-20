@@ -96,7 +96,7 @@ function example_metaboxes()
         $postTypeViews = [$postType];
         $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
         foreach ($postTypeViews as $postTypeView) {
-            add_meta_box('example_metabox', $metaBoxTitle, 'example_metabox_html', $postTypeView);
+            add_meta_box('example_metabox', $metaBoxTitle, 'example_metabox_html', $postTypeView, 'normal', 'high');
         }
     }
 }

@@ -98,8 +98,7 @@ function faq_metaboxes()
                 'faq_metabox', // Unique ID
                 $metaBoxTitle, // Box title
                  'faq_metabox_html', // Content callback, must be of type callable
-                $postTypeView // Post type
-            );
+                $postTypeView, 'normal', 'high');
         }
     }
 }
