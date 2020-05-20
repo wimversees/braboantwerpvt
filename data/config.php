@@ -67,6 +67,10 @@ function getConfig()
         'example-other-field'                        => 'example-other-field',
         'example-other-field-2'                      => 'example-other-field-2',
 
+        // posttype fields page
+         'page'                                       => 'page',
+        // 'page-field'                                 => 'page-field',
+
         // custom posttype faq
          //  'faq'                                        => 'faq',
          // 'faq-field'                                  => 'faq-field',

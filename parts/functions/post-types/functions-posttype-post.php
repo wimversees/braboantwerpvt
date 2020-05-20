@@ -5,17 +5,65 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+$postTypeConfig = new PostTypeConfig(
+    c('post'),
+    null,
+    null,
+    array(
+    )
+);
+
 /**
- * Set options for post type
+ * Register Post Type post
  */
-function set_post_options()
+function create_posttype_post()
 {
-    $postType = 'post';
+    global $postTypeConfig;
+    $postType = $postTypeConfig->postType;
 
-// Add category to post type
-    // register_taxonomy_for_object_type('category', $postType);
+    // Add category metabox to post type
+    register_taxonomy_for_object_type('category', $postType);
 
-// Add tags to post type
+    // Add tags to post type
     // register_taxonomy_for_object_type('post_tag', $postType);
 }
-add_action('init', 'set_post_options');
+
+/**
+ * The actual register of the posttype
+ */
+add_action('init', 'create_posttype_post');
+
+function post_metaboxes()
+{
+    global $postTypeConfig;
+    if ($postTypeConfig->fields) {
+        $postType      = $postTypeConfig->postType;
+        $postTypeViews = [$postType];
+        $metaBoxTitle  = $postTypeConfig->singularName . ' Fields';
+        foreach ($postTypeViews as $postTypeView) {
+            add_meta_box('post_metabox', $metaBoxTitle, 'post_metabox_html', $postTypeView);
+        }
+    }
+}
+add_action('add_meta_boxes', 'post_metaboxes');
+
+function post_metabox_html($post)
+{
+    global $postTypeConfig;
+    echo '<div class="wiver-fields">';
+    echo '<table class="form-table">';
+    foreach ($postTypeConfig->fields as $field) {
+        RenderField($post, $field);
+    }
+    echo '</table>';
+    echo '</div>';
+}
+
+function post_save_postdata($post_id)
+{
+    global $postTypeConfig;
+    foreach ($postTypeConfig->fields as $field) {
+        SaveField($post_id, $field->fieldSlug, $field->fieldType);
+    }
+}
+add_action('save_post', 'post_save_postdata');
