@@ -17,15 +17,16 @@ function DateField($object, $fieldConfig, $saveOrRenderForType = SaveOrRenderFor
 
 function RenderDateField($fieldConfig, $fieldValue)
 {
-    $fieldSlug = $fieldConfig->fieldSlug;
-    $fieldHtml = '<input type="date" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    $fieldSlug  = $fieldConfig->fieldSlug;
+    $fieldValue = date('Y-m-d', intval($fieldValue));
+    $fieldHtml  = '<input type="date" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
 function SaveDateField($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     if (array_key_exists($fieldSlug, $_POST)) {
-        $valueToStore = $_POST[$fieldSlug];
+        $valueToStore = strtotime($_POST[$fieldSlug]);
         StoreFieldValue($objectId, $fieldSlug, $valueToStore, $saveOrRenderForType);
     }
 }
