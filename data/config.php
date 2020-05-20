@@ -71,6 +71,10 @@ function getConfig()
          'page'                                       => 'page',
         // 'page-field'                                 => 'page-field',
 
+        // posttype fields post
+         'post'                                       => 'post',
+        // 'post-field'                                 => 'post-field',
+
         // custom posttype faq
          //  'faq'                                        => 'faq',
          // 'faq-field'                                  => 'faq-field',
