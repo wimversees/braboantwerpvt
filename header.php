@@ -50,7 +50,7 @@
 
     <?php
 global $template;
-if (in_array($template, c('enable-wp-head-foot-slugs')) || is_user_logged_in()) {
+if () {
     wp_head();
 }
 ?>
