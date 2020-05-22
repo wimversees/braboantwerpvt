@@ -81,13 +81,7 @@ wp_nav_menu(array(
 <script async src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/applib.js' : '/design/js/applib-dev.js'); ?>" type="text/javascript">
 </script>
 
-<?php
-global $template;
-if (in_array($template, c('enable-wp-head-foot-slugs')) || is_user_logged_in()) {
-    wp_footer();
-}
-
-?>
+<?php if (useWpHeadWpFooter()) {wp_footer();} ?>
 
 <?php if (!isset($_COOKIE[c('cookie-name')])) {
     includecached('parts/footer/footer-cookiebar.php');

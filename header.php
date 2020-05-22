@@ -48,12 +48,7 @@
 
     <meta name="wiver-version" content="<?php echo c('version'); ?>">
 
-    <?php
-global $template;
-if () {
-    wp_head();
-}
-?>
+    <?php if (useWpHeadWpFooter()) {wp_head();} ?>
 
 </head>
 
