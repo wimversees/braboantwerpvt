@@ -16,7 +16,7 @@ function getConfig()
          'google-maps-key'                            => '', // notation: AIzaSyB_eoi3ppJF4kNz9yTBzsKCTQuokhnqRug
 
         // search config
-         'search-enabled'                             => true,
+         'search-enabled'                             => false,
         'search-page'                                => get_the_permalink(gpid('page-search')) . '?q=',
 
         // address configuration
