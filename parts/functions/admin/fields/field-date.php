@@ -18,7 +18,7 @@ function DateField($object, $fieldConfig, $saveOrRenderForType = SaveOrRenderFor
 function RenderDateField($fieldConfig, $fieldValue)
 {
     $fieldSlug  = $fieldConfig->fieldSlug;
-    $fieldValue = date('Y-m-d', intval($fieldValue));
+    $fieldValue = $fieldValue > 0 ? date('Y-m-d', intval($fieldValue)) : '';
     $fieldHtml  = '<input type="date" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
