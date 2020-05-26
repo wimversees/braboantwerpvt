@@ -16,18 +16,18 @@ function getConfig()
          'google-maps-key'                            => '', // notation: AIzaSyB_eoi3ppJF4kNz9yTBzsKCTQuokhnqRug
 
         // search config
-         'search-enabled'                             => false,
+         'search-enabled'                             => true,
         'search-page'                                => get_the_permalink(gpid('page-search')) . '?q=',
 
         // address configuration
          'company-micro-data-type'                    => 'LocalBusiness',
-        'company-name'                               => '',
-        'company-street'                             => '',
-        'company-city'                               => '',
-        'company-postalcode'                         => '',
+        'company-name'                               => 'example business',
+        'company-street'                             => 'street',
+        'company-city'                               => 'city',
+        'company-postalcode'                         => 'postalcode',
         'company-country'                            => 'BE', // notation: 'BE'
-         'company-telephone'                          => '',
-        'company-telephone-link'                     => '',
+         'company-telephone'                          => '0032',
+        'company-telephone-link'                     => '0032',
         'company-latitude'                           => 0.0000, // notation: 51.284209
          'company-longitude'                          => 0.0000, // notation: 4.284209
 

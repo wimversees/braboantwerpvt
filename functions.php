@@ -21,6 +21,7 @@ require_once 'parts/functions/functions-wpcf7.php';
 require_once 'parts/functions/functions-navigation.php';
 require_once 'parts/functions/functions-taxonomies.php';
 require_once 'parts/functions/functions-permalinks.php';
+require_once 'parts/functions/functions-structured-data.php';
 require_once 'parts/functions/admin/functions-admin.php';
 
 // admin pages
