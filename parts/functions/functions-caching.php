@@ -52,6 +52,11 @@ function includecached($path, $cacheKeyExtention = '')
  */
 function includecachedfunction($functionName, $parameters = [])
 {
+    // convert parameters to array if it's not an array
+    if (!is_array($parameters)) {
+        $parameters = array($parameters);
+    }
+
     $cacheEnabled = c('cache-enabled') == 'enabled';
     // define cache key by used path
     $cacheKey = getCacheKeyByFileNameAndExtention($functionName, implode('----', $parameters));
