@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="<?php echo bloginfo('url'); ?>" title="<?php echo bloginfo('name'); ?>">
-            <img class="navbar-brand-img" data-src="<?php getFrontEndFile('/design/img/logo.svg'); ?>" alt="<?php echo bloginfo('name'); ?>" />
+            <img class="navbar-brand-img" src="<?php getFrontEndFile('/design/img/logo.svg'); ?>" alt="<?php echo bloginfo('name'); ?>" />
         </a>
         <button class="navbar-toggler brand-icon" type="button" data-toggle="collapse" data-target="#m" aria-controls="m" aria-expanded="false"
             aria-label="Toggle navigation">
