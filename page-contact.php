@@ -1,6 +1,8 @@
 <?php
 // Template Name: Contact Page ?>
 
+<?php get_header(); ?>
+
 <div class="container">
     <div class="row">
         <div class="<?php echo c('main-cssclasses'); ?>">
