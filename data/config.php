@@ -84,5 +84,9 @@ function getConfig()
         'tax-example-field'                          => 'tax-example-field',
         'tax-example-field-2'                        => 'tax-example-field-2',
         'tax-example-field-3'                        => 'tax-example-field-3',
+
+        // page column settings
+         'main-cssclasses'                            => 'col-md-9',
+        'sidebar-cssclasses'                         => 'col-md-3',
     );
 }

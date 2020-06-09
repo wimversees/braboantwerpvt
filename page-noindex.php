@@ -1,15 +1,15 @@
-<?php 
-// Template Name: Noindex Page
-?>
+<?php
+// Template Name: Noindex Page ?>
 
-<?php get_header();?>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1><?php the_title(); ?></h1>
+            <?php while (have_posts()): the_post(); ?>
+            <?php the_content(); ?>
+            <?php endwhile; ?>
+        </div>
+    </div>
+</div>
 
-<?php while ( have_posts() ) : the_post(); ?>
-
-<?php the_content(); ?>
-
-<?php endwhile; ?>
-
-<?php get_sidebar();?>
-
-<?php get_footer();?>
+<?php get_footer(); ?>
