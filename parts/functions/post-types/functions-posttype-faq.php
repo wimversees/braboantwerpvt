@@ -10,7 +10,7 @@ $faqPostTypeConfig = new PostTypeConfig(
     "Faq",
     "Faqs",
     array(
-        new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq', true),
+        // new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq', true),
     )
 );
 
@@ -54,7 +54,7 @@ function create_posttype_faq()
     $postTypeSupports = array(
         'title',
         'editor',
-        'author',
+        // 'author',
         //'thumbnail',
         //'excerpt',
         //'comments'
@@ -62,14 +62,14 @@ function create_posttype_faq()
 
     $args = array(
         'labels'             => $labels,
-        'public'             => true,
+        'public'             => false,
         'publicly_queryable' => true,
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
         'rewrite'            => array('slug' => $postType),
         'capability_type'    => 'post',
-        'has_archive'        => true,
+        'has_archive'        => false,
         'hierarchical'       => false,
         'menu_position'      => null,
         'supports'           => $postTypeSupports,
