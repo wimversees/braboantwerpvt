@@ -1,21 +1,23 @@
-input, textarea{
+input,
+textarea {
     padding: 0.5rem;
     width: 100%;
     margin-bottom: 1rem;
-} 
+}
 
 .screen-reader-response,
-.wpcf7-response-output.wpcf7-validation-errors{
+.wpcf7-response-output.wpcf7-validation-errors {
     display: none !important;
 }
 
-form.wpcf7-form{
-    margin: 0 auto; 
+form.wpcf7-form {
+    margin: 0 auto;
     width: 50%;
-    .wpcf7-not-valid-tip{
+
+    .wpcf7-not-valid-tip {
         color: $red;
         margin-top: -1rem;
         margin-bottom: 1rem;
         display: block;
-    }    
-} 
+    }
+}
