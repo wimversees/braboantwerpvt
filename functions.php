@@ -45,7 +45,7 @@ require_once 'parts/functions/post-types/functions-posttype-author.php';
 // require_once 'parts/functions/post-types/functions-posttype-faq.php';
 
 // taxonomies
-require_once 'parts/functions/taxonomies/functions-taxonomy-example.php';
+// require_once 'parts/functions/taxonomies/functions-taxonomy-example.php';
 
 // flush rewrite rules on local environment
 if (IsLocalEnvironment()) {
