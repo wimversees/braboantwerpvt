@@ -134,9 +134,11 @@ function GetSitemapContentForTaxonomy($taxonomyType)
         'order'       => 'DESC',
     );
     $results = new WP_Term_Query($args);
-    foreach ($results->terms as $term) {
-        setup_postdata($term);
-        $sitemap .= GetSitemapSingleTaxonomy($term);
+    if ($results && $results->terms) {
+        foreach ($results->terms as $term) {
+            setup_postdata($term);
+            $sitemap .= GetSitemapSingleTaxonomy($term);
+        }
     }
     return $sitemap;
 }
