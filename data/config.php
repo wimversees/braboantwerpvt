@@ -62,10 +62,10 @@ function getConfig()
          'taxonomy-save-parent-taxonomies-post-types' => array('post', 'example'), // the post types to save parent taxonomies for
 
         // custom posttype example
-         'example'                                    => 'example',
-        'example-field'                              => 'example-field',
-        'example-other-field'                        => 'example-other-field',
-        'example-other-field-2'                      => 'example-other-field-2',
+         // 'example'                                    => 'example',
+         // 'example-field'                              => 'example-field',
+         // 'example-other-field'                        => 'example-other-field',
+         // 'example-other-field-2'                      => 'example-other-field-2',
 
         // posttype fields page
          'page'                                       => 'page',
@@ -80,10 +80,10 @@ function getConfig()
          // 'faq-field'                                  => 'faq-field',
 
         // custom taxonomy example-tax
-         'example-tax'                                => 'example-tax',
-        'tax-example-field'                          => 'tax-example-field',
-        'tax-example-field-2'                        => 'tax-example-field-2',
-        'tax-example-field-3'                        => 'tax-example-field-3',
+         // 'example-tax'                                => 'example-tax',
+         // 'tax-example-field'                          => 'tax-example-field',
+         // 'tax-example-field-2'                        => 'tax-example-field-2',
+         // 'tax-example-field-3'                        => 'tax-example-field-3',
 
         // page column settings
          'main-cssclasses'                            => 'col-md-9',
