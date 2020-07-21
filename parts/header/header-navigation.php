@@ -28,6 +28,8 @@ wp_nav_menu(array(
             <ul class="navbar-social navbar-nav d-none d-lg-flex">
                 <?php include __DIR__ . '/../social/social-media-links.php'; ?>
             </ul>
+
+            <?php include __DIR__ . '/header-language-switcher.php'; ?>
         </div>
     </div>
 </nav>

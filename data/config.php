@@ -10,10 +10,14 @@ function getConfig()
 
         // language settings
          'default-locale'                             => "nl_be",
+        'multilanguage-enabled'                      => true,
 
         // google analytics
          'google-analytics-key'                       => '', // notation: UA-131124377-1
          'google-maps-key'                            => '', // notation: AIzaSyB_eoi3ppJF4kNz9yTBzsKCTQuokhnqRug
+
+        // is in splash mode
+         'splash-enabled'                             => false,
 
         // search config
          'search-enabled'                             => false,
