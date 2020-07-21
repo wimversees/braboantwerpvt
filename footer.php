@@ -44,7 +44,7 @@ wp_nav_menu(array(
                         <?php include 'parts/social/social-media-links.php'; ?>
                     </ul>
                 </div>
-                <?php if (c('multilanguage-enabled')) {include __DIR__ . '/header-language-switcher.php';} ?>
+                <?php if (c('multilanguage-enabled')) {includecached('parts/header/header-language-switcher.php', get_the_ID());} ?>
             </div>
         </div>
     </div>
