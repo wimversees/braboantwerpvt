@@ -7,7 +7,7 @@
             <div class="col-6 col-md-3 d-flex justify-content-center">
                 <?php
 wp_nav_menu(array(
-    'menu'       => 'footer-left',
+    'menu'       => 'footer-menu-left',
     'depth'      => 2,
     'container'  => false,
     'menu_class' => 'footer-nav',
@@ -19,7 +19,7 @@ wp_nav_menu(array(
             <div class="col-6 col-md-3 d-flex justify-content-center pb-2">
                 <?php
 wp_nav_menu(array(
-    'menu'       => 'footer-right',
+    'menu'       => 'footer-menu-right',
     'depth'      => 2,
     'container'  => false,
     'menu_class' => 'footer-nav',
