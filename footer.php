@@ -16,7 +16,7 @@ wp_nav_menu(array(
 );
 ?>
             </div>
-            <div class="col-6 col-md-3 d-flex justify-content-center pb-2">
+            <div class="col-6 col-md-3 pb-2">
                 <?php
 wp_nav_menu(array(
     'menu'       => 'footer-menu-right',
