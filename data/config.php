@@ -10,7 +10,7 @@ function getConfig()
 
         // language settings
          'default-locale'                             => "nl_be",
-        'multilanguage-enabled'                      => true,
+        'multilanguage-enabled'                      => false,
 
         // google analytics
          'google-analytics-key'                       => '', // notation: UA-131124377-1
