@@ -36,5 +36,8 @@ function getDictionary()
         'cookie-message'             => 'Door onze website te gebruiken, verklaart u zich akkoord met onze %s en %s.',
         'cookie-more-info'           => 'Meer informatie.',
 
+        /* wpml */
+        'wpml-check-in'              => 'Bekijk deze pagina in het ',
+
     );
 }
