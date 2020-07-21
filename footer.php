@@ -1,3 +1,4 @@
+<?php if (!c('splash-enabled')) { ?>
 <footer>
     <div class="container pt-3">
         <div class="row">
@@ -14,19 +15,19 @@ wp_nav_menu(array(
     // Process nav menu using our custom nav walker
      'walker'     => new WP_Bootstrap_Navwalker())
 );
-?>
+    ?>
             </div>
             <div class="col-6 col-md-3 pb-2">
                 <?php
 wp_nav_menu(array(
-    'menu'       => 'footer-menu-right',
-    'depth'      => 2,
-    'container'  => false,
-    'menu_class' => 'footer-nav',
-    // Process nav menu using our custom nav walker
-     'walker'     => new WP_Bootstrap_Navwalker())
-);
-?>
+        'menu'       => 'footer-menu-right',
+        'depth'      => 2,
+        'container'  => false,
+        'menu_class' => 'footer-nav',
+        // Process nav menu using our custom nav walker
+         'walker'     => new WP_Bootstrap_Navwalker())
+    );
+    ?>
             </div>
             <div class="col-12 col-md-3 d-flex justify-content-center pb-2">
                 <div class="footer-company">
@@ -77,6 +78,7 @@ wp_nav_menu(array(
         </div>
     </div>
 </footer>
+<?php } ?>
 
 <script src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/lib.js' : '/design/js/lib-dev.js'); ?>" type="text/javascript"></script>
 <script async src="<?php getFrontEndFile(IsProEnvironment() ? '/design/js/applib.js' : '/design/js/applib-dev.js'); ?>" type="text/javascript">

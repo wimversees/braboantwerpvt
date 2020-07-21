@@ -7,7 +7,7 @@ if (function_exists('icl_get_languages')) {
     <?php
 foreach ($languages as $l) {
             if (!$l['active']) { ?>
-    <li class="nav-item"><a class="nav-link" href=" <?php echo $l['url']; ?>" title="<?php t('wpml-check-in');
+    <li class="nav-item"><a class="nav-link" href="<?php echo $l['url']; ?>" title="<?php t('wpml-check-in');
                 echo $l['translated_name']; ?>"><?php echo $l['code']; ?></a></li>
     <?php }
         } ?>

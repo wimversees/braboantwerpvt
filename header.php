@@ -28,6 +28,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <meta http-equiv="content-language" content="<?php echo get_og_locale(); ?>">
+    <?php if (c('multilanguage-enabled')) {includecached('parts/header/header-alternate-links.php', get_the_ID());} ?>
 
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <link rel="canonical" href="<?php echo "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
@@ -50,8 +51,9 @@
 </head>
 
 <body>
+    <?php if (!c('splash-enabled')) { ?>
     <header>
         <?php include 'parts/header/header-navigation.php'; ?>
     </header>
-
     <?php includecached('parts/header/header-breadcrumb.php', get_the_ID()); ?>
+    <?php } ?>
