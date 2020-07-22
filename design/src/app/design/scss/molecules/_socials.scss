@@ -1,14 +1,25 @@
-.navbar-social{
+.navbar-social {
     a {
-        font-size: 0;
         padding: 0;
-        path, circle{
+
+        path,
+        circle {
             fill: $heading-color;
         }
-        &:hover, &:active, &:focus{
-            path, circle{
+
+        &:hover,
+        &:active,
+        &:focus {
+
+            path,
+            circle {
                 fill: $brand-color-second;
             }
+        }
+
+        span {
+            position: absolute;
+            font-size: 0;
         }
     }
 }
