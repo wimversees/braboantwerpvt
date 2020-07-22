@@ -17,7 +17,7 @@ function assign_parent_terms($post_id, $post)
     foreach (c('taxonomy-save-parent-taxonomies') as $taxonomy) {
         $terms = wp_get_post_terms($post_id, $taxonomy);
         foreach ($terms as $term) {
-            while ($term->parent != 0 && !has_term($term->parent, $taxonomy, $post)) {
+            while (is_tax($term) && $term->parent != 0 && !has_term($term->parent, $taxonomy, $post)) {
                 // move upward until we get to 0 level terms
                 wp_set_post_terms($post_id, array($term->parent), $taxonomy, true);
                 $term = get_term($term->parent, $taxonomy);
