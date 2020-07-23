@@ -22,7 +22,7 @@ function RenderCheckBox($fieldConfig, $fieldValue)
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
-function SaveCheckBox($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
+function SaveCheckBoxField($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     $valueToStore = array_key_exists($fieldSlug, $_POST) && $_POST[$fieldSlug] == $fieldSlug ? 1 : 0;
     StoreFieldValue($objectId, $fieldSlug, $valueToStore, $saveOrRenderForType);

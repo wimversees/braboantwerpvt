@@ -22,7 +22,7 @@ function RenderSingleLineText($fieldConfig, $fieldValue)
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
-function SaveSingleLineText($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
+function SaveSingleLineTextField($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     if (array_key_exists($fieldSlug, $_POST)) {
         $valueToStore = $_POST[$fieldSlug];

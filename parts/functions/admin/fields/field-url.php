@@ -22,7 +22,7 @@ function RenderUrl($fieldConfig, $fieldValue)
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 
-function SaveUrl($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
+function SaveUrlField($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
 {
     if (array_key_exists($fieldSlug, $_POST)) {
         $valueToStore = $_POST[$fieldSlug];

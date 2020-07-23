@@ -5,14 +5,20 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+abstract class ExampleType
+{
+    const Type = 'example';
+    // const ExampleField = 'example-field';
+}
+
 $examplePostTypeConfig = new PostTypeConfig(
-    c('example'),
+    ExampleType::Type,
     "Example",
     "Examples",
     array(
-        new FieldConfig(FieldType::SingleLineText, c('example-field'), 'test field label', true, 'this is a comment for the field'),
-        new FieldConfig(FieldType::Checkbox, c('example-other-field'), 'test field label 2'),
-        new FieldConfig(FieldType::Date, c('example-other-field-2'), 'test field date'),
+        // new FieldConfig(FieldType::SingleLineText, ExampleType::ExampleField, 'test field label', true, 'this is a comment for the field'),
+        // new FieldConfig(FieldType::Checkbox, ExampleType::ExampleField, 'test field label 2'),
+        // new FieldConfig(FieldType::Date, ExampleType::ExampleField, 'test field date'),
     )
 );
 

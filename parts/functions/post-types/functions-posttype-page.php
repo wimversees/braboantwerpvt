@@ -5,8 +5,14 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+abstract class PageType
+{
+    const Type = 'page';
+    // const ImageField = 'highlighted-image';
+}
+
 $pageTypeConfig = new PostTypeConfig(
-    c('page'),
+    PageType::Type,
     null,
     null,
     array(

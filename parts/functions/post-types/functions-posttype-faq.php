@@ -5,12 +5,18 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+abstract class FaqType
+{
+    const Type = 'faq';
+    // const Image = 'highlighted-image';
+}
+
 $faqPostTypeConfig = new PostTypeConfig(
-    c('faq'),
+    FaqType::Type,
     "Faq",
     "Faqs",
     array(
-        // new FieldConfig(FieldType::SingleLineText, c('faq-field'), 'test field for faq', true),
+        // new FieldConfig(FieldType::Image, FaqType::Image, 'Test image for faq', true, "description of the field"),
     )
 );
 

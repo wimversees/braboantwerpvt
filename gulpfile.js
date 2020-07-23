@@ -114,16 +114,35 @@ gulp.task('javascript-applib', function(){
         .pipe(gulp.dest('./design/js/'));
 });
 
-gulp.task('run', gulp.series(['sass', 'admin-sass', 'css', 'css-dev', 'javascript-lib', 'javascript-lib-dev', 'javascript-applib', 'javascript-applib-dev']));
+gulp.task('admin-js', function(){
+    return gulp.src([
+            './parts/functions/admin/design/src/js/**/*.js'
+        ])
+        .pipe(concat('wiver-admin.js'))
+        .pipe(babel())
+        .pipe(gulp.dest('./parts/functions/admin/design/js/'));
+});
+
+gulp.task('run', gulp.series([
+    'sass', 
+    'admin-sass', 
+    'css', 
+    'css-dev', 
+    'javascript-lib', 
+    'javascript-lib-dev', 
+    'javascript-applib', 
+    'javascript-applib-dev',
+    'admin-js']));
 
 gulp.task('watch', function(){
     // css watchers
     gulp.watch('./design/src/app/design/**/*.scss', gulp.series(['sass']));
     gulp.watch('./design/src/docs/design/css/**/*.css', gulp.series(['css', 'css-dev']));
-    gulp.watch('./parts/functions/admin/design/**/*.scss', gulp.series(['admin-sass']));
+    gulp.watch('./parts/functions/admin/design/src/**/*.scss', gulp.series(['admin-sass']));
     // js watchers
     gulp.watch('./design/src/app/design/js/lib/**/*.js', gulp.series(['javascript-lib', 'javascript-lib-dev']));
     gulp.watch('./design/src/app/design/js/app/**/*.js', gulp.series(['javascript-applib', 'javascript-applib-dev']));
+    gulp.watch('./parts/functions/admin/design/src/**/*.js', gulp.series(['admin-js']));
 });
 
 gulp.task('default', gulp.series(['run', 'watch']));

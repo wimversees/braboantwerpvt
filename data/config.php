@@ -40,7 +40,7 @@ function getConfig()
 
         // sitemap settings
          'sitemap-post-types'                         => array('page', 'post'),
-        'sitemap-taxonomies'                         => array('category', 'example-tax'),
+        'sitemap-taxonomies'                         => array('category' /*, 'example-tax'*/),
         'sitemap-use-splitted-structure'             => true,
 
         // wp_head, wp_footer settings
@@ -64,30 +64,6 @@ function getConfig()
         // taxonomy settings
          'taxonomy-save-parent-taxonomies'            => array('category', 'example-tax'), // save parent taxonomies for the selected one in the post
          'taxonomy-save-parent-taxonomies-post-types' => array('post', 'example'), // the post types to save parent taxonomies for
-
-        // custom posttype example
-         // 'example'                                    => 'example',
-         // 'example-field'                              => 'example-field',
-         // 'example-other-field'                        => 'example-other-field',
-         // 'example-other-field-2'                      => 'example-other-field-2',
-
-        // posttype fields page
-         'page'                                       => 'page',
-        // 'page-field'                                 => 'page-field',
-
-        // posttype fields post
-         'post'                                       => 'post',
-        // 'post-field'                                 => 'post-field',
-
-        // custom posttype faq
-         //  'faq'                                        => 'faq',
-         // 'faq-field'                                  => 'faq-field',
-
-        // custom taxonomy example-tax
-         // 'example-tax'                                => 'example-tax',
-         // 'tax-example-field'                          => 'tax-example-field',
-         // 'tax-example-field-2'                        => 'tax-example-field-2',
-         // 'tax-example-field-3'                        => 'tax-example-field-3',
 
         // page column settings
          'main-cssclasses'                            => 'col-md-9',

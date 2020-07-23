@@ -5,8 +5,14 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+abstract class PostType
+{
+    const Type = 'post';
+    // const ImageField = 'highlighted-image';
+}
+
 $postTypeConfig = new PostTypeConfig(
-    c('post'),
+    PostType::Type,
     null,
     null,
     array(

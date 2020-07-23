@@ -5,8 +5,9 @@ if (!defined('ABSPATH')) {
     die();
 }
 
-add_action('admin_enqueue_scripts', 'load_admin_styles');
-function load_admin_styles()
+add_action('admin_enqueue_scripts', 'load_admin_frontend');
+function load_admin_frontend()
 {
-    wp_enqueue_style('admin_css_foo', get_template_directory_uri() . '/parts/functions/admin/design/css/wiver-admin.css', false, '1.0.0');
+    wp_enqueue_style('wiver_admin_css', getFrontEndFile('/parts/functions/admin/design/css/wiver-admin.css', false), false, '1.0.0');
+    wp_enqueue_script('wiver_admin_js', getFrontEndFile('/parts/functions/admin/design/js/wiver-admin.js', false), array('jquery'), '1.0.0');
 }
