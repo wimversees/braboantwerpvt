@@ -10,7 +10,7 @@
             <?php
 $args = array(
     'numberposts' => -1,
-    'post_type'   => c('faq'),
+    'post_type'   => FaqType::Type,
     'orderby'     => 'title',
     'order'       => 'ASC',
 );
