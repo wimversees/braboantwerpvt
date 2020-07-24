@@ -26,8 +26,8 @@ function RenderRadio($fieldConfig, $fieldValue)
     } else {
         foreach ($fieldConfig->fieldValues as $fieldRawValue) {
             $fieldValueSlugged = str_replace(' ', '-', strtolower($fieldRawValue));
-            $fieldHtml .= '<input type="radio" id="' . $fieldValueSlugged . '" name="' . $fieldSlug . '" value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'checked' : '') . '>';
-            $fieldHtml .= '<label for="' . $fieldValueSlugged . '">' . $fieldRawValue . '</label>';
+            $fieldHtml .= '<input type="radio" id="' . $fieldSlug . '-' . $fieldValueSlugged . '" name="' . $fieldSlug . '" value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'checked' : '') . '>';
+            $fieldHtml .= '<label for="' . $fieldSlug . '-' . $fieldValueSlugged . '">' . $fieldRawValue . '</label>';
         }
     }
 

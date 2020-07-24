@@ -12,6 +12,7 @@ abstract class ExampleType
     const Date           = 'example-date';
     const Image          = 'example-image';
     const Radio          = 'example-radio';
+    const Radio2         = 'example-radio-2';
     const RichText       = 'example-richtext';
     const Select         = 'example-selection';
     const SingleLineText = 'example-single';
@@ -27,6 +28,7 @@ $examplePostTypeConfig = new PostTypeConfig(
         new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', true, "description of the field"),
         new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
         new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
+        new FieldConfig(FieldType::Radio, ExampleType::Radio2, 'Radio Field 2', false, "description of the field", array('left', 'right', 'center')),
         new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
         new FieldConfig(FieldType::Select, ExampleType::Select, 'Select Field', false, "description of the field", array('left', 'right', 'center')),
         new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
