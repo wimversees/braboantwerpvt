@@ -20,17 +20,22 @@ function RenderSelect($fieldConfig, $fieldValue)
     $fieldSlug = $fieldConfig->fieldSlug;
 
     $fieldHtml = '';
-    $fieldHtml .= '<select name="' . $fieldSlug . '" class="' . $fieldSlug . '" ' . ($fieldConfig->required ? 'required' : '') . '>';
-    $fieldHtml .= '<option value="" ' . ($fieldValue == '' ? 'selected' : '') . ' ' . ($fieldConfig->required ? 'disabled' : '') . '>Choose...</option>';
-    foreach ($fieldConfig->fieldValues as $fieldRawValue) {
-        $fieldValueSlugged = str_replace(' ', '-', strtolower($fieldRawValue));
-        $fieldHtml .= '<option value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'selected' : '') . '>' . $fieldRawValue . '</option>';
+
+    if (!$fieldConfig->fieldValues || count($fieldConfig->fieldValues) < 1) {
+        $fieldHtml .= '<div class="alert alert-warning"><strong>Configuration Error.</strong> No options configured.</div>';
+    } else {
+        $fieldHtml .= '<select name="' . $fieldSlug . '" class="' . $fieldSlug . '" ' . ($fieldConfig->required ? 'required' : '') . '>';
+        $fieldHtml .= '<option value="" ' . ($fieldValue == '' ? 'selected' : '') . ' ' . ($fieldConfig->required ? 'disabled' : '') . '>Choose...</option>';
+        foreach ($fieldConfig->fieldValues as $fieldRawValue) {
+            $fieldValueSlugged = str_replace(' ', '-', strtolower($fieldRawValue));
+            $fieldHtml .= '<option value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'selected' : '') . '>' . $fieldRawValue . '</option>';
+        }
+        $fieldHtml .= '</select>';
     }
-    $fieldHtml .= '</select>';
 
     // remove button when field is not required
     if (!$fieldConfig->required) {
-        $fieldHtml .= '<input type="button" class="wiver-select-remove button button-secondary" value="Remove select" data-select="' . $fieldSlug . '" />';
+        $fieldHtml .= '<input type="button" class="wiver-select-remove button button-secondary" value="Remove Selection" data-select="' . $fieldSlug . '" />';
     }
 
     RenderFieldHtml($fieldConfig, $fieldHtml);

@@ -20,10 +20,15 @@ function RenderRadio($fieldConfig, $fieldValue)
     $fieldSlug = $fieldConfig->fieldSlug;
 
     $fieldHtml = '';
-    foreach ($fieldConfig->fieldValues as $fieldRawValue) {
-        $fieldValueSlugged = str_replace(' ', '-', strtolower($fieldRawValue));
-        $fieldHtml .= '<input type="radio" id="' . $fieldValueSlugged . '" name="' . $fieldSlug . '" value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'checked' : '') . '>';
-        $fieldHtml .= '<label for="' . $fieldValueSlugged . '">' . $fieldRawValue . '</label>';
+
+    if (!$fieldConfig->fieldValues || count($fieldConfig->fieldValues) < 1) {
+        $fieldHtml .= '<div class="alert alert-warning"><strong>Configuration Error.</strong> No options configured.</div>';
+    } else {
+        foreach ($fieldConfig->fieldValues as $fieldRawValue) {
+            $fieldValueSlugged = str_replace(' ', '-', strtolower($fieldRawValue));
+            $fieldHtml .= '<input type="radio" id="' . $fieldValueSlugged . '" name="' . $fieldSlug . '" value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'checked' : '') . '>';
+            $fieldHtml .= '<label for="' . $fieldValueSlugged . '">' . $fieldRawValue . '</label>';
+        }
     }
 
     RenderFieldHtml($fieldConfig, $fieldHtml);
