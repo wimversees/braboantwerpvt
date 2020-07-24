@@ -10,6 +10,7 @@ abstract class FieldType
     const Checkbox       = 'Checkbox';
     const Date           = 'Date';
     const Image          = 'Image';
+    const Select         = 'Select';
     const SingleLineText = 'SingleLineText';
     const Url            = 'Url';
 }
@@ -23,6 +24,7 @@ abstract class SaveOrRenderForType
 require_once 'field-checkbox.php';
 require_once 'field-date.php';
 require_once 'field-image.php';
+require_once 'field-select.php';
 require_once 'field-singlelinetext.php';
 require_once 'field-url.php';
 
@@ -37,6 +39,9 @@ function SaveField($post_id, $fieldSlug, $fieldType, $saveOrRenderForType = Save
             break;
         case FieldType::Image:
             SaveImageField($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::Select:
+            SaveSelectField($post_id, $fieldSlug, $saveOrRenderForType);
             break;
         case FieldType::SingleLineText:
             SaveSingleLineTextField($post_id, $fieldSlug, $saveOrRenderForType);
@@ -71,6 +76,9 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
             break;
         case FieldType::Image:
             ImageField($post, $field, $saveOrRenderForType);
+            break;
+        case FieldType::Select:
+            SelectField($post, $field, $saveOrRenderForType);
             break;
         case FieldType::SingleLineText:
             SingleLineTextField($post, $field, $saveOrRenderForType);

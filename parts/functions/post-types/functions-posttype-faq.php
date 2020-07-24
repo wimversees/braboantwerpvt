@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 abstract class FaqType
 {
     const Type = 'faq';
-    // const Image = 'highlighted-image';
+    // const Image = 'highlighted-image'
 }
 
 $faqPostTypeConfig = new PostTypeConfig(

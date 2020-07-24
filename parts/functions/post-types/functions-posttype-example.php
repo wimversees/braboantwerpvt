@@ -7,8 +7,13 @@ if (!defined('ABSPATH')) {
 
 abstract class ExampleType
 {
-    const Type = 'example';
-    // const ExampleField = 'example-field';
+    const Type           = 'example';
+    const Checkbox       = 'example-checkbox';
+    const Date           = 'example-date';
+    const Image          = 'example-image';
+    const Select         = 'example-selection';
+    const SingleLineText = 'example-single';
+    const Url            = 'example-url';
 }
 
 $examplePostTypeConfig = new PostTypeConfig(
@@ -16,9 +21,11 @@ $examplePostTypeConfig = new PostTypeConfig(
     "Example",
     "Examples",
     array(
-        // new FieldConfig(FieldType::SingleLineText, ExampleType::ExampleField, 'test field label', true, 'this is a comment for the field'),
-        // new FieldConfig(FieldType::Checkbox, ExampleType::ExampleField, 'test field label 2'),
-        // new FieldConfig(FieldType::Date, ExampleType::ExampleField, 'test field date'),
+        new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field'),
+        new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field'),
+        new FieldConfig(FieldType::Select, ExampleType::Select, 'Select Field', false, "description of the field", array('left', 'right', 'center')),
+        new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
+        new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', true, 'this is a comment for the field'),
     )
 );
 

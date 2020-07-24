@@ -64,3 +64,11 @@ function Refresh_Image(the_id, fieldSlug) {
     }
   });
 }
+
+jQuery(document).ready(function ($) {
+  jQuery('input.wiver-select-remove').click(function (e) {
+    e.preventDefault();
+    var fieldSlug = e.currentTarget.dataset.select;
+    jQuery('.' + fieldSlug).val('');
+  });
+});
