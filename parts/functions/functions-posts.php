@@ -12,12 +12,23 @@ if (!defined('ABSPATH')) {
  */
 function page_title()
 {
-    $default = get_bloginfo('name') . ' - ' . get_bloginfo('description');
+    $blogName        = get_bloginfo('name');
+    $blogDescription = get_bloginfo('description');
+    $default         = $blogName . ' - ' . $blogDescription;
+    // homepage
     if (is_home() || is_front_page()) {
-        echo $default;
+        echo strlen($default) >= 70 ? $blogName : $default;
         return;
     }
-    echo GetPageTitleH1() . ' - ' . $default;
+    // other page
+    $pageTitle      = GetPageTitleH1();
+    $defaultForPage = GetPageTitleH1() . ' - ' . $default;
+    if (strlen($defaultForPage) >= 70) {
+        $defaultForPageWithoutDescription = $pageTitle . ' - ' . $blogName;
+        echo strlen($defaultForPageWithoutDescription) >= 70 ? $pageTitle : $defaultForPageWithoutDescription;
+    } else {
+        echo $defaultForPage;
+    }
 }
 
 /**
