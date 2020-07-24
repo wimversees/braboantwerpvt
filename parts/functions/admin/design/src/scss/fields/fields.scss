@@ -1,5 +1,19 @@
 .wiver-fields {
 
+    .form-field {
+        border-bottom: 1px rgba(gray, .1) solid;
+
+        &.form-required {
+            label {
+                &::after {
+                    content: '*';
+                    font-weight: bold;
+                    padding-left: .25rem;
+                }
+            }
+        }
+    }
+
     input,
     textarea {
         width: 100%;
@@ -7,8 +21,18 @@
         margin-right: .25rem !important;
     }
 
-    input[type=checkbox] {
+    label {
+        width: auto;
+        margin-right: 1rem;
+    }
+
+    input[type=checkbox],
+    input[type=radio] {
         width: initial;
+    }
+
+    input[type=radio] {
+        margin-top: .25rem;
     }
 
     input[type=button],

@@ -10,6 +10,8 @@ abstract class FieldType
     const Checkbox       = 'Checkbox';
     const Date           = 'Date';
     const Image          = 'Image';
+    const Radio          = 'Radio';
+    const RichText       = 'RichText';
     const Select         = 'Select';
     const SingleLineText = 'SingleLineText';
     const Url            = 'Url';
@@ -24,6 +26,8 @@ abstract class SaveOrRenderForType
 require_once 'field-checkbox.php';
 require_once 'field-date.php';
 require_once 'field-image.php';
+require_once 'field-radio.php';
+require_once 'field-richtext.php';
 require_once 'field-select.php';
 require_once 'field-singlelinetext.php';
 require_once 'field-url.php';
@@ -39,6 +43,12 @@ function SaveField($post_id, $fieldSlug, $fieldType, $saveOrRenderForType = Save
             break;
         case FieldType::Image:
             SaveImageField($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::Radio:
+            SaveRadioField($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::RichText:
+            SaveRichTextField($post_id, $fieldSlug, $saveOrRenderForType);
             break;
         case FieldType::Select:
             SaveSelectField($post_id, $fieldSlug, $saveOrRenderForType);
@@ -77,6 +87,12 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
         case FieldType::Image:
             ImageField($post, $field, $saveOrRenderForType);
             break;
+        case FieldType::Radio:
+            RadioField($post, $field, $saveOrRenderForType);
+            break;
+        case FieldType::RichText:
+            RichTextField($post, $field, $saveOrRenderForType);
+            break;
         case FieldType::Select:
             SelectField($post, $field, $saveOrRenderForType);
             break;
@@ -95,7 +111,7 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
 function RenderFieldHtml($fieldConfig, $fieldHtml)
 {
     ?>
-<tr class="form-field<?php echo $fieldConfig->required ? 'form-required' : ''; ?>">
+<tr class="form-field<?php echo $fieldConfig->required ? ' form-required' : ''; ?>">
     <th scope="row">
         <label for="<?php echo $fieldConfig->fieldSlug; ?>"><?php echo $fieldConfig->fieldLabel; ?></label>
     </th>

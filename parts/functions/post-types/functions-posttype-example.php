@@ -11,6 +11,8 @@ abstract class ExampleType
     const Checkbox       = 'example-checkbox';
     const Date           = 'example-date';
     const Image          = 'example-image';
+    const Radio          = 'example-radio';
+    const RichText       = 'example-richtext';
     const Select         = 'example-selection';
     const SingleLineText = 'example-single';
     const Url            = 'example-url';
@@ -21,11 +23,14 @@ $examplePostTypeConfig = new PostTypeConfig(
     "Example",
     "Examples",
     array(
-        new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field'),
-        new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field'),
+        new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
+        new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', true, "description of the field"),
+        new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
+        new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
+        new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
         new FieldConfig(FieldType::Select, ExampleType::Select, 'Select Field', false, "description of the field", array('left', 'right', 'center')),
         new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
-        new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', true, 'this is a comment for the field'),
+        new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', false, 'this is a comment for the field'),
     )
 );
 

@@ -1,0 +1,38 @@
+<?php
+
+// If this file is called directly, abort.
+if (!defined('ABSPATH')) {
+    die();
+}
+
+/**
+ * This function generated a radio field for admin views
+ */
+function RadioField($object, $fieldConfig, $saveOrRenderForType = SaveOrRenderForType::Post)
+{
+    $fieldSlug  = $fieldConfig->fieldSlug;
+    $fieldValue = GetStoredFieldValue($object, $fieldSlug, $saveOrRenderForType);
+    RenderRadio($fieldConfig, $fieldValue);
+}
+
+function RenderRadio($fieldConfig, $fieldValue)
+{
+    $fieldSlug = $fieldConfig->fieldSlug;
+
+    $fieldHtml = '';
+    foreach ($fieldConfig->fieldValues as $fieldRawValue) {
+        $fieldValueSlugged = str_replace(' ', '-', strtolower($fieldRawValue));
+        $fieldHtml .= '<input type="radio" id="' . $fieldValueSlugged . '" name="' . $fieldSlug . '" value="' . $fieldValueSlugged . '" ' . ($fieldValue == $fieldValueSlugged ? 'checked' : '') . '>';
+        $fieldHtml .= '<label for="' . $fieldValueSlugged . '">' . $fieldRawValue . '</label>';
+    }
+
+    RenderFieldHtml($fieldConfig, $fieldHtml);
+}
+
+function SaveRadioField($objectId, $fieldSlug, $saveOrRenderForType = SaveOrRenderForType::Post)
+{
+    if (array_key_exists($fieldSlug, $_POST)) {
+        $valueToStore = $_POST[$fieldSlug];
+        StoreFieldValue($objectId, $fieldSlug, $valueToStore, $saveOrRenderForType);
+    }
+}
