@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?php echo get_og_locale(); ?>">
 
 <head>
     <meta charset="utf-8">
