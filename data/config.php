@@ -9,7 +9,7 @@ function getConfig()
         'hashkey'                                    => "ripemd160",
 
         // language settings
-         'default-locale'                             => "nl_be",
+         'default-locale'                             => "nl",
         'multilanguage-enabled'                      => false,
 
         // google analytics
