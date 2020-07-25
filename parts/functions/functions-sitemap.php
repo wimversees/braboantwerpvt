@@ -100,6 +100,13 @@ function CreateSingleSitemap($sitemapName = 'sitemap.xml')
  */
 function GetSitemapContentForPostType($postType)
 {
+    global $sitepress;
+    if ($sitepress != null && c('multilanguage-enabled')) {
+        $current_lang = $sitepress->get_current_language();
+        $default_lang = $sitepress->get_default_language();
+        $sitepress->switch_lang($default_lang);
+    }
+
     $sitemap = '';
     $args    = array(
         'numberposts' => -1,
@@ -109,6 +116,11 @@ function GetSitemapContentForPostType($postType)
         'order'       => 'DESC',
     );
     $results = new WP_Query($args);
+
+    if ($sitepress != null && c('multilanguage-enabled')) {
+        $sitepress->switch_lang($current_lang);
+    }
+
     foreach ($results->posts as $post) {
         setup_postdata($post);
         if (strpos(get_page_template_slug($post->ID), 'page-noindex.php') !== false) {
@@ -125,6 +137,13 @@ function GetSitemapContentForPostType($postType)
  */
 function GetSitemapContentForTaxonomy($taxonomyType)
 {
+    global $sitepress;
+    if ($sitepress != null && c('multilanguage-enabled')) {
+        $current_lang = $sitepress->get_current_language();
+        $default_lang = $sitepress->get_default_language();
+        $sitepress->switch_lang($default_lang);
+    }
+
     $sitemap = '';
     $args    = array(
         'numberposts' => -1,
@@ -134,6 +153,11 @@ function GetSitemapContentForTaxonomy($taxonomyType)
         'order'       => 'DESC',
     );
     $results = new WP_Term_Query($args);
+
+    if ($sitepress != null && c('multilanguage-enabled')) {
+        $sitepress->switch_lang($current_lang);
+    }
+
     if ($results && $results->terms) {
         foreach ($results->terms as $term) {
             setup_postdata($term);
@@ -148,7 +172,7 @@ function GetSitemapContentForTaxonomy($taxonomyType)
  */
 function GetSingleSitemapHeader()
 {
-    return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">';
+    return '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:xhtml="http://www.w3.org/1999/xhtml">';
 }
 
 /**
@@ -197,8 +221,28 @@ function GetSitemapSingleTaxonomy($term, $frequency = 'daily')
  */
 function GetSitemapSinglePost($post, $frequency = 'monthly')
 {
-    $postdate       = explode(" ", $post->post_modified);
-    $sitemapContent = GetSitemapSingleItem(get_permalink($post->ID), $postdate[0], $frequency);
+    $postdate = explode(" ", $post->post_modified);
+
+    // get translations (alternate urls) of the post
+    $alternateLinks = array();
+    global $sitepress;
+    if ($sitepress != null && c('multilanguage-enabled')) {
+        $current_lang = $sitepress->get_current_language();
+        $default_lang = $sitepress->get_default_language();
+        foreach ($sitepress->get_active_languages() as $language) {
+            $languageCode = $language['code'];
+            if ($languageCode != $default_lang) {
+                $sitepress->switch_lang($languageCode);
+                $alternateLink           = new StdClass();
+                $alternateLink->language = $languageCode;
+                $alternateLink->url      = get_the_permalink(apply_filters('wpml_object_id', $post->ID, $post->post_type, true, $languageCode));
+                $alternateLinks[]        = $alternateLink;
+                $sitepress->switch_lang($default_lang);
+            }
+        }
+    }
+
+    $sitemapContent = GetSitemapSingleItem(get_permalink($post->ID), $postdate[0], $frequency, $alternateLinks);
     // add featured image as image sitemap
     if (has_post_thumbnail($post->ID)) {
         $imageTitle     = $post->post_title;
@@ -210,15 +254,29 @@ function GetSitemapSinglePost($post, $frequency = 'monthly')
 
 /**
  * This function returns the sitemap string for a given url, date, frequency and priority.
+ * The alternatelinks parameter is an array of objects with a url and a language.
  */
-function GetSitemapSingleItem($url, $date, $frequency = 'monthly', $priority = 0.8)
+function GetSitemapSingleItem($url, $date, $frequency = 'monthly', $alternateLinks = array(), $priority = 0.8)
 {
-    return '<url>' .
-        '<loc>' . $url . '</loc>' .
-        '<lastmod>' . $date . '</lastmod>' .
-        '<changefreq>' . $frequency . '</changefreq>' .
-        '<priority>' . $priority . '</priority>' .
-        '</url>';
+    $urlXml = '<url>';
+    $urlXml .= '<loc>' . $url . '</loc>';
+    // translations of the current url
+    foreach ($alternateLinks as $alternateLink) {
+        $urlXml .= GetSitemapSingleItemAlternateLink($alternateLink->url, $alternateLink->language);
+    }
+    $urlXml .= '<lastmod>' . $date . '</lastmod>';
+    $urlXml .= '<changefreq>' . $frequency . '</changefreq>';
+    $urlXml .= '<priority>' . $priority . '</priority>';
+    $urlXml .= '</url>';
+    return $urlXml;
+}
+
+/**
+ * This function returns the sitemap alternate link (translations) string for a url and language.
+ */
+function GetSitemapSingleItemAlternateLink($url, $hreflang = 'nl')
+{
+    return '<xhtml:link rel="alternate" hreflang="' . $hreflang . '" href="' . $url . '"/>';
 }
 
 /**
