@@ -19,7 +19,7 @@ wp_nav_menu(array(
     'menu'       => 'head-menu',
     'depth'      => 2,
     'container'  => false,
-    'menu_class' => 'navbar-nav ml-auto',
+    'menu_class' => 'navbar-nav ml-auto menu-head-menu',
     // Process nav menu using our custom nav walker
      'walker'     => new WP_Bootstrap_Navwalker())
 );

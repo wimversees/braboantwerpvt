@@ -1,25 +1,31 @@
-header{
-    .navbar{
+header {
+    .navbar {
         padding: 1rem;
     }
-    .navbar-brand-img{
+
+    .navbar-brand-img {
         height: 3rem;
     }
-    .navbar-toggler{
+
+    .navbar-toggler {
         border: none;
     }
-    #menu-head-menu{
+
+    .menu-head-menu {
         text-transform: uppercase;
-         @include media-breakpoint-down('sm') {
+
+        @include media-breakpoint-down('sm') {
             text-align: center;
         }
-        .nav-link{
+
+        .nav-link {
             padding-left: 1rem;
             padding-right: 1rem;
         }
     }
+
     @include media-breakpoint-down('sm') {
-        .navbar-brand{
+        .navbar-brand {
             margin-right: 0;
         }
     }
