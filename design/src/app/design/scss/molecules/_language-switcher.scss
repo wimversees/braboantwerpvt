@@ -1,0 +1,17 @@
+.lang-switcher {
+    text-transform: uppercase;
+    display: inline-block;
+
+    li {
+        display: inline-block;
+
+        a {
+            padding: .5rem !important;
+
+            img {
+                height: 1rem;
+                margin-top: -3px;
+            }
+        }
+    }
+}
