@@ -11,6 +11,7 @@ function getConfig()
         // language settings
          'default-locale'                             => "nl",
         'multilanguage-enabled'                      => false,
+        'multilanguage-flags-enabled'                => false,
 
         // google analytics
          'google-analytics-key'                       => '', // notation: UA-131124377-1

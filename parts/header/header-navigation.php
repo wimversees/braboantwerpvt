@@ -29,7 +29,7 @@ wp_nav_menu(array(
                 <?php include __DIR__ . '/../social/social-media-links.php'; ?>
             </ul>
 
-            <?php if (c('multilanguage-enabled')) {includecached('parts/header/header-language-switcher.php', get_the_ID());} ?>
+            <?php if (c('multilanguage-enabled')) {includecached('parts/languages/language-switcher.php', get_the_ID());} ?>
         </div>
     </div>
 </nav>
