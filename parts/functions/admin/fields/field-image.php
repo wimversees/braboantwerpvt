@@ -26,7 +26,7 @@ function RenderImage($fieldConfig, $fieldValue)
     }
 
     // image holder with image
-    $fieldHtml .= '<div class="holder-' . $fieldSlug . '">';
+    $fieldHtml .= '<div class="holder-' . $fieldSlug . ' image-holder">';
     $fieldHtml .= $image;
     $fieldHtml .= '</div>';
 
