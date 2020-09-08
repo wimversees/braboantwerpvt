@@ -24,6 +24,9 @@ require_once 'parts/functions/functions-permalinks.php';
 require_once 'parts/functions/functions-structured-data.php';
 require_once 'parts/functions/admin/functions-admin.php';
 
+// shortcodes
+require_once 'parts/functions/shortcodes/shortcodes.php';
+
 // admin pages
 require_once 'parts/functions/admin/toolbox/functions-admin-toolbox.php';
 
