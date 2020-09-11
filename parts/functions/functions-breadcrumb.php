@@ -36,8 +36,10 @@ function wiver_breadcrumb()
     $breadcrumb_output = '<ul class="breadcrumb" itemscope itemtype="http://schema.org/BreadcrumbList">';
     $breadcrumb_output .= getBreadCrumbItem($home_text, $home_link, $position);
 
-    if (is_home() || is_front_page()) {
+    if (is_front_page()) {
         // Do not show breadcrumbs on homepage or frontpage
+    } elseif (is_home()) {
+        $breadcrumb_output .= getBreadCrumbItem(trim(wp_title("", false)), get_the_permalink(get_the_ID()), ++$position);
     } elseif (is_single()) {
         $postType = get_post_type();
         // If it is a custom post type display name and link
