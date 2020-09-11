@@ -40,7 +40,7 @@ function GetPageTitleH1()
         // Do not return title
     } elseif (is_home()) {
         // empty value as first parameter to remove separator
-        return wp_title("");
+        return trim(wp_title(""));
     } elseif (is_single()) {
         return get_the_title(get_the_ID());
     } elseif (is_shop()) {
