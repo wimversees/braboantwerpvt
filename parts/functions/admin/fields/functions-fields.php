@@ -152,3 +152,73 @@ function StoreFieldValue($objectId, $fieldSlug, $fieldValue = '', $saveOrRenderF
             return '';
     }
 }
+
+function RenderMetaboxes($postTypeConfig)
+{
+    if ($postTypeConfig->fields) {
+        $postType      = $postTypeConfig->postType;
+        $postTypeViews = [$postType];
+        foreach ($postTypeViews as $postTypeView) {
+            // render meta box for single fields (not part of fieldgroup)
+            $fieldsForDefaultGroup = array();
+            foreach ($postTypeConfig->fields as $field) {
+                if (is_object($field) && $field instanceof FieldConfig) {
+                    $fieldsForDefaultGroup[] = $field;
+                }
+            }
+            if (count($fieldsForDefaultGroup) > 0) {
+                $metaBoxTitle = $postTypeConfig->singularName . ' Fields';
+                add_meta_box('example_metabox', $metaBoxTitle, 'RenderMetaboxContent', $postTypeView, 'normal', 'high', array("fields" => $fieldsForDefaultGroup, "postTypeConfig" => $postTypeConfig));
+            }
+
+            // render meta box groups
+            foreach ($postTypeConfig->fields as $field) {
+                if (is_object($field) && $field instanceof FieldGroup) {
+                    $metaBoxId = 'metabox-' . str_replace(' ', '-', $field->fieldGroupTitle);
+                    add_meta_box($metaBoxId, $field->fieldGroupTitle, 'RenderMetaboxContent', $postTypeView, 'normal', 'high', array("fields" => $field->fieldGroupFields, "postTypeConfig" => $postTypeConfig));
+                }
+            }
+        }
+    }
+}
+
+function RenderMetaboxContent($post, $callback_args)
+{
+    global $post;
+    $args           = $callback_args['args'];
+    $fields         = $args['fields'];
+    $postTypeConfig = $args['postTypeConfig'];
+
+    if (count($fields) > 0) {
+        echo '<div class="wiver-fields">';
+        echo '<table class="form-table">';
+        foreach ($fields as $field) {
+            RenderField($post, $field);
+        }
+        echo '</table>';
+        echo '</div>';
+    } else {
+        echo '<p class="alert alert-warning">No fields configured for this group.</p>';
+    }
+}
+
+function SavePostData($postTypeConfig, $postId)
+{
+    foreach ($postTypeConfig->fields as $field) {
+        if (is_object($field) && $field instanceof FieldGroup) {
+            foreach ($field->fieldGroupFields as $fieldGroupField) {
+                SaveField($postId, $fieldGroupField->fieldSlug, $fieldGroupField->fieldType);
+            }
+        } else {
+            SaveField($postId, $field->fieldSlug, $field->fieldType);
+        }
+    }
+}
+
+/**
+ * This function lower cases the given string, and replaces all characters not allowed in a slug
+ */
+function SluggifyString($string)
+{
+    return sanitize_title($string);
+}

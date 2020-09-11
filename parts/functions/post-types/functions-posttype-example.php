@@ -7,9 +7,14 @@ if (!defined('ABSPATH')) {
 
 abstract class ExampleType
 {
-    const Type           = 'example';
-    const Checkbox       = 'example-checkbox';
-    const Date           = 'example-date';
+    const Type = 'example';
+
+    const Group1   = 'Group 1';
+    const Checkbox = 'example-checkbox';
+    const Date     = 'example-date';
+
+    const Group2         = 'Group 2';
+    const Group3         = 'Group 3';
     const Image          = 'example-image';
     const Radio          = 'example-radio';
     const Radio2         = 'example-radio-2';
@@ -24,15 +29,33 @@ $examplePostTypeConfig = new PostTypeConfig(
     "Example",
     "Examples",
     array(
+        new FieldGroup(
+            ExampleType::Group1,
+            array(
+                new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
+                new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', true, "description of the field"),
+            )
+        ),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
-        new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', true, "description of the field"),
-        new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
-        new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
-        new FieldConfig(FieldType::Radio, ExampleType::Radio2, 'Radio Field 2', false, "description of the field", array('left', 'right', 'center')),
-        new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
-        new FieldConfig(FieldType::Select, ExampleType::Select, 'Select Field', false, "description of the field", array('left', 'right', 'center')),
-        new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
-        new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', false, 'this is a comment for the field'),
+        new FieldGroup(
+            ExampleType::Group2,
+            array(
+                new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
+                new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
+                new FieldConfig(FieldType::Radio, ExampleType::Radio2, 'Radio Field 2', false, "description of the field", array('left', 'right', 'center')),
+                new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
+                new FieldConfig(FieldType::Select, ExampleType::Select, 'Select Field', false, "description of the field", array('left', 'right', 'center')),
+                new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
+                new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', false, 'this is a comment for the field'))
+        ),
+        new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
+        new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
+
+        new FieldGroup(
+            ExampleType::Group3,
+            array(
+            )
+        ), new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
     )
 );
 
@@ -108,37 +131,22 @@ function create_posttype_example()
  */
 add_action('init', 'create_posttype_example');
 
+/**
+ * Action registration for metaboxes
+ */
 function example_metaboxes()
 {
     global $examplePostTypeConfig;
-    if ($examplePostTypeConfig->fields) {
-        $postType      = $examplePostTypeConfig->postType;
-        $postTypeViews = [$postType];
-        $metaBoxTitle  = $examplePostTypeConfig->singularName . ' Fields';
-        foreach ($postTypeViews as $postTypeView) {
-            add_meta_box('example_metabox', $metaBoxTitle, 'example_metabox_html', $postTypeView, 'normal', 'high');
-        }
-    }
+    RenderMetaboxes($examplePostTypeConfig);
 }
 add_action('add_meta_boxes', 'example_metaboxes');
 
-function example_metabox_html($post)
-{
-    global $examplePostTypeConfig;
-    echo '<div class="wiver-fields">';
-    echo '<table class="form-table">';
-    foreach ($examplePostTypeConfig->fields as $field) {
-        RenderField($post, $field);
-    }
-    echo '</table>';
-    echo '</div>';
-}
-
+/**
+ * Action registration to save post fields
+ */
 function example_save_postdata($post_id)
 {
     global $examplePostTypeConfig;
-    foreach ($examplePostTypeConfig->fields as $field) {
-        SaveField($post_id, $field->fieldSlug, $field->fieldType);
-    }
+    SavePostData($examplePostTypeConfig, $post_id);
 }
 add_action('save_post', 'example_save_postdata');

@@ -8,7 +8,8 @@ if (!defined('ABSPATH')) {
 abstract class FaqType
 {
     const Type = 'faq';
-    // const Image = 'highlighted-image'
+    // const Group1 = 'faq-group-1'
+    // const Image = 'faq-highlighted-image'
 }
 
 $faqPostTypeConfig = new PostTypeConfig(
@@ -16,7 +17,12 @@ $faqPostTypeConfig = new PostTypeConfig(
     "Faq",
     "Faqs",
     array(
-        // new FieldConfig(FieldType::Image, FaqType::Image, 'Test image for faq', true, "description of the field"),
+        // new FieldGroup(
+        //     FaqType::Group1,
+        //     array(
+        //         new FieldConfig(FieldType::Image, FaqType::Image, 'Test image for faq', true, "description of the field"),
+        //     )
+        // ),
     )
 );
 
