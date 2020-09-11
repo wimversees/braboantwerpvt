@@ -37,39 +37,24 @@ function create_posttype_page()
 /**
  * The actual register of the posttype
  */
-add_action('init', 'create_posttype_page');
+add_action('init', 'create_posttype_example');
 
-function page_metaboxes()
+/**
+ * Action registration for metaboxes
+ */
+function example_metaboxes()
 {
     global $pageTypeConfig;
-    if ($pageTypeConfig->fields) {
-        $postType      = $pageTypeConfig->postType;
-        $postTypeViews = [$postType];
-        $metaBoxTitle  = $pageTypeConfig->singularName . ' Fields';
-        foreach ($postTypeViews as $postTypeView) {
-            add_meta_box('page_metabox', $metaBoxTitle, 'page_metabox_html', $postTypeView, 'normal', 'high');
-        }
-    }
+    RenderMetaboxes($pageTypeConfig);
 }
-add_action('add_meta_boxes', 'page_metaboxes');
+add_action('add_meta_boxes', 'example_metaboxes');
 
-function page_metabox_html($post)
+/**
+ * Action registration to save post fields
+ */
+function example_save_postdata($post_id)
 {
     global $pageTypeConfig;
-    echo '<div class="wiver-fields">';
-    echo '<table class="form-table">';
-    foreach ($pageTypeConfig->fields as $field) {
-        RenderField($post, $field);
-    }
-    echo '</table>';
-    echo '</div>';
+    SavePostData($pageTypeConfig, $post_id);
 }
-
-function page_save_postdata($post_id)
-{
-    global $pageTypeConfig;
-    foreach ($pageTypeConfig->fields as $field) {
-        SaveField($post_id, $field->fieldSlug, $field->fieldType);
-    }
-}
-add_action('save_post', 'page_save_postdata');
+add_action('save_post', 'example_save_postdata');

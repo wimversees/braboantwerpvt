@@ -96,43 +96,24 @@ function create_posttype_faq()
 /**
  * The actual register of the posttype
  */
-add_action('init', 'create_posttype_faq');
+add_action('init', 'create_posttype_example');
 
-function faq_metaboxes()
+/**
+ * Action registration for metaboxes
+ */
+function example_metaboxes()
 {
     global $faqPostTypeConfig;
-    if ($faqPostTypeConfig->fields) {
-        $postType      = $faqPostTypeConfig->postType;
-        $postTypeViews = [$postType];
-        $metaBoxTitle  = $faqPostTypeConfig->singularName . ' Fields';
-        foreach ($postTypeViews as $postTypeView) {
-            add_meta_box(
-                'faq_metabox', // Unique ID
-                $metaBoxTitle, // Box title
-                 'faq_metabox_html', // Content callback, must be of type callable
-                $postTypeView, 'normal', 'high');
-        }
-    }
+    RenderMetaboxes($faqPostTypeConfig);
 }
-add_action('add_meta_boxes', 'faq_metaboxes');
+add_action('add_meta_boxes', 'example_metaboxes');
 
-function faq_metabox_html($post)
+/**
+ * Action registration to save post fields
+ */
+function example_save_postdata($post_id)
 {
     global $faqPostTypeConfig;
-    echo '<div class="wiver-fields">';
-    echo '<table class="form-table">';
-    foreach ($faqPostTypeConfig->fields as $field) {
-        RenderField($post, $field);
-    }
-    echo '</table>';
-    echo '</div>';
+    SavePostData($faqPostTypeConfig, $post_id);
 }
-
-function faq_save_postdata($post_id)
-{
-    global $faqPostTypeConfig;
-    foreach ($faqPostTypeConfig->fields as $field) {
-        SaveField($post_id, $field->fieldSlug, $field->fieldType);
-    }
-}
-add_action('save_post', 'faq_save_postdata');
+add_action('save_post', 'example_save_postdata');
