@@ -9,6 +9,7 @@ abstract class FieldType
 {
     const Checkbox       = 'Checkbox';
     const Date           = 'Date';
+    const DateTime       = 'DateTime';
     const Image          = 'Image';
     const Radio          = 'Radio';
     const RichText       = 'RichText';
@@ -25,6 +26,7 @@ abstract class SaveOrRenderForType
 
 require_once 'field-checkbox.php';
 require_once 'field-date.php';
+require_once 'field-datetime.php';
 require_once 'field-image.php';
 require_once 'field-radio.php';
 require_once 'field-richtext.php';
@@ -40,6 +42,9 @@ function SaveField($post_id, $fieldSlug, $fieldType, $saveOrRenderForType = Save
             break;
         case FieldType::Date:
             SaveDateField($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::DateTime:
+            SaveDateTimeField($post_id, $fieldSlug, $saveOrRenderForType);
             break;
         case FieldType::Image:
             SaveImageField($post_id, $fieldSlug, $saveOrRenderForType);
@@ -83,6 +88,9 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
             break;
         case FieldType::Date:
             DateField($post, $field, $saveOrRenderForType);
+            break;
+        case FieldType::DateTime:
+            DateTimeField($post, $field, $saveOrRenderForType);
             break;
         case FieldType::Image:
             ImageField($post, $field, $saveOrRenderForType);

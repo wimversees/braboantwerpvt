@@ -12,6 +12,7 @@ abstract class ExampleType
     const Group1   = 'Group 1';
     const Checkbox = 'example-checkbox';
     const Date     = 'example-date';
+    const DateTime = 'example-datetime';
 
     const Group2         = 'Group 2';
     const Group3         = 'Group 3';
@@ -34,6 +35,7 @@ $examplePostTypeConfig = new PostTypeConfig(
             array(
                 new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
                 new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', true, "description of the field"),
+                new FieldConfig(FieldType::DateTime, ExampleType::DateTime, 'DateTime Field', true, "description of the field"),
             )
         ),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
