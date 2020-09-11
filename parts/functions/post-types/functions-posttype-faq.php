@@ -96,24 +96,24 @@ function create_posttype_faq()
 /**
  * The actual register of the posttype
  */
-add_action('init', 'create_posttype_post');
+add_action('init', 'create_posttype_faq');
 
 /**
  * Action registration for metaboxes
  */
-function post_metaboxes()
+function faq_metaboxes()
 {
     global $faqPostTypeConfig;
     RenderMetaboxes($faqPostTypeConfig);
 }
-add_action('add_meta_boxes', 'post_metaboxes');
+add_action('add_meta_boxes', 'faq_metaboxes');
 
 /**
  * Action registration to save post fields
  */
-function post_save_postdata($post_id)
+function faq_save_postdata($post_id)
 {
     global $faqPostTypeConfig;
     SavePostData($faqPostTypeConfig, $post_id);
 }
-add_action('save_post', 'post_save_postdata');
+add_action('save_post', 'faq_save_postdata');
