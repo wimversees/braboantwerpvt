@@ -36,10 +36,15 @@ function page_title()
  */
 function GetPageTitleH1()
 {
-    if (is_home() || is_front_page()) {
+    if (is_front_page()) {
         // Do not return title
+    } elseif (is_home()) {
+        // empty value as first parameter to remove separator
+        return wp_title("");
     } elseif (is_single()) {
         return get_the_title(get_the_ID());
+    } elseif (is_shop()) {
+        return woocommerce_page_title();
     } elseif (is_author()) {
         global $author;
         $userdata = get_userdata($author);
