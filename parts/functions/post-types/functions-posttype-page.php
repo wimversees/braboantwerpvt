@@ -37,24 +37,24 @@ function create_posttype_page()
 /**
  * The actual register of the posttype
  */
-add_action('init', 'create_posttype_example');
+add_action('init', 'create_posttype_post');
 
 /**
  * Action registration for metaboxes
  */
-function example_metaboxes()
+function post_metaboxes()
 {
     global $pageTypeConfig;
     RenderMetaboxes($pageTypeConfig);
 }
-add_action('add_meta_boxes', 'example_metaboxes');
+add_action('add_meta_boxes', 'post_metaboxes');
 
 /**
  * Action registration to save post fields
  */
-function example_save_postdata($post_id)
+function post_save_postdata($post_id)
 {
     global $pageTypeConfig;
     SavePostData($pageTypeConfig, $post_id);
 }
-add_action('save_post', 'example_save_postdata');
+add_action('save_post', 'post_save_postdata');
