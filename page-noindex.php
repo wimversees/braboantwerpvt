@@ -1,5 +1,7 @@
 <?php
-// Template Name: Noindex Page ?>
+// Template Name: Noindex Page
+
+get_header(); ?>
 
 <div class="container">
     <div class="row">
