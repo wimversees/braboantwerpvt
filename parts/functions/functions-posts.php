@@ -40,11 +40,11 @@ function GetPageTitleH1()
         // Do not return title
     } elseif (is_home()) {
         // empty value as first parameter to remove separator
-        return trim(wp_title(""));
+        return trim(wp_title("", false));
     } elseif (is_single()) {
         return get_the_title(get_the_ID());
     } elseif (is_shop()) {
-        return woocommerce_page_title();
+        return woocommerce_page_title(false);
     } elseif (is_author()) {
         global $author;
         $userdata = get_userdata($author);
