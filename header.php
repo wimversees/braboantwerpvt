@@ -58,7 +58,6 @@
 </head>
 
 <body>
-    <?php echo $_SERVER['SERVER_NAME']; ?>
     <?php if (!c('splash-enabled')) { ?>
     <header>
         <?php include 'parts/header/header-navigation.php'; ?>
