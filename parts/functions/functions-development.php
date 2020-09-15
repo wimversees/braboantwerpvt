@@ -82,7 +82,17 @@ function randomHexColor()
  */
 function IsProEnvironment()
 {
-    return !(strpos('localhost:81', strtolower($_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'])) !== false);
+    return !IsLocalEnvironment() && !IsTestEnvironment();
+}
+
+/**
+ * This function checks if the environment is TEST (*.wiver.be), based on localhost base url.
+ */
+function IsTestEnvironment()
+{
+    $hasWiverInUrl       = strpos($_SERVER['SERVER_NAME'], '.wiver.be') !== false;
+    $hasWwwDotWiverInUrl = strpos($_SERVER['SERVER_NAME'], 'www.wiver.be') !== false;
+    return $hasWiverInUrl && !$hasWwwDotWiverInUrl;
 }
 
 /**
@@ -90,5 +100,6 @@ function IsProEnvironment()
  */
 function IsLocalEnvironment()
 {
-    return strpos('localhost:81', strtolower($_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'])) !== false;
+    $serverAndPort = strtolower($_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT']);
+    return strpos($serverAndPort, 'localhost:81') !== false;
 }

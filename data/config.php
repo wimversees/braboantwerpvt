@@ -4,7 +4,7 @@ function getConfig()
 {
     return array(
         // general settings
-         'cache-enabled'                              => "enabled", // "disabled" or "enabled"
+         'cache-enabled'                              => "disabled", // "disabled" or "enabled"
          'version'                                    => "0.0.1",
         'hashkey'                                    => "ripemd160",
 

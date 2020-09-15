@@ -35,6 +35,13 @@
 
     <link href="<?php getFrontEndFile(IsProEnvironment() ? '/design/css/main.css' : '/design/css/main-dev.css'); ?>" rel="stylesheet">
 
+    <?php if (!IsProEnvironment()) { ?>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="isdev" content="<?php echo IsLocalEnvironment(); ?>">
+    <meta name="istest" content="<?php echo IsTestEnvironment(); ?>">
+    <meta name="ispro" content="<?php echo IsProEnvironment(); ?>">
+    <?php } ?>
+
     <?php /* custom fonts */ ?>
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
@@ -51,6 +58,7 @@
 </head>
 
 <body>
+    <?php echo $_SERVER['SERVER_NAME']; ?>
     <?php if (!c('splash-enabled')) { ?>
     <header>
         <?php include 'parts/header/header-navigation.php'; ?>
