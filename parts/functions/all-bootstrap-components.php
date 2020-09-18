@@ -2,15 +2,6 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Custom Shortcodes</h1>
-        </div>
-        <?php echo do_shortcode('[youtube doc="1"]'); ?>
-        <?php echo do_shortcode('[button doc="1"]'); ?>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
             <h1>Bootstrap Components</h1>
             <h2>H2 Bootstrap Components</h2>
             <h3>H3 Bootstrap Components</h3>
@@ -322,6 +313,15 @@
     <div>
         <i class="far fa-user"></i>
         <i class="fas fa-shopping-basket"></i>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Custom Shortcodes</h1>
+        </div>
+        <?php echo do_shortcode('[youtube doc="1"]'); ?>
+        <?php echo do_shortcode('[button doc="1"]'); ?>
     </div>
 </div>
 <?php }

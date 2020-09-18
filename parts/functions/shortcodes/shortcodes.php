@@ -22,7 +22,7 @@ function shortcode_documentation($shortcode)
 
     $outputHtml .= '<h2>Shortcode: ' . $shortcodeName . '</h2>';
 
-    $outputHtml .= '<table class="table table-bordered table-light table-striped">';
+    $outputHtml .= '<table class="table table-sm table-bordered table-light table-striped">';
     $outputHtml .= '<tr>';
     $outputHtml .= '<th>Attribute</th>';
     $outputHtml .= '<th>Default Value</th>';
