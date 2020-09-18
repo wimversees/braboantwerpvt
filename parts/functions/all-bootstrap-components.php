@@ -2,6 +2,15 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
+            <h1>Custom Shortcodes</h1>
+        </div>
+        <?php echo do_shortcode('[youtube doc="1"]'); ?>
+        <?php echo do_shortcode('[button doc="1"]'); ?>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
             <h1>Bootstrap Components</h1>
             <h2>H2 Bootstrap Components</h2>
             <h3>H3 Bootstrap Components</h3>
@@ -52,7 +61,8 @@
                 <span class="badge badge-warning">Warning</span>
                 <span class="badge badge-info">Info</span>
                 <span class="badge badge-light">Light</span>
-                <span class="badge badge-dark">Dark</span></p>
+                <span class="badge badge-dark">Dark</span>
+            </p>
 
             <h2>Breadcrumb</h2>
             <nav aria-label="breadcrumb">
@@ -72,7 +82,8 @@
                 <button type="button" class="btn btn-info">Info</button>
                 <button type="button" class="btn btn-light">Light</button>
                 <button type="button" class="btn btn-dark">Dark</button>
-                <button type="button" class="btn btn-link">Link</button></p>
+                <button type="button" class="btn btn-link">Link</button>
+            </p>
             <p><button type="button" class="btn btn-outline-primary">Primary</button>
                 <button type="button" class="btn btn-outline-secondary">Secondary</button>
                 <button type="button" class="btn btn-outline-success">Success</button>
@@ -80,7 +91,8 @@
                 <button type="button" class="btn btn-outline-warning">Warning</button>
                 <button type="button" class="btn btn-outline-info">Info</button>
                 <button type="button" class="btn btn-outline-light">Light</button>
-                <button type="button" class="btn btn-outline-dark">Dark</button></p>
+                <button type="button" class="btn btn-outline-dark">Dark</button>
+            </p>
 
             <h2>Cards</h2>
             <div class="card" style="width: 18rem;">
