@@ -1,0 +1,8 @@
+iframe {
+    width: 100%;
+    min-height: auto;
+
+    @include media-breakpoint-down("xs") {
+        min-height: 15rem;
+    }
+}
