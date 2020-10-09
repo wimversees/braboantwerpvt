@@ -1,19 +1,30 @@
-.wpcf7{
-    .screen-reader-response{
+.wpcf7 {
+    .screen-reader-response {
         display: none;
     }
-    .wpcf7-not-valid{
+
+    .wpcf7-not-valid {
         border-color: $red;
     }
-    .wpcf7-not-valid-tip{
+
+    .wpcf7-not-valid-tip {
         color: $red;
     }
-    [aria-invalid=false]{
+
+    [aria-invalid=false] {
         border-color: $green;
     }
-    .wpcf7-response-output{
+
+    .wpcf7-response-output {
         border: none;
         padding: 0;
         margin: 0;
+    }
+
+    .anr_captcha_field {
+        iframe {
+            min-height: initial;
+            height: auto;
+        }
     }
 }
