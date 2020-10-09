@@ -95,5 +95,5 @@ function excerpt($limit)
         $excerpt = implode(' ', $excerpt);
     }
     $excerpt = preg_replace('`\[[^\]]*\]`', '', $excerpt);
-    return $excerpt;
+    return strip_tags($excerpt);
 }
