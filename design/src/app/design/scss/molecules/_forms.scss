@@ -23,8 +23,7 @@
 
     .anr_captcha_field {
         iframe {
-            min-height: initial;
-            height: auto;
+            min-height: unset;
         }
     }
 }
