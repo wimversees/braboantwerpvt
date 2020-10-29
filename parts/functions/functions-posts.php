@@ -43,9 +43,11 @@ function GetPageTitleH1()
         return trim(wp_title("", false));
     } elseif (is_single()) {
         return get_the_title(get_the_ID());
-    } elseif (is_shop()) {
-        return woocommerce_page_title(false);
-    } elseif (is_author()) {
+    }
+    // disabled for no-shop websites
+    /* elseif (is_shop()) {
+    return woocommerce_page_title(false);
+    }*/elseif (is_author()) {
         global $author;
         $userdata = get_userdata($author);
         return $userdata->data->user_nicename;
