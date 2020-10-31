@@ -25,6 +25,9 @@ function wiver_shortcode_button($atts)
     // set link when linkid has been filled in
     if (intval($a['linkid']) > 0) {
         $a['link'] = get_the_permalink(intval($a['linkid']));
+        if (strlen($a['text']) == 0) {
+            $a['text'] = get_the_title(intval($a['linkid']));
+        }
     }
 
     $isExternalLink = !(strpos($a['link'], $_SERVER['HTTP_HOST']) !== false);
