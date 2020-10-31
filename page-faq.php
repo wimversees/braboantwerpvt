@@ -26,18 +26,19 @@ global $post;
         $index++;
         $heading    = 'h' . $index;
         $collapseId = 'c' . $index; ?>
-                <div class="card">
+                <div class="card" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                     <div class="card-header" id="<?php echo $heading; ?>">
                         <h2 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#<?php echo $collapseId; ?>"
-                                aria-expanded="<?php echo $index == 1 ? 'true' : 'false'; ?>"
-                                aria-controls="<?php echo $collapseId; ?>"><span>?</span><?php the_title(); ?></button>
+                                aria-expanded="<?php echo $index == 1 ? 'true' : 'false'; ?>" aria-controls="<?php echo $collapseId; ?>"
+                                itemprop="name"><span>?</span><?php the_title(); ?></button>
                         </h2>
                     </div>
 
                     <div id="<?php echo $collapseId; ?>" class="collapse <?php echo $index == 1 ? 'show' : ''; ?>"
-                        aria-labelledby="<?php echo $heading; ?>" data-parent="#acc">
-                        <div class="card-body">
+                        aria-labelledby="<?php echo $heading; ?>" data-parent="#acc" itemscope itemprop="acceptedAnswer"
+                        itemtype="https://schema.org/Answer">
+                        <div class="card-body" itemprop="text">
                             <?php the_content(); ?>
                         </div>
                     </div>
