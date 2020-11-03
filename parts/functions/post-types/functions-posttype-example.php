@@ -13,11 +13,13 @@ abstract class ExampleType
     const Checkbox = 'example-checkbox';
     const Date     = 'example-date';
     const DateTime = 'example-datetime';
-    const Integer  = 'example-integer';
 
-    const Group2         = 'Group 2';
+    const Group2 = 'Group 2';
+
     const Group3         = 'Group 3';
     const Image          = 'example-image';
+    const Integer        = 'example-integer';
+    const MultiLineText  = 'example-multilinetext';
     const Radio          = 'example-radio';
     const Radio2         = 'example-radio-2';
     const RichText       = 'example-richtext';
@@ -45,6 +47,7 @@ $examplePostTypeConfig = new PostTypeConfig(
             ExampleType::Group2,
             array(
                 new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
+                new FieldConfig(FieldType::MultiLineText, ExampleType::MultiLineText, 'Multi Line Text Field', false, "description of the field"),
                 new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
                 new FieldConfig(FieldType::Radio, ExampleType::Radio2, 'Radio Field 2', false, "description of the field", array('left', 'right', 'center')),
                 new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
