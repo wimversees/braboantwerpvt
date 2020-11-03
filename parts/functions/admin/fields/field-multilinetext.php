@@ -29,3 +29,11 @@ function SaveMultiLineTextField($objectId, $fieldSlug, $saveOrRenderForType = Sa
         StoreFieldValue($objectId, $fieldSlug, $valueToStore, $saveOrRenderForType);
     }
 }
+
+/**
+ * This function creates an array of a multiline textfield by every new line.
+ */
+function MultiLineTextToArrayByNewLine($textAreaValue)
+{
+    return preg_split('/\r\n|[\r\n]/', $textAreaValue);
+}
