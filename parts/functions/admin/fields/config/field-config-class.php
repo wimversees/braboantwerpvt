@@ -7,20 +7,22 @@ if (!defined('ABSPATH')) {
 
 class FieldConfig
 {
-    public $fieldSlug    = '';
-    public $fieldLabel   = '';
-    public $fieldType    = 0;
-    public $fieldValues  = array();
-    public $required     = false;
-    public $fieldComment = '';
+    public $fieldSlug     = '';
+    public $fieldLabel    = '';
+    public $fieldType     = 0;
+    public $fieldValues   = array();
+    public $fieldSettings = array();
+    public $required      = false;
+    public $fieldComment  = '';
 
-    public function __construct($fieldType, $fieldSlug, $fieldLabel, $required = false, $fieldComment = '', $fieldValues = array())
+    public function __construct($fieldType, $fieldSlug, $fieldLabel, $required = false, $fieldComment = '', $fieldValues = array(), $fieldSettings = array())
     {
-        $this->fieldSlug    = $fieldSlug;
-        $this->fieldLabel   = $fieldLabel;
-        $this->fieldType    = $fieldType;
-        $this->fieldValues  = $fieldValues;
-        $this->required     = $required;
-        $this->fieldComment = $fieldComment;
+        $this->fieldSlug     = $fieldSlug;
+        $this->fieldLabel    = $fieldLabel;
+        $this->fieldType     = $fieldType;
+        $this->fieldValues   = $fieldValues;
+        $this->fieldSettings = $fieldSettings;
+        $this->required      = $required;
+        $this->fieldComment  = $fieldComment;
     }
 }

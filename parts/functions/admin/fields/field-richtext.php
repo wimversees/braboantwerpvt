@@ -19,10 +19,15 @@ function RenderRichText($fieldConfig, $fieldValue)
 {
     $fieldSlug = $fieldConfig->fieldSlug;
 
-    $editorSettings = array(
+    $defaultSettings = array(
         'media_buttons' => false,
         'textarea_rows' => 10,
     );
+
+    $customSettings = $fieldConfig->fieldSettings;
+
+    $editorSettings = array_merge($defaultSettings, $customSettings);
+
     ob_start();
     wp_editor($fieldValue, $fieldSlug, $editorSettings);
     $outputStream = ob_get_clean();
