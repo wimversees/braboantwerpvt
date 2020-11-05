@@ -87,3 +87,27 @@ function MultiSelectIdArrayFromField($postId, $fieldSlug)
     }
     return $ids;
 }
+
+/**
+ * This function returns an array of ids (of the requested post type) where the current post id is referenced in the given slug field (of the requested post type).
+ */
+function MultiSelectOppositeIdArray($requestedPostType, $fieldSlugOfRequestedPostType, $currentPostId)
+{
+    $args = array(
+        'post_type'      => $requestedPostType,
+        'meta_key'       => $fieldSlugOfRequestedPostType,
+        'compare'        => 'EXISTS',
+        'posts_per_page' => -1,
+    );
+
+    $oppositePosts = get_posts($args);
+    $ids           = array();
+    foreach ($oppositePosts as $oppositePost) {
+        $slugFieldIds = MultiSelectIdArrayFromField($oppositePost->ID, $fieldSlugOfRequestedPostType);
+        if (in_array($currentPostId, $slugFieldIds)) {
+            $ids[] = $oppositePost->ID;
+        }
+    }
+    $ids = array_unique($ids);
+    return $ids;
+}
