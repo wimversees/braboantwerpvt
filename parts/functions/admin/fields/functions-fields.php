@@ -13,6 +13,7 @@ abstract class FieldType
     const Image          = 'Image';
     const Integer        = 'Integer';
     const MultiLineText  = 'MultiLineText';
+    const MultiSelect    = 'MultiSelect';
     const Radio          = 'Radio';
     const RichText       = 'RichText';
     const Select         = 'Select';
@@ -32,6 +33,7 @@ require_once 'field-datetime.php';
 require_once 'field-image.php';
 require_once 'field-integer.php';
 require_once 'field-multilinetext.php';
+require_once 'field-multiselect.php';
 require_once 'field-radio.php';
 require_once 'field-richtext.php';
 require_once 'field-select.php';
@@ -58,6 +60,9 @@ function SaveField($post_id, $fieldSlug, $fieldType, $saveOrRenderForType = Save
             break;
         case FieldType::MultiLineText:
             SaveMultiLineTextField($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::MultiSelect:
+            SaveMultiSelectField($post_id, $fieldSlug, $saveOrRenderForType);
             break;
         case FieldType::Radio:
             SaveRadioField($post_id, $fieldSlug, $saveOrRenderForType);
@@ -113,6 +118,9 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
             break;
         case FieldType::MultiLineText:
             MultiLineTextField($post, $field, $saveOrRenderForType);
+            break;
+        case FieldType::MultiSelect:
+            MultiSelectField($post, $field, $saveOrRenderForType);
             break;
         case FieldType::RichText:
             RichTextField($post, $field, $saveOrRenderForType);

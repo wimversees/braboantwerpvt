@@ -24,6 +24,10 @@
     label {
         width: auto;
         margin-right: 1rem;
+
+        input[type=checkbox] {
+            margin-top: 0rem;
+        }
     }
 
     input[type=checkbox],
@@ -46,6 +50,13 @@
             width: 100%;
             max-width: 10rem;
             height: auto;
+        }
+    }
+
+    .wiver-multiselect {
+        label {
+            display: inline-block;
+            width: 100%;
         }
     }
 }

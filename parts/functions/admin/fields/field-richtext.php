@@ -19,19 +19,18 @@ function RenderRichText($fieldConfig, $fieldValue)
 {
     $fieldSlug = $fieldConfig->fieldSlug;
 
+    // retreive and set settings on top of default settings
     $defaultSettings = array(
         'media_buttons' => false,
         'textarea_rows' => 10,
     );
-
     $customSettings = $fieldConfig->fieldSettings;
-
     $editorSettings = array_merge($defaultSettings, $customSettings);
 
+    // create rich text editor with ob_
     ob_start();
     wp_editor($fieldValue, $fieldSlug, $editorSettings);
     $outputStream = ob_get_clean();
-
     $fieldHtml = $outputStream;
 
     RenderFieldHtml($fieldConfig, $fieldHtml);

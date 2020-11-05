@@ -50,7 +50,7 @@ $examplePostTypeConfig = new PostTypeConfig(
             array(
                 new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
                 new FieldConfig(FieldType::MultiLineText, ExampleType::MultiLineText, 'Multi Line Text Field', false, "description of the field"),
-                new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelect, 'Multi Select Field', false, "description of the field"),
+                new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelect, 'Multi Select Field', false, "description of the field", array(), array(MultiSelectFieldSettings::PostType => 'faq')),
                 new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
                 new FieldConfig(FieldType::Radio, ExampleType::Radio2, 'Radio Field 2', false, "description of the field", array('left', 'right', 'center')),
                 new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
