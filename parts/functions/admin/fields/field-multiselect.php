@@ -73,9 +73,17 @@ function SaveMultiSelectField($objectId, $fieldSlug, $saveOrRenderForType = Save
 }
 
 /**
- * This function creates an array of a multiselect field by every new line.
+ * This function returns an array of integer ids for a given fieldslug and a post id.
  */
-function MultiSelectToArrayByNewLine($textAreaValue)
+function MultiSelectIdArrayFromField($postId, $fieldSlug)
 {
-    return preg_split('/\r\n|[\r\n]/', $textAreaValue);
+    $fieldValue = get_post_meta($postId, $fieldSlug, true);
+    $ids        = array();
+    foreach (explode('|', $fieldValue) as $id) {
+        $idInteger = intval($id);
+        if ($idInteger > 0) {
+            $ids[] = $idInteger;
+        }
+    }
+    return $ids;
 }
