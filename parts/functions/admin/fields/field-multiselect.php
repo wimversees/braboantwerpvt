@@ -56,7 +56,7 @@ function RenderMultiSelect($fieldConfig, $fieldValue)
     $fieldHtml .= '<input id="' . $fieldSlug . '" type="hidden" name="' . $fieldSlug . '" value="' . $fieldValue . '" />';
     foreach ($fieldOptions as $fieldOption) {
         $fieldOptionId    = $fieldOption->ID;
-        $fieldOptionTitle = $fieldOption->post_name;
+        $fieldOptionTitle = $fieldOption->post_title;
         $fieldHtml .= '<label><input data-group="' . $fieldSlug . '" type="checkbox" id="' . $fieldOptionId . '" value="' . $fieldOptionId . '" ' . (in_array($fieldOptionId, $selectedOptions) ? 'checked' : '') . ' />' . $fieldOptionTitle . '</label>';
     }
     $fieldHtml .= "</div>";
