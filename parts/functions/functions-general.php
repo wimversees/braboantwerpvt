@@ -95,5 +95,11 @@ function c($key)
  */
 function GetLocale()
 {
-    return defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : c('default-locale');
+    $setLanguage = defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : c('default-locale');
+    if ($setLanguage == "en") {
+        return "en_UK";
+    } elseif ($setLanguage = "nl") {
+        return "nl_BE";
+    }
+    return $setLanguage;
 }
