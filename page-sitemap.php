@@ -16,11 +16,11 @@
                 <?php foreach (c('sitemap-post-types') as $postType) {
     if ($postType != "page" && $postType != "post") {
         $args = array(
-            'numberposts' => -1,
-            'post_status' => 'publish', // add explicit publish state to fix draft statusses because sitemap is generated when a user is logged in
-             'post_type'   => $postType,
-            'orderby'     => 'modified',
-            'order'       => 'DESC',
+            'posts_per_page' => -1,
+            'post_status'    => 'publish', // add explicit publish state to fix draft statusses because sitemap is generated when a user is logged in
+             'post_type'      => $postType,
+            'orderby'        => 'modified',
+            'order'          => 'DESC',
         );
         $results = new WP_Query($args);
 
@@ -39,12 +39,12 @@ if ($archive_query->have_posts()) { ?>
             <h2><?php t("sitemap-news"); ?></h2>
             <ul>
                 <?php while ($archive_query->have_posts()): $archive_query->the_post(); ?>
-                <li>
-                    <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
-                        <?php echo get_the_date('j M Y H:i'); ?> - <?php the_title(); ?>
-                    </a>
-                </li>
-                <?php endwhile; ?>
+	                <li>
+	                    <a href="<?php the_permalink() ?>" title="<?php the_title(); ?>">
+	                        <?php echo get_the_date('j M Y H:i'); ?> - <?php the_title(); ?>
+	                    </a>
+	                </li>
+	                <?php endwhile; ?>
             </ul>
             <?php } ?>
         </div>
