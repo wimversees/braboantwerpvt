@@ -33,6 +33,8 @@ body.login div#login h1 a {
     background-position: top center;
     position: relative;
     padding-top: 5rem;
+    pointer-events: none !important;
+    cursor: default;
 }
 
 
