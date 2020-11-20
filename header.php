@@ -58,7 +58,7 @@
 </head>
 
 <body>
-    <?php if (IsTestEnvironment() || IsLocalEnvironment()) {ShowEnvironmentWarning();} ?>
+    <?php if (IsTestEnvironment()) {ShowEnvironmentWarning();} ?>
 
     <?php if (!c('splash-enabled')) { ?>
     <header>
