@@ -58,6 +58,8 @@
 </head>
 
 <body>
+    <?php if (IsTestEnvironment() || IsLocalEnvironment()) {ShowEnvironmentWarning();} ?>
+
     <?php if (!c('splash-enabled')) { ?>
     <header>
         <?php include 'parts/header/header-navigation.php'; ?>

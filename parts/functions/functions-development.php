@@ -103,3 +103,18 @@ function IsLocalEnvironment()
     $serverAndPort = strtolower($_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT']);
     return strpos($serverAndPort, 'localhost:81') !== false;
 }
+
+/**
+ * This function returns a warning on all front end pages that the current environment is not the production environment
+ */
+function ShowEnvironmentWarning()
+{
+    $html = '';
+    $html .= '<div style="position: absolute; margin-top:-7rem; z-index: 99999999; background: #bf2026; color: #fff; width: 100%; text-align: center; font-weight:bold;">';
+    $html .= '<p class="m-1">THIS IS NOT A PRODUCTION ENVIRONMENT</p>';
+    $html .= '</div>';
+    $html .= '<style>';
+    $html .= 'body{margin-top:7rem;}';
+    $html .= '</style>';
+    echo $html;
+}
