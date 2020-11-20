@@ -53,23 +53,28 @@ body.login div#login h1 a::after {
     height: 5rem;
 }
 
-<?php if ( !IsProEnvironment()) {}
+<?php if ( !IsProEnvironment()) {
 
-?>#loginform {
-    position: relative;
+    ?>#loginform {
+        position: relative;
+    }
+
+    #loginform::before {
+        content: '⚠ This is a demo website. To edit the live website, please use the live website url.';
+        display: inline-block;
+        padding: .5rem;
+        background: #bf2026;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+
+    <?php
 }
 
-#loginform::before {
-    content: '⚠ This is a demo website. To edit the live website, please use the live website url.';
-    display: inline-block;
-    padding: .5rem;
-    background: #bf2026;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: white;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
+?>
 </style>
 <?php
 }
