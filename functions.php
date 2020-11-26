@@ -23,8 +23,12 @@ require_once 'parts/functions/functions-taxonomies.php';
 require_once 'parts/functions/functions-permalinks.php';
 require_once 'parts/functions/functions-structured-data.php';
 require_once 'parts/functions/functions-minification.php';
+require_once 'parts/functions/functions-mails.php';
+
+// admin functions
 require_once 'parts/functions/admin/functions-admin.php';
 
+// set default lcoale
 setlocale(LC_ALL, get_og_locale());
 
 // shortcodes
