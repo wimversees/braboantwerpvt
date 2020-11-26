@@ -110,11 +110,8 @@ function IsLocalEnvironment()
 function ShowEnvironmentWarning()
 {
     $html = '';
-    $html .= '<div style="position: absolute; margin-top:-7rem; z-index: 99999999; background: #bf2026; color: #fff; width: 100%; text-align: center; font-weight:bold;">';
+    $html .= '<div style="position: absolute; z-index: 99999999; background: rgba(191,32,38,.75); color: #fff; width: 20%; min-width:15rem; text-align: center; font-weight:bold; font-family:sans-serif; pointer-events:none; position:fixed;">';
     $html .= '<p class="m-1">THIS IS NOT A PRODUCTION ENVIRONMENT</p>';
     $html .= '</div>';
-    $html .= '<style>';
-    $html .= 'body{margin-top:7rem;}';
-    $html .= '</style>';
     echo $html;
 }
