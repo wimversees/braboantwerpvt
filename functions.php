@@ -60,5 +60,9 @@ require_once 'parts/functions/post-types/functions-posttype-example.php';
 
 // flush rewrite rules on local environment
 if (IsLocalEnvironment()) {
+    add_action('init', function () {
+        global $wp_rewrite;
+        $wp_rewrite->set_permalink_structure('/%postname%/');
+    });
     flush_rewrite_rules();
 }
