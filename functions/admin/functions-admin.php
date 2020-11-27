@@ -8,8 +8,8 @@ if (!defined('ABSPATH')) {
 add_action('admin_enqueue_scripts', 'load_admin_frontend');
 function load_admin_frontend()
 {
-    wp_enqueue_style('wiver_admin_css', getFrontEndFile('/parts/functions/admin/design/css/wiver-admin.css', false), false, '1.0.0');
-    wp_enqueue_script('wiver_admin_js', getFrontEndFile('/parts/functions/admin/design/js/wiver-admin.js', false), array('jquery'), '1.0.0');
+    wp_enqueue_style('wiver_admin_css', getFrontEndFile('/functions/admin/design/css/wiver-admin.css', false), false, '1.0.0');
+    wp_enqueue_script('wiver_admin_js', getFrontEndFile('/functions/admin/design/js/wiver-admin.js', false), array('jquery'), '1.0.0');
 }
 
 /**
@@ -24,7 +24,7 @@ body.login {
 }
 
 body.login div#login h1 a {
-    background-image: url(<?php getFrontEndFile('/parts/functions/admin/design/img/wiver.svg');
+    background-image: url(<?php getFrontEndFile('/functions/admin/design/img/wiver.svg');
     ?>);
     padding-bottom: 30px;
     background-repeat: no-repeat;

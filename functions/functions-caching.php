@@ -21,7 +21,7 @@ function includecached($path, $cacheKeyExtention = '')
 {
     $cacheEnabled = c('cache-enabled') == 'enabled';
     // define cache key by used path
-    $fullpath = __DIR__ . '/../../' . $path;
+    $fullpath = __DIR__ . '/../' . $path;
     $cacheKey = getCacheKeyByFileNameAndExtention($path, $cacheKeyExtention);
     $file     = getCacheFileName($cacheKey, $path);
 
@@ -105,7 +105,7 @@ function getCacheKeyByFileNameAndExtention($filename, $extention = '', $enableHa
  */
 function getCacheFileName($cacheKey, $fileName)
 {
-    $cacheDirectory = __DIR__ . '/../../cache/';
+    $cacheDirectory = __DIR__ . '/../cache/';
     if (!file_exists($cacheDirectory)) {
         mkdir($cacheDirectory);
     }
@@ -134,14 +134,14 @@ function getSpecificCacheFolder($fileName)
 function clearCustomCache()
 {
     // remove all cache files
-    $files = glob(__DIR__ . '/../../cache/**/*'); // get all file names
+    $files = glob(__DIR__ . '/../cache/**/*'); // get all file names
     foreach ($files as $file) { // iterate files
         if (is_file($file)) {
             unlink($file);
         }
     }
     // remove all directories
-    $directories = glob(__DIR__ . '/../../cache/*'); // get all file names
+    $directories = glob(__DIR__ . '/../cache/*'); // get all file names
     foreach ($directories as $directory) { // iterate files
         if (is_dir($directory)) {
             rmdir($directory);
@@ -170,7 +170,7 @@ function getFrontEndFile($path, $echo = true)
         }
     }
 
-    $fileName         = __DIR__ . '/../../' . $path;
+    $fileName         = __DIR__ . '/../' . $path;
     $modificationTime = file_exists($fileName) ? filemtime($fileName) : '';
     $fullPath         = get_stylesheet_directory_uri() . $path . '?v=' . hash(c('hashkey'), c('version') . $modificationTime);
     if ($echo) {

@@ -30,7 +30,7 @@ function t($key, $echo = true)
     }
 
     if (!function_exists('getDictionary')) {
-        include __DIR__ . '/../../data/translations/translations_' . $currentLanguage . '.php';
+        include __DIR__ . '/../data/translations/translations_' . $currentLanguage . '.php';
     }
     $dict = getDictionary();
     $printString;
@@ -55,7 +55,7 @@ function t($key, $echo = true)
 function gpid($key)
 {
     if (!function_exists('getPostId')) {
-        include __DIR__ . '/../../data/postids.php';
+        include __DIR__ . '/../data/postids.php';
     }
     $ids = getPostId();
     if (array_key_exists($key, $ids)) {
@@ -79,7 +79,7 @@ function gpid($key)
 function c($key)
 {
     if (!function_exists('getConfig')) {
-        include __DIR__ . '/../../data/config.php';
+        include __DIR__ . '/../data/config.php';
     }
     $ids = getConfig();
     if (array_key_exists($key, $ids)) {

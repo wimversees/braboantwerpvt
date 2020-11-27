@@ -29,7 +29,7 @@ gulp.task('sass', function () {
 }); 
 
 gulp.task('admin-sass', function () {
-    return gulp.src('./parts/functions/admin/design/src/scss/**/*.scss')
+    return gulp.src('./functions/admin/design/src/scss/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({            
@@ -39,10 +39,10 @@ gulp.task('admin-sass', function () {
         ))
         .pipe(
             sourcemaps.write({
-                sourceRoot: './parts/functions/admin/design/src/scss/'
+                sourceRoot: './functions/admin/design/src/scss/'
             })
         )
-        .pipe(gulp.dest('./parts/functions/admin/design/css/'));
+        .pipe(gulp.dest('./functions/admin/design/css/'));
 });
  
 gulp.task('css-dev', function () {
@@ -116,11 +116,11 @@ gulp.task('javascript-applib', function(){
 
 gulp.task('admin-js', function(){
     return gulp.src([
-            './parts/functions/admin/design/src/js/**/*.js'
+            './functions/admin/design/src/js/**/*.js'
         ])
         .pipe(concat('wiver-admin.js'))
         .pipe(babel())
-        .pipe(gulp.dest('./parts/functions/admin/design/js/'));
+        .pipe(gulp.dest('./functions/admin/design/js/'));
 });
 
 gulp.task('run', gulp.series([
@@ -138,11 +138,11 @@ gulp.task('watch', function(){
     // css watchers
     gulp.watch('./design/src/app/design/**/*.scss', gulp.series(['sass']));
     gulp.watch('./design/src/docs/design/css/**/*.css', gulp.series(['css', 'css-dev']));
-    gulp.watch('./parts/functions/admin/design/src/**/*.scss', gulp.series(['admin-sass']));
+    gulp.watch('./functions/admin/design/src/**/*.scss', gulp.series(['admin-sass']));
     // js watchers
     gulp.watch('./design/src/app/design/js/lib/**/*.js', gulp.series(['javascript-lib', 'javascript-lib-dev']));
     gulp.watch('./design/src/app/design/js/app/**/*.js', gulp.series(['javascript-applib', 'javascript-applib-dev']));
-    gulp.watch('./parts/functions/admin/design/src/**/*.js', gulp.series(['admin-js']));
+    gulp.watch('./functions/admin/design/src/**/*.js', gulp.series(['admin-js']));
 });
 
 gulp.task('default', gulp.series(['run', 'watch']));
