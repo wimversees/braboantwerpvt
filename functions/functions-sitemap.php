@@ -266,7 +266,7 @@ function GetSitemapSingleItem($url, $date, $frequency = 'monthly', $alternateLin
     }
     $urlXml .= '<lastmod>' . $date . '</lastmod>';
     $urlXml .= '<changefreq>' . $frequency . '</changefreq>';
-    $urlXml .= '<priority>' . $priority . '</priority>';
+    $urlXml .= '<priority>' . str_replace(',', '.', $priority) . '</priority>';
     $urlXml .= '</url>';
     return $urlXml;
 }
