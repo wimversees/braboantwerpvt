@@ -12,9 +12,13 @@ if (!defined('ABSPATH')) {
 // set the default email address to a no-reply address
 function wiver_sender_email($original_email_address)
 {
-    $fullDomain = get_bloginfo('url');
-    $fullDomain = str_replace(array('https', 'http', ':', '//', '/', 'www.'), '', $fullDomain);
-    return 'noreply@' . $fullDomain;
+    $fullDomain     = get_bloginfo('url');
+    $fullDomain     = str_replace(array('https', 'http', ':', '//', '/', 'www.'), '', $fullDomain);
+    $noreplyAddress = 'noreply@' . $fullDomain;
+    if (filter_var($noreplyAddress, FILTER_VALIDATE_EMAIL)) {
+        return $noreplyAddress;
+    }
+    return $original_email_address;
 }
 add_filter('wp_mail_from', 'wiver_sender_email');
 
