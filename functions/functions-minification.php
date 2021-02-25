@@ -75,8 +75,9 @@ function wiver_minify_html_output($buffer)
             $buffer = str_replace(' />', '>', $buffer);
         }
 
-        $buffer = str_replace(array('https://' . $_SERVER['HTTP_HOST'] . '/', 'http://' . $_SERVER['HTTP_HOST'] . '/', '//' . $_SERVER['HTTP_HOST'] . '/'), array('/', '/', '/'), $buffer);
-        $buffer = str_replace(array('http://', 'https://'), '//', $buffer);
+        // disabled removal of domain to fix canonical urls
+        // $buffer = str_replace(array('https://' . $_SERVER['HTTP_HOST'] . '/', 'http://' . $_SERVER['HTTP_HOST'] . '/', '//' . $_SERVER['HTTP_HOST'] . '/'), array('/', '/', '/'), $buffer);
+        // $buffer = str_replace(array('http://', 'https://'), '//', $buffer);
         $buffer = str_replace(array('> <', '/> <'), array('><', '/><'), $buffer);
 
         // latest fixes
