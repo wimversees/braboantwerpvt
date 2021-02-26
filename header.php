@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php page_title(); ?></title>
 
-    <meta name="keywords" content="<?php page_title(); ?>">
+    <meta name="keywords" content="<?php page_keywords(); ?>">
     <meta name="description" content="<?php page_description(); ?>">
     <meta name="author" content="WIVER - www.wiver.be">
     <meta name="copyright" content="WIVER - www.wiver.be" />
@@ -15,6 +15,8 @@
     <?php if (strpos(basename(get_page_template()), 'noindex.php') !== false) { ?>
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
+    <?php } elseif (IsProEnvironment()) { ?>
+    <meta name="robots" content="index, follow">
     <?php } ?>
 
     <link rel="apple-touch-icon" sizes="180x180" href="<?php getFrontEndFile('/design/img/favicon/apple-touch-icon.png'); ?>">

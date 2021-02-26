@@ -32,6 +32,27 @@ function page_title()
 }
 
 /**
+ * This function echoes the keywords of the page
+ *
+ * @return void
+ */
+function page_keywords()
+{
+    $blogName        = get_bloginfo('name');
+    $blogDescription = get_bloginfo('description');
+    $default         = $blogName . ' ' . $blogDescription;
+    // homepage
+    if (is_home() || is_front_page()) {
+        echo $default;
+        return;
+    }
+    // other page
+    $pageTitle      = GetPageTitleH1();
+    $defaultForPage = GetPageTitleH1() . ' ' . $default;
+    echo $defaultForPage;
+}
+
+/**
  * This function returns the h1 title of the current page, according to the type of page
  */
 function GetPageTitleH1()
