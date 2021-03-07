@@ -109,11 +109,11 @@ function GetSitemapContentForPostType($postType)
 
     $sitemap = '';
     $args    = array(
-        'numberposts' => -1,
-        'post_status' => 'publish', // add explicit publish state to fix draft statusses because sitemap is generated when a user is logged in
-         'post_type'   => $postType,
-        'orderby'     => 'modified',
-        'order'       => 'DESC',
+        'posts_per_page' => -1,
+        'post_status'    => 'publish', // add explicit publish state to fix draft statusses because sitemap is generated when a user is logged in
+         'post_type'      => $postType,
+        'orderby'        => 'modified',
+        'order'          => 'DESC',
     );
     $results = new WP_Query($args);
 
@@ -146,11 +146,11 @@ function GetSitemapContentForTaxonomy($taxonomyType)
 
     $sitemap = '';
     $args    = array(
-        'numberposts' => -1,
-        'taxonomy'    => $taxonomyType,
-        'hide_empty'  => false,
-        'orderby'     => 'modified',
-        'order'       => 'DESC',
+        'posts_per_page' => -1,
+        'taxonomy'       => $taxonomyType,
+        'hide_empty'     => false,
+        'orderby'        => 'modified',
+        'order'          => 'DESC',
     );
     $results = new WP_Term_Query($args);
 
