@@ -9,6 +9,7 @@ abstract class MultiSelectFieldSettings
 {
     const PostType = 'multiselect_posttype';
     const Query    = 'multiselect_query';
+    const Options  = 'multiselect_options';
 }
 
 /**
@@ -27,19 +28,26 @@ function RenderMultiSelect($fieldConfig, $fieldValue)
 
     // retreive and set settings on top of default settings
     $defaultSettings = array(
-        MultiSelectFieldSettings::PostType => 'post',
+        MultiSelectFieldSettings::PostType => '',
         MultiSelectFieldSettings::Query    => array(),
+        MultiSelectFieldSettings::Options  => array(),
     );
     $customSettings = $fieldConfig->fieldSettings;
     $fieldSettings  = array_merge($defaultSettings, $customSettings);
 
+    // field options array (will be filled with post items depending on query, or with passed options)
     $fieldOptions = array();
-    // if query is set, use query
-    if (count($fieldSettings[MultiSelectFieldSettings::Query]) > 0) {
 
-    }
-    // if query is not set, use posttype with default: post
-    else {
+    // OPTION 1 : if options are set, use the options
+    if (count($fieldSettings[MultiSelectFieldSettings::Options]) > 0) {
+        $fieldOptions = $fieldSettings[MultiSelectFieldSettings::Options];
+    } else
+    // OPTION 2 : if query is set, use query to fill the field options
+    if (count($fieldSettings[MultiSelectFieldSettings::Query]) > 0) {
+        // todo, implement query approach
+    } else
+    // OPTION 3 : if posttype is set, use the posttype to get all the posts for that posttype
+    if (strlen($fieldSettings[MultiSelectFieldSettings::PostType]) > 0) {
         $args = array(
             'numberposts' => -1,
             'orderby'     => 'title',
@@ -51,15 +59,31 @@ function RenderMultiSelect($fieldConfig, $fieldValue)
 
     $selectedOptions = explode('|', $fieldValue);
 
+    $fieldHtml = '';
+
     // retreive all posts
-    $fieldHtml = '<div class="wiver-multiselect">';
-    $fieldHtml .= '<input id="' . $fieldSlug . '" type="hidden" name="' . $fieldSlug . '" value="' . $fieldValue . '" />';
-    foreach ($fieldOptions as $fieldOption) {
-        $fieldOptionId    = $fieldOption->ID;
-        $fieldOptionTitle = $fieldOption->post_title;
-        $fieldHtml .= '<label><input data-group="' . $fieldSlug . '" type="checkbox" id="' . $fieldOptionId . '" value="' . $fieldOptionId . '" ' . (in_array($fieldOptionId, $selectedOptions) ? 'checked' : '') . ' />' . $fieldOptionTitle . '</label>';
+    if (!$fieldOptions || count($fieldOptions) < 1) {
+        $fieldHtml .= '<div class="alert alert-warning"><strong>Configuration Error.</strong> No options configured.</div>';
+    } else {
+        $fieldHtml = '<div class="wiver-multiselect">';
+        $fieldHtml .= '<input id="' . $fieldSlug . '" type="hidden" name="' . $fieldSlug . '" value="' . $fieldValue . '" />';
+        foreach ($fieldOptions as $fieldOption) {
+            $fieldOptionTitle = '';
+            $fieldOptionValue = '';
+
+            // if fieldoption is a post, take id and label instead of raw value from list
+            if (is_a($fieldOption, 'WP_Post')) {
+                $fieldOptionTitle = $fieldOption->post_title;
+                $fieldOptionValue = $fieldOption->ID;
+            } else {
+                $fieldOptionTitle = $fieldOption;
+                $fieldOptionValue = str_replace(' ', '-', strtolower($fieldOption));
+            }
+
+            $fieldHtml .= '<label><input data-group="' . $fieldSlug . '" type="checkbox" id="' . $fieldOptionValue . '" value="' . $fieldOptionValue . '" ' . (in_array($fieldOptionValue, $selectedOptions) ? 'checked' : '') . ' />' . $fieldOptionTitle . '</label>';
+        }
+        $fieldHtml .= "</div>";
     }
-    $fieldHtml .= "</div>";
 
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }

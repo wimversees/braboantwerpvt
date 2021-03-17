@@ -20,14 +20,22 @@ abstract class ExampleType
     const Image             = 'example-image';
     const Integer           = 'example-integer';
     const MultiLineText     = 'example-multilinetext';
-    const MultiSelect       = 'example-multiselect';
-    const Radio             = 'example-radio';
     const Radio2            = 'example-radio-2';
     const RichText          = 'example-richtext';
     const RichTextWithMedia = 'example-richtext-with-media';
-    const Select            = 'example-selection';
     const SingleLineText    = 'example-single';
     const Url               = 'example-url';
+
+    const SelectFields            = 'Select Fields';
+    const RadioWithList           = 'example-radio-list';
+    const RadioWithPostType       = 'example-radio-posttype';
+    const RadioWithQuery          = 'example-radio-query';
+    const SelectWithList          = 'example-selection-list';
+    const SelectWithPostType      = 'example-selection-posttype';
+    const SelectWithQuery         = 'example-selection-query';
+    const MultiSelectWithList     = 'example-multiselect-list';
+    const MultiSelectWithPostType = 'example-multiselect-posttype';
+    const MultiSelectWithQuery    = 'example-multiselect-query';
 }
 
 $examplePostTypeConfig = new PostTypeConfig(
@@ -50,17 +58,28 @@ $examplePostTypeConfig = new PostTypeConfig(
             array(
                 new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
                 new FieldConfig(FieldType::MultiLineText, ExampleType::MultiLineText, 'Multi Line Text Field', false, "description of the field"),
-                new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelect, 'Multi Select Field', false, "description of the field", array(), array(MultiSelectFieldSettings::PostType => 'faq')),
-                new FieldConfig(FieldType::Radio, ExampleType::Radio, 'Radio Field', false, "description of the field", array('left', 'right', 'center')),
-                new FieldConfig(FieldType::Radio, ExampleType::Radio2, 'Radio Field 2', false, "description of the field", array('left', 'right', 'center')),
                 new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
                 new FieldConfig(FieldType::RichText, ExampleType::RichTextWithMedia, 'Rich Text Field With Media', false, "description of the field", array(), array('media_buttons' => true)),
-                new FieldConfig(FieldType::Select, ExampleType::Select, 'Select Field', false, "description of the field", array('left', 'right', 'center')),
                 new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
                 new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', false, 'this is a comment for the field'))
         ),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
+
+        new FieldGroup(
+            ExampleType::SelectFields,
+            array(
+                new FieldConfig(FieldType::Radio, ExampleType::RadioWithList, 'Radio Field With List', false, "This is a radio field where the data is coming from a predefined list.", array(RadioFieldSettings::Options => array('left', 'right', 'center'))),
+                new FieldConfig(FieldType::Radio, ExampleType::RadioWithPostType, 'Radio Field With Post Type', false, "This is a radio field where the data is coming from a post type.", array(RadioFieldSettings::PostType => 'page')),
+                new FieldConfig(FieldType::Radio, ExampleType::RadioWithQuery, 'Radio Field With Query (NOT IMPLEMENTED)', false, "This is a radio field where the data is coming from a query."),
+                new FieldConfig(FieldType::Select, ExampleType::SelectWithList, 'Select Field With List', false, "This is a select field where the data is coming from a predefined list.", array(SelectFieldSettings::Options => array('left', 'right', 'center'))),
+                new FieldConfig(FieldType::Select, ExampleType::SelectWithPostType, 'Select Field With Post Type', false, "This is a select field where the data is coming from a post type.", array(SelectFieldSettings::PostType => 'page')),
+                new FieldConfig(FieldType::Select, ExampleType::SelectWithQuery, 'Select Field With Query (NOT IMPLEMENTED)', false, "This is a select field where the data is coming from a query."),
+                new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelectWithList, 'Multi Select Field', false, "This is a multiselect field where the data is coming from a predefined list.", array(MultiSelectFieldSettings::Options => array('left', 'right', 'center'))),
+                new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelectWithPostType, 'Multi Select Post Type', false, "This is a multiselect field where the data is coming from a post type.", array(MultiSelectFieldSettings::PostType => 'page')),
+                new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelectWithQuery, 'Multi Select Query (NOT IMPLEMENTED)', false, "This is a multiselect field where the data is coming from a query list."),
+            )
+        ),
 
         new FieldGroup(
             ExampleType::Group3,
