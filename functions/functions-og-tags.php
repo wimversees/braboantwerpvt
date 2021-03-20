@@ -77,3 +77,14 @@ function get_og_locale()
 {
     return GetLocale();
 }
+
+/**
+ * This function returns the locale for the html element. Eg: en_GB will be transfered to EN
+ *
+ * @return void
+ */
+function get_html_locale()
+{
+    $locale = GetLocale();
+    return strlen($locale) >= 2 ? substr($locale, 0, 2) : $locale;
+}

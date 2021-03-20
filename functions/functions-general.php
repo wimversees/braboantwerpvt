@@ -98,9 +98,9 @@ function GetLocale()
     $setLanguage = defined('ICL_LANGUAGE_CODE') && strlen(ICL_LANGUAGE_CODE) > 0 ? ICL_LANGUAGE_CODE : c('default-locale');
     // overwrite to fix linux dates
     if ($setLanguage == "en") {
-        return "en_US";
+        return "en";
     } elseif ($setLanguage == "nl") {
-        return "nl_BE";
+        return "nl";
     }
     return $setLanguage;
 }
