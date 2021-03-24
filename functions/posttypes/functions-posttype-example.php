@@ -17,7 +17,6 @@ abstract class ExampleType
     const Group2 = 'Group 2';
 
     const Group3            = 'Group 3';
-    const Image             = 'example-image';
     const Integer           = 'example-integer';
     const MultiLineText     = 'example-multilinetext';
     const Radio2            = 'example-radio-2';
@@ -25,6 +24,10 @@ abstract class ExampleType
     const RichTextWithMedia = 'example-richtext-with-media';
     const SingleLineText    = 'example-single';
     const Url               = 'example-url';
+
+    const ImageFields = 'Image Fields';
+    const Image       = 'example-image';
+    const Gallery     = 'example-gallery';
 
     const SelectFields            = 'Select Fields';
     const RadioWithList           = 'example-radio-list';
@@ -47,25 +50,30 @@ $examplePostTypeConfig = new PostTypeConfig(
             ExampleType::Group1,
             array(
                 new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
-                new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', true, "description of the field"),
-                new FieldConfig(FieldType::DateTime, ExampleType::DateTime, 'DateTime Field', true, "description of the field"),
-                new FieldConfig(FieldType::Integer, ExampleType::Integer, 'Integer Field', true, "description of the field"),
+                new FieldConfig(FieldType::Date, ExampleType::Date, 'Date Field', false, "description of the field"),
+                new FieldConfig(FieldType::DateTime, ExampleType::DateTime, 'DateTime Field', false, "description of the field"),
+                new FieldConfig(FieldType::Integer, ExampleType::Integer, 'Integer Field', false, "description of the field"),
             )
         ),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
         new FieldGroup(
             ExampleType::Group2,
             array(
-                new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
                 new FieldConfig(FieldType::MultiLineText, ExampleType::MultiLineText, 'Multi Line Text Field', false, "description of the field"),
                 new FieldConfig(FieldType::RichText, ExampleType::RichText, 'Rich Text Field', false, "description of the field"),
                 new FieldConfig(FieldType::RichText, ExampleType::RichTextWithMedia, 'Rich Text Field With Media', false, "description of the field", array(), array('media_buttons' => true)),
-                new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', true, 'this is a comment for the field'),
+                new FieldConfig(FieldType::SingleLineText, ExampleType::SingleLineText, 'Single Line Text Field', false, 'this is a comment for the field'),
                 new FieldConfig(FieldType::Url, ExampleType::Url, 'Url Field', false, 'this is a comment for the field'))
         ),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
         new FieldConfig(FieldType::Checkbox, ExampleType::Checkbox, 'Checkbox Field', false, "description of the field"),
-
+        new FieldGroup(
+            ExampleType::ImageFields,
+            array(
+                new FieldConfig(FieldType::Image, ExampleType::Image, 'Image Field', false, "description of the field"),
+                new FieldConfig(FieldType::Gallery, ExampleType::Gallery, 'Gallery Field', false, "description of the field"),
+            )
+        ),
         new FieldGroup(
             ExampleType::SelectFields,
             array(
@@ -80,7 +88,6 @@ $examplePostTypeConfig = new PostTypeConfig(
                 new FieldConfig(FieldType::MultiSelect, ExampleType::MultiSelectWithQuery, 'Multi Select Query (NOT IMPLEMENTED)', false, "This is a multiselect field where the data is coming from a query list."),
             )
         ),
-
         new FieldGroup(
             ExampleType::Group3,
             array(
