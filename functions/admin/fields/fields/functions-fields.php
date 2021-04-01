@@ -10,6 +10,7 @@ abstract class FieldType
     const Checkbox       = 'Checkbox';
     const Date           = 'Date';
     const DateTime       = 'DateTime';
+    const Gallery        = 'Gallery';
     const Image          = 'Image';
     const Integer        = 'Integer';
     const MultiLineText  = 'MultiLineText';
@@ -30,6 +31,7 @@ abstract class SaveOrRenderForType
 require_once 'field-checkbox.php';
 require_once 'field-date.php';
 require_once 'field-datetime.php';
+require_once 'field-gallery.php';
 require_once 'field-image.php';
 require_once 'field-integer.php';
 require_once 'field-multilinetext.php';
@@ -51,6 +53,9 @@ function SaveField($post_id, $fieldSlug, $fieldType, $saveOrRenderForType = Save
             break;
         case FieldType::DateTime:
             SaveDateTimeField($post_id, $fieldSlug, $saveOrRenderForType);
+            break;
+        case FieldType::Gallery:
+            SaveGalleryField($post_id, $fieldSlug, $saveOrRenderForType);
             break;
         case FieldType::Image:
             SaveImageField($post_id, $fieldSlug, $saveOrRenderForType);
@@ -106,6 +111,9 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
             break;
         case FieldType::DateTime:
             DateTimeField($post, $field, $saveOrRenderForType);
+            break;
+        case FieldType::Gallery:
+            GalleryField($post, $field, $saveOrRenderForType);
             break;
         case FieldType::Image:
             ImageField($post, $field, $saveOrRenderForType);
