@@ -12,14 +12,25 @@ if (!defined('ABSPATH')) {
  */
 function page_title()
 {
-    $blogName        = get_bloginfo('name');
+    $blogName = get_bloginfo('name');
+
+    // check if page has meta title filled in
+    $seoTitle = get_post_meta(get_the_ID(), SeoBaseType::SeoMetaTitle, true);
+    if (strlen($seoTitle) > 0) {
+        $defaultForPage = $seoTitle . ' - ' . $blogName;
+        echo strlen($defaultForPage) >= 70 ? $seoTitle : $defaultForPage;
+        return;
+    }
+
     $blogDescription = get_bloginfo('description');
     $default         = $blogName . ' - ' . $blogDescription;
+
     // homepage
     if (is_home() || is_front_page()) {
         echo strlen($default) >= 70 ? $blogName : $default;
         return;
     }
+
     // other page
     $pageTitle      = GetPageTitleH1();
     $defaultForPage = GetPageTitleH1() . ' - ' . $default;
@@ -38,7 +49,15 @@ function page_title()
  */
 function page_keywords()
 {
-    $blogName        = get_bloginfo('name');
+    $blogName = get_bloginfo('name');
+
+    // check if page has meta description filled in
+    $seoKeywords = get_post_meta(get_the_ID(), SeoBaseType::SeoMetaKeywords, true);
+    if (strlen($seoKeywords) > 0) {
+        echo $seoKeywords . ' ' . $blogName;
+        return;
+    }
+
     $blogDescription = get_bloginfo('description');
     $default         = $blogName . ' ' . $blogDescription;
     // homepage
@@ -94,6 +113,13 @@ function GetPageTitleH1()
  */
 function page_description()
 {
+    // check if page has meta description filled in
+    $seoDescription = get_post_meta(get_the_ID(), SeoBaseType::SeoMetaDescription, true);
+    if (strlen($seoDescription) > 0) {
+        echo $seoDescription;
+        return;
+    }
+
     $excerpt = excerpt(20);
     if (strlen($excerpt) == 0) {
         $excerpt = bloginfo('description');
