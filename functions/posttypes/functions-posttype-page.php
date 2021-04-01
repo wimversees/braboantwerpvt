@@ -16,6 +16,7 @@ $pageTypeConfig = new PostTypeConfig(
     null,
     null,
     array(
+        $seoSharedFieldsSetting,
     )
 );
 

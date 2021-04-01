@@ -50,6 +50,7 @@ require_once 'functions/posttypes/config/posttype-config-class.php';
 require_once 'functions/taxonomies/config/taxonomy-config-class.php';
 
 // post types
+require_once 'functions/posttypes/base/functions-posttype-base-seo.php';
 require_once 'functions/posttypes/functions-posttype-post.php';
 require_once 'functions/posttypes/functions-posttype-page.php';
 require_once 'functions/posttypes/functions-posttype-author.php';
