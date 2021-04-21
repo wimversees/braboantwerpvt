@@ -21,6 +21,7 @@ require_once 'functions/functions-wpcf7.php';
 require_once 'functions/functions-navigation.php';
 require_once 'functions/functions-taxonomies.php';
 require_once 'functions/functions-permalinks.php';
+require_once 'functions/functions-security.php';
 require_once 'functions/functions-structured-data.php';
 require_once 'functions/functions-minification.php';
 require_once 'functions/functions-mails.php';
