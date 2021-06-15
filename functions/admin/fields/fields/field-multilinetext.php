@@ -18,7 +18,7 @@ function MultiLineTextField($object, $fieldConfig, $saveOrRenderForType = SaveOr
 function RenderMultiLineText($fieldConfig, $fieldValue)
 {
     $fieldSlug = $fieldConfig->fieldSlug;
-    $fieldHtml = '<textarea type="text" name="' . $fieldSlug . '" id="' . $fieldSlug . '" rows="4" ' . ($fieldConfig->required ? 'required' : '') . '>' . $fieldValue . '</textarea>';
+    $fieldHtml = '<textarea type="text" name="' . $fieldSlug . '" id="' . $fieldSlug . '" rows="4" ' . ($fieldConfig->required ? 'required aria-required="true"' : '') . '>' . $fieldValue . '</textarea>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 

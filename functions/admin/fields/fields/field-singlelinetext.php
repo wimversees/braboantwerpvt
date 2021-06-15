@@ -18,7 +18,7 @@ function SingleLineTextField($object, $fieldConfig, $saveOrRenderForType = SaveO
 function RenderSingleLineText($fieldConfig, $fieldValue)
 {
     $fieldSlug = $fieldConfig->fieldSlug;
-    $fieldHtml = '<input type="text" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    $fieldHtml = '<input type="text" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required aria-required="true"' : '') . '/>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 

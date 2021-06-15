@@ -18,7 +18,7 @@ function UrlField($object, $fieldConfig, $saveOrRenderForType = SaveOrRenderForT
 function RenderUrl($fieldConfig, $fieldValue)
 {
     $fieldSlug = $fieldConfig->fieldSlug;
-    $fieldHtml = '<input type="url" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    $fieldHtml = '<input type="url" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required aria-required="true"' : '') . '/>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 

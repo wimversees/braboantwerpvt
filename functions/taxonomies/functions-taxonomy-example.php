@@ -5,15 +5,30 @@ if (!defined('ABSPATH')) {
     die();
 }
 
+abstract class ExampleTax
+{
+    const Type = 'example';
+
+    const Group1   = 'Group 1';
+    const Checkbox = 'example-checkbox';
+    const Date     = 'example-date';
+    const Url      = 'example-url';
+}
+
 $exampleTaxonomyConfig = new TaxonomyConfig(
-    c('example-tax'),
+    ExampleTax::Type,
     "Example",
     "Examples",
-    array('post', c('example')),
+    array('post', ExampleType::Type),
     array(
-        new FieldConfig(FieldType::SingleLineText, c('tax-example-field'), 'test field label for taxonomy test field', true, 'fieldcomment'),
-        new FieldConfig(FieldType::Url, c('tax-example-field-2'), 'url', true, 'url'),
-        new FieldConfig(FieldType::Checkbox, c('tax-example-field-3'), 'checkbox', false, 'checkbox'),
+        new FieldGroup(
+            ExampleTax::Group1,
+            array(
+                new FieldConfig(FieldType::Checkbox, ExampleTax::Checkbox, 'Checkbox Field', false, "description of the field"),
+                new FieldConfig(FieldType::Date, ExampleTax::Date, 'Date Field', true, "description of the field"),
+            )
+        ),
+        new FieldConfig(FieldType::Url, ExampleTax::Url, 'URL', true, "description of the field"),
     )
 );
 
@@ -79,13 +94,7 @@ add_action('init', 'add_example_taxonomy', 0);
 function example_tax_metabox_html($tag)
 {
     global $exampleTaxonomyConfig;
-    echo '<div class="wiver-fields">';
-    foreach ($exampleTaxonomyConfig->fields as $field) {
-        echo '<div class="form-field">';
-        RenderField($tag, $field, SaveOrRenderForType::Term);
-        echo '</div>';
-    }
-    echo '</div>';
+    RenderMetaboxesForTaxonomy($exampleTaxonomyConfig, $tag);
 }
 add_action($exampleTaxonomyConfig->taxonomyType . '_add_form_fields', 'example_tax_metabox_html');
 add_action($exampleTaxonomyConfig->taxonomyType . '_edit_form_fields', 'example_tax_metabox_html');
@@ -93,9 +102,7 @@ add_action($exampleTaxonomyConfig->taxonomyType . '_edit_form_fields', 'example_
 function example_tax_save_postdata($term_id)
 {
     global $exampleTaxonomyConfig;
-    foreach ($exampleTaxonomyConfig->fields as $field) {
-        SaveFieldForTaxonomy($term_id, $field->fieldSlug, $field->fieldType);
-    }
+    SaveTaxonomyData($exampleTaxonomyConfig, $term_id);
 }
 add_action('create_' . $exampleTaxonomyConfig->taxonomyType, 'example_tax_save_postdata');
 add_action('edited_' . $exampleTaxonomyConfig->taxonomyType, 'example_tax_save_postdata');

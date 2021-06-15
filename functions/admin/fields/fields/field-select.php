@@ -62,7 +62,7 @@ function RenderSelect($fieldConfig, $fieldValue)
     if (!$fieldOptions || count($fieldOptions) < 1) {
         $fieldHtml .= '<div class="alert alert-warning"><strong>Configuration Error.</strong> No options configured.</div>';
     } else {
-        $fieldHtml .= '<select name="' . $fieldSlug . '" class="' . $fieldSlug . '" ' . ($fieldConfig->required ? 'required' : '') . '>';
+        $fieldHtml .= '<select name="' . $fieldSlug . '" class="' . $fieldSlug . '" ' . ($fieldConfig->required ? 'required aria-required="true"' : '') . '>';
         $fieldHtml .= '<option value="" ' . ($fieldValue == '' ? 'selected' : '') . ' ' . ($fieldConfig->required ? 'disabled' : '') . '>Choose...</option>';
         foreach ($fieldOptions as $fieldOption) {
             $fieldOptionTitle = '';

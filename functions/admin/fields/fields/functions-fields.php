@@ -151,7 +151,7 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
 function RenderFieldHtml($fieldConfig, $fieldHtml)
 {
     ?>
-<tr class="form-field<?php echo $fieldConfig->required ? ' form-required' : ''; ?>">
+<tr class="form-field<?php echo $fieldConfig->required ? ' form-required aria-required="true"' : ''; ?>">
     <th scope="row">
         <label for="<?php echo $fieldConfig->fieldSlug; ?>"><?php echo $fieldConfig->fieldLabel; ?></label>
     </th>
@@ -251,6 +251,61 @@ function SavePostData($postTypeConfig, $postId)
             }
         } else {
             SaveField($postId, $field->fieldSlug, $field->fieldType);
+        }
+    }
+}
+
+function RenderMetaboxesForTaxonomy($taxonomyTypeConfig, $tag)
+{
+    if ($taxonomyTypeConfig->fields) {
+        $taxonomyType      = $taxonomyTypeConfig->taxonomyType;
+        $taxonomyTypeViews = [$taxonomyType];
+        foreach ($taxonomyTypeViews as $taxonomyTypeView) {
+            // render meta box for single fields (not part of fieldgroup)
+            $fieldsForDefaultGroup = array();
+            foreach ($taxonomyTypeConfig->fields as $field) {
+                if (is_object($field) && $field instanceof FieldConfig) {
+                    $fieldsForDefaultGroup[] = $field;
+                }
+            }
+            if (count($fieldsForDefaultGroup) > 0) {
+                $metaBoxTitle = $taxonomyTypeConfig->singularName . ' Fields';
+                RenderMetaboxTaxonomyContent($tag, $fieldsForDefaultGroup, $metaBoxTitle);
+            }
+
+            // render meta box groups
+            foreach ($taxonomyTypeConfig->fields as $field) {
+                if (is_object($field) && $field instanceof FieldGroup) {
+                    $metaBoxId    = 'metabox-' . str_replace(' ', '-', $field->fieldGroupTitle);
+                    $metaBoxTitle = $field->fieldGroupTitle . ' Fields';
+                    RenderMetaboxTaxonomyContent($tag, $field->fieldGroupFields, $metaBoxTitle);
+                }
+            }
+        }
+    }
+}
+
+function RenderMetaboxTaxonomyContent($tag, $fields, $metaBoxTitle)
+{
+    echo '<div class="wiver-fields taxonomy-fields">';
+    echo '<h2>' . $metaBoxTitle . '</h2>';
+    foreach ($fields as $field) {
+        echo '<div class="form-field' . ($field->required ? ' form-required aria-required="true"' : '') . '">';
+        RenderField($tag, $field, SaveOrRenderForType::Term);
+        echo '</div>';
+    }
+    echo '</div>';
+}
+
+function SaveTaxonomyData($taxonomyTypeConfig, $termId)
+{
+    foreach ($taxonomyTypeConfig->fields as $field) {
+        if (is_object($field) && $field instanceof FieldGroup) {
+            foreach ($field->fieldGroupFields as $fieldGroupField) {
+                SaveField($termId, $fieldGroupField->fieldSlug, $fieldGroupField->fieldType, SaveOrRenderForType::Term);
+            }
+        } else {
+            SaveField($termId, $field->fieldSlug, $field->fieldType, SaveOrRenderForType::Term);
         }
     }
 }

@@ -19,7 +19,7 @@ function RenderDateTimeField($fieldConfig, $fieldValue)
 {
     $fieldSlug  = $fieldConfig->fieldSlug;
     $fieldValue = $fieldValue > 0 ? date('Y-m-d\TH:i', intval($fieldValue)) : '';
-    $fieldHtml  = '<input type="datetime-local" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    $fieldHtml  = '<input type="datetime-local" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required aria-required="true"' : '') . '/>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 

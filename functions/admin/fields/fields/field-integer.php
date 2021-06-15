@@ -18,7 +18,7 @@ function IntegerField($object, $fieldConfig, $saveOrRenderForType = SaveOrRender
 function RenderInteger($fieldConfig, $fieldValue)
 {
     $fieldSlug = $fieldConfig->fieldSlug;
-    $fieldHtml = '<input type="number" step="1" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required' : '') . '/>';
+    $fieldHtml = '<input type="number" step="1" name="' . $fieldSlug . '" id="' . $fieldSlug . '" value="' . $fieldValue . '" ' . ($fieldConfig->required ? 'required aria-required="true"' : '') . '/>';
     RenderFieldHtml($fieldConfig, $fieldHtml);
 }
 

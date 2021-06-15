@@ -1,5 +1,12 @@
 .wiver-fields {
 
+    &.taxonomy-fields {
+        padding: 1rem;
+        background: rgba(255, 255, 255, .5);
+        margin-bottom: 1rem;
+        border: 1px #ccd0d4 solid;
+    }
+
     .form-field {
         border-bottom: 1px rgba(gray, .1) solid;
 
