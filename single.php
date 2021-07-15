@@ -9,7 +9,8 @@
             <?php include 'parts/news-category-list-for-single-post.php'; ?>
             <?php if (has_post_thumbnail()) { ?>
             <div class="news-media bg-white">
-                <img data-src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'news-detail'); ?>" alt="<?php the_title(); ?>"
+                <img data-src="<?php echo get_the_post_thumbnail_url(get_the_ID(), MediaSizes::SingleDetail); ?>"
+                    src="<?php echo get_the_post_thumbnail_url(get_the_ID(), MediaSizes::SingleDetailPreload); ?>" alt="<?php the_title(); ?>"
                     title="<?php the_title(); ?>" />
             </div>
             <?php } ?>

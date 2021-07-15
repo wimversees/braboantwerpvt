@@ -27,7 +27,7 @@ function customFormatGallery($string, $attr)
         $output .= '<div class="carousel-inner">';
         $counter = 0;
         foreach ($posts as $imagePost) {
-            $output .= '<div class="carousel-item' . ($counter == 0 ? " active" : "") . '" style="background-image: url(' . wp_get_attachment_image_src($imagePost->ID, 'carousel-image')[0] . ');">';
+            $output .= '<div class="carousel-item' . ($counter == 0 ? " active" : "") . '" data-bgsrc="' . wp_get_attachment_image_src($imagePost->ID, MediaSizes::Carousel)[0] . '" style="background-image: url(' . wp_get_attachment_image_src($imagePost->ID, MediaSizes::CarouselPreload)[0] . ');">';
             $output .= '</div>';
             $counter++;
         }
@@ -39,8 +39,8 @@ function customFormatGallery($string, $attr)
         $output .= '<div class="content-gallery row">';
         foreach ($posts as $imagePost) {
             $output .= '<div class="col-6 col-sm-4 col-md-3">';
-            $output .= '<a href="' . wp_get_attachment_image_src($imagePost->ID, 'gallery-full')[0] . '" title="' . get_the_title($imagePost->ID) . '">';
-            $output .= '<img data-src="' . wp_get_attachment_image_src($imagePost->ID, 'gallery-thumbnail')[0] . '" alt="' . $imagePost->post_title . '" title="' . get_the_title($imagePost->ID) . '" />';
+            $output .= '<a href="' . wp_get_attachment_image_src($imagePost->ID, MediaSizes::GalleryFull)[0] . '" title="' . get_the_title($imagePost->ID) . '">';
+            $output .= '<img data-src="' . wp_get_attachment_image_src($imagePost->ID, MediaSizes::GalleryThumbnail)[0] . '" src="' . wp_get_attachment_image_src($imagePost->ID, MediaSizes::GalleryThumbnailPreload)[0] . '" alt="' . $imagePost->post_title . '" title="' . get_the_title($imagePost->ID) . '" />';
             $output .= '</a>';
             $output .= '</div>';
         }

@@ -5,12 +5,41 @@ if (!defined('ABSPATH')) {
     die();
 }
 
-// Register custom image sizes
+// quality for jpeg and other types
 add_filter('jpeg_quality', function ($arg) {return 85;});
 add_filter('wp_editor_set_quality', function ($arg) {return 85;});
-add_image_size('gallery-thumbnail', 350, 250, true);
-add_image_size('gallery-full', 1400, 950, false);
-// add_image_size('block-image', 255, 165, true);
+
+// Register custom image sizes
+abstract class MediaSizes
+{
+    const GalleryThumbnail        = 'gallery-thumbnail';
+    const GalleryThumbnailPreload = 'gallery-thumbnail-preload';
+    const GalleryFull             = 'gallery-full';
+    const GalleryFullPreload      = 'gallery-full-preload';
+
+    const Carousel        = 'carousel';
+    const CarouselPreload = 'carousel-preload';
+
+    const Card        = 'card';
+    const CardPreload = 'card-preload';
+
+    const SingleDetail        = 'single-detail';
+    const SingleDetailPreload = 'single-detail-preload';
+}
+
+add_image_size(MediaSizes::GalleryThumbnail, 350, 250, true);
+add_image_size(MediaSizes::GalleryThumbnailPreload, 35, 25, true);
+add_image_size(MediaSizes::GalleryFull, 1400, 950, false);
+add_image_size(MediaSizes::GalleryFullPreload, 140, 95, false);
+
+add_image_size(MediaSizes::Carousel, 1400, 950, true);
+add_image_size(MediaSizes::CarouselPreload, 140, 95, true);
+
+add_image_size(MediaSizes::Card, 320, 200, true);
+add_image_size(MediaSizes::CardPreload, 32, 20, true);
+
+add_image_size(MediaSizes::SingleDetail, 320, 200, true);
+add_image_size(MediaSizes::SingleDetailPreload, 32, 20, true);
 
 /**
  * This function enables svg as possible uploadable images
