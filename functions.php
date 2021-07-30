@@ -9,6 +9,7 @@ if (!defined('ABSPATH')) {
 require_once 'functions/functions-general.php';
 require_once 'functions/functions-posts.php';
 require_once 'functions/functions-post-actions.php';
+require_once 'functions/functions-redirects.php';
 require_once 'functions/functions-og-tags.php';
 require_once 'functions/functions-caching.php';
 require_once 'functions/functions-media.php';
