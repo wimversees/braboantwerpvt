@@ -10,6 +10,7 @@ if (!defined('ABSPATH')) {
  */
 
 require_once 'shortcode-button.php';
+require_once 'shortcode-vimeo.php';
 require_once 'shortcode-youtube.php';
 
 function shortcode_documentation($shortcode)

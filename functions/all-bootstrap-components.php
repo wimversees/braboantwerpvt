@@ -322,6 +322,7 @@
         </div>
         <?php echo do_shortcode('[youtube doc="1"]'); ?>
         <?php echo do_shortcode('[button doc="1"]'); ?>
+        <?php echo do_shortcode('[vimeo doc="1"]'); ?>
     </div>
 </div>
 <?php }
