@@ -102,6 +102,11 @@ function RenderField($post, $field, $saveOrRenderForType = SaveOrRenderForType::
         $post = null;
     }
 
+    // do not render field when field is disabled by validators
+    if (!$field->fieldEnabled) {
+        return;
+    }
+
     switch ($field->fieldType) {
         case FieldType::Checkbox:
             CheckboxField($post, $field, $saveOrRenderForType);
@@ -214,6 +219,12 @@ function RenderMetaboxes($postTypeConfig)
             // render meta box groups
             foreach ($postTypeConfig->fields as $field) {
                 if (is_object($field) && $field instanceof FieldGroup) {
+
+                    // do not render metabox when fieldgroup is disabled by validators
+                    if (!$field->fieldGroupEnabled) {
+                        continue;
+                    }
+
                     $metaBoxId = 'metabox-' . str_replace(' ', '-', $field->fieldGroupTitle);
                     add_meta_box($metaBoxId, $field->fieldGroupTitle, 'RenderMetaboxContent', $postTypeView, 'normal', 'high', array("fields" => $field->fieldGroupFields, "postTypeConfig" => $postTypeConfig));
                 }

@@ -13,8 +13,9 @@ class FieldConfig
     public $fieldSettings = array();
     public $required      = false;
     public $fieldComment  = '';
+    public $fieldEnabled  = true;
 
-    public function __construct($fieldType, $fieldSlug, $fieldLabel, $required = false, $fieldComment = '', $fieldSettings = array())
+    public function __construct($fieldType, $fieldSlug, $fieldLabel, $required = false, $fieldComment = '', $fieldSettings = array(), $fieldEnabled = true)
     {
         $this->fieldSlug     = $fieldSlug;
         $this->fieldLabel    = $fieldLabel;
@@ -22,5 +23,6 @@ class FieldConfig
         $this->fieldSettings = $fieldSettings;
         $this->required      = $required;
         $this->fieldComment  = $fieldComment;
+        $this->fieldEnabled  = $fieldEnabled;
     }
 }

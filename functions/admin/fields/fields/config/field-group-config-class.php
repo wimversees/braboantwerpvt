@@ -7,12 +7,14 @@ if (!defined('ABSPATH')) {
 
 class FieldGroup
 {
-    public $fieldGroupTitle  = '';
-    public $fieldGroupFields = array();
+    public $fieldGroupTitle   = '';
+    public $fieldGroupFields  = array();
+    public $fieldGroupEnabled = true;
 
-    public function __construct($fieldGroupTitle = 'Field group', $fieldGroupFields = array())
+    public function __construct($fieldGroupTitle = 'Field group', $fieldGroupFields = array(), $fieldGroupEnabled = true)
     {
-        $this->fieldGroupTitle  = $fieldGroupTitle;
-        $this->fieldGroupFields = $fieldGroupFields;
+        $this->fieldGroupTitle   = $fieldGroupTitle;
+        $this->fieldGroupFields  = $fieldGroupFields;
+        $this->fieldGroupEnabled = $fieldGroupEnabled;
     }
 }

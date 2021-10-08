@@ -48,6 +48,7 @@ require_once 'functions/admin/fields/fields/config/field-config-class.php';
 require_once 'functions/admin/fields/fields/config/field-group-config-class.php';
 require_once 'functions/admin/fields/fields/functions-fields.php';
 require_once 'functions/admin/fields/validators/functions-field-validators.php';
+require_once 'functions/admin/validators/functions-validators.php';
 require_once 'functions/posttypes/config/posttype-config-class.php';
 require_once 'functions/taxonomies/config/taxonomy-config-class.php';
 
